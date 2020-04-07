@@ -23,7 +23,7 @@ public abstract class Person { // some methods may be deleted later
 
         public CitizenNumber(String citizenNumber) {
             if (citizenNumber.length() != 13 || !citizenNumber.matches("[0-9]+"))
-                throw new IllegalArgumentException("Invalid citizen number format");
+                throw new InvalidInformationException("Invalid citizen number format");
             this.citizenNumber = citizenNumber;
         }
 
@@ -50,12 +50,12 @@ public abstract class Person { // some methods may be deleted later
 
         public void setPhoneNumber(String phoneNumber) { // e.g. 0601234567
             if ((phoneNumber.length() != 9 && phoneNumber.length() != 10) || !phoneNumber.matches("[0-9]+"))
-                throw new IllegalArgumentException("Invalid phone number format");
+                throw new InvalidInformationException("Invalid phone number format");
             int destinationCode = Integer.parseInt(phoneNumber.substring(1, 3));
             Integer[] destinationCodes = {30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 49, 50, 51, 52, 53, 54, 55, 56, 57,
                     58, 59, 60, 61, 62, 63, 64, 65, 66, 67};
             if (!Arrays.asList(destinationCodes).contains(destinationCode))
-                throw new IllegalArgumentException("Invalid phone number format");
+                throw new InvalidInformationException("Invalid phone number format");
             this.phoneNumber = phoneNumber;
         }
 
@@ -79,7 +79,7 @@ public abstract class Person { // some methods may be deleted later
 
         public void setEmailAddress(String emailAddress) {
             if (!EmailValidator.getInstance().isValid(emailAddress))
-                throw new IllegalArgumentException("Invalid email address");
+                throw new InvalidInformationException("Invalid email address");
             this.emailAddress = emailAddress;
         }
 
@@ -145,7 +145,7 @@ public abstract class Person { // some methods may be deleted later
                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                   BloodType bloodType) {
         if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
-            throw new IllegalArgumentException("Invalid citizen number");
+            throw new InvalidInformationException("Invalid citizen number");
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -234,7 +234,7 @@ public abstract class Person { // some methods may be deleted later
     public void setBirthDateCitizenNumberAndGender(LocalDate birthDate, CitizenNumber citizenNumber, Gender gender) {
         // These three attributes are always connected, thats why this method is needed
         if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
-            throw new IllegalArgumentException("Invalid citizen number");
+            throw new InvalidInformationException("Invalid citizen number");
         this.birthDate = birthDate;
         this.citizenNumber = citizenNumber;
         this.gender = gender;

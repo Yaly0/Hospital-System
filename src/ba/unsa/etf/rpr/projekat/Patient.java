@@ -13,12 +13,12 @@ public class Patient extends Person { // some methods may be deleted later
         private int height;
 
         public Height(int height) {
-            if (height < 50 || height > 250) throw new IllegalArgumentException("Invalid height");
+            if (height < 50 || height > 250) throw new InvalidInformationException("Invalid height");
             this.height = height;
         }
 
         public Height(double height) {
-            if (height < 0.5 || height > 2.5) throw new IllegalArgumentException("Invalid height");
+            if (height < 0.5 || height > 2.5) throw new InvalidInformationException("Invalid height");
             this.height = (int) (100 * height);
         }
 
@@ -27,7 +27,7 @@ public class Patient extends Person { // some methods may be deleted later
         }
 
         public void setHeight(int height) {
-            if (height < 0.5 || height > 2.5) throw new IllegalArgumentException("Invalid height");
+            if (height < 0.5 || height > 2.5) throw new InvalidInformationException("Invalid height");
             this.height = height;
         }
 
@@ -41,7 +41,7 @@ public class Patient extends Person { // some methods may be deleted later
         private double weight;
 
         public Weight(double weight) {
-            if (weight < 5 || weight > 500) throw new IllegalArgumentException("Invalid weight");
+            if (weight < 5 || weight > 500) throw new InvalidInformationException("Invalid weight");
             this.weight = weight;
         }
 
@@ -50,7 +50,7 @@ public class Patient extends Person { // some methods may be deleted later
         }
 
         public void setWeight(double weight) {
-            if (weight < 5 || weight > 500) throw new IllegalArgumentException("Invalid weight");
+            if (weight < 5 || weight > 500) throw new InvalidInformationException("Invalid weight");
             this.weight = weight;
         }
 
