@@ -2,13 +2,92 @@ package ba.unsa.etf.rpr.projekat;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Arrays;
 
-public abstract class Person {
-    protected String firstName, lastName, email, citizenNumber, phoneNumber, address; // some may be converted to separate classes later
+import static ba.unsa.etf.rpr.projekat.Person.Gender.*;
+
+import org.apache.commons.validator.routines.EmailValidator;
+
+public abstract class Person { // some methods may be deleted later
+    protected String firstName, lastName, homeAddress;
     protected int id;
     protected LocalDate birthDate;
+    protected CitizenNumber citizenNumber;
+    protected PhoneNumber phoneNumber;
+    protected EmailAddress emailAddress;
     protected Gender gender;
     protected BloodType bloodType;
+
+    public static class CitizenNumber {
+        private String citizenNumber;
+
+        public CitizenNumber(String citizenNumber) {
+            if (citizenNumber.length() != 13 || !citizenNumber.matches("[0-9]+"))
+                throw new IllegalArgumentException("Invalid citizen number format");
+            this.citizenNumber = citizenNumber;
+        }
+
+        public String getCitizenNumber() {
+            return citizenNumber;
+        }
+
+        @Override
+        public String toString() {
+            return citizenNumber;
+        }
+    }
+
+    public static class PhoneNumber {
+        private String phoneNumber;
+
+        public PhoneNumber(String phoneNumber) {
+            setPhoneNumber(phoneNumber);
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) { // e.g. 0601234567
+            if ((phoneNumber.length() != 9 && phoneNumber.length() != 10) || !phoneNumber.matches("[0-9]+"))
+                throw new IllegalArgumentException("Invalid phone number format");
+            int destinationCode = Integer.parseInt(phoneNumber.substring(1, 3));
+            Integer[] destinationCodes = {30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+                    58, 59, 60, 61, 62, 63, 64, 65, 66, 67};
+            if (!Arrays.asList(destinationCodes).contains(destinationCode))
+                throw new IllegalArgumentException("Invalid phone number format");
+            this.phoneNumber = phoneNumber;
+        }
+
+        @Override
+        public String toString() { // e.g. +387 60 123 4567
+            return "+387 " + phoneNumber.substring(1, 3) + " " + phoneNumber.substring(3, 6) + " " +
+                    phoneNumber.substring(6);
+        }
+    }
+
+    public static class EmailAddress {
+        private String emailAddress;
+
+        public EmailAddress(String emailAddress) {
+            setEmailAddress(emailAddress);
+        }
+
+        public String getEmailAddress() {
+            return emailAddress;
+        }
+
+        public void setEmailAddress(String emailAddress) {
+            if (!EmailValidator.getInstance().isValid(emailAddress))
+                throw new IllegalArgumentException("Invalid email address");
+            this.emailAddress = emailAddress;
+        }
+
+        @Override
+        public String toString() {
+            return emailAddress;
+        }
+    }
 
     public enum Gender {
         MALE {
@@ -46,13 +125,36 @@ public abstract class Person {
         }
     }
 
-    public Person(String firstName, String lastName, String citizenNumber, String phoneNumber, int id, LocalDate birthDate, Gender gender, BloodType bloodType) {
+    private boolean isCitizenNumberInvalid(CitizenNumber citizenNumber, LocalDate birthDate, Gender gender) {
+        String genderFromCitizenNumber = citizenNumber.citizenNumber.substring(7, 10);
+        String birthDateFromCitizenNumber = citizenNumber.citizenNumber.substring(0, 7); // e.g. 3112999 -> 1999-12-31
+
+        birthDateFromCitizenNumber = "X" + birthDateFromCitizenNumber.substring(4, 7) + "-" +
+                birthDateFromCitizenNumber.substring(2, 4) + "-" + birthDateFromCitizenNumber.substring(0, 2);
+        if (birthDateFromCitizenNumber.charAt(1) == '9')
+            birthDateFromCitizenNumber = 1 + birthDateFromCitizenNumber.substring(1);
+        else if (birthDateFromCitizenNumber.charAt(1) == '0')
+            birthDateFromCitizenNumber = 2 + birthDateFromCitizenNumber.substring(1);
+
+        return !birthDateFromCitizenNumber.equals(birthDate.toString()) ||
+                ((Integer.parseInt(genderFromCitizenNumber) >= 500 || gender != MALE) &&
+                        (Integer.parseInt(genderFromCitizenNumber) < 500 || gender != FEMALE));
+    }
+
+    public Person(String firstName, String lastName, String homeAddress, int id, LocalDate birthDate,
+                  CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
+                  BloodType bloodType) {
+        if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
+            throw new IllegalArgumentException("Invalid citizen number");
+
         this.firstName = firstName;
         this.lastName = lastName;
-        this.citizenNumber = citizenNumber;
-        this.phoneNumber = phoneNumber;
+        this.homeAddress = homeAddress;
         this.id = id;
         this.birthDate = birthDate;
+        this.citizenNumber = citizenNumber;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
         this.gender = gender;
         this.bloodType = bloodType;
     }
@@ -73,36 +175,12 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getHomeAddress() {
+        return homeAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCitizenNumber() {
-        return citizenNumber;
-    }
-
-    public void setCitizenNumber(String citizenNumber) {
-        this.citizenNumber = citizenNumber;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     public int getId() {
@@ -121,16 +199,28 @@ public abstract class Person {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public CitizenNumber getCitizenNumber() {
+        return citizenNumber;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public EmailAddress getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(EmailAddress emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public Gender getGender() {
         return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public BloodType getBloodType() {
@@ -139,5 +229,14 @@ public abstract class Person {
 
     public void setBloodType(BloodType bloodType) {
         this.bloodType = bloodType;
+    }
+
+    public void setBirthDateCitizenNumberAndGender(LocalDate birthDate, CitizenNumber citizenNumber, Gender gender) {
+        // These three attributes are always connected, thats why this method is needed
+        if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
+            throw new IllegalArgumentException("Invalid citizen number");
+        this.birthDate = birthDate;
+        this.citizenNumber = citizenNumber;
+        this.gender = gender;
     }
 }

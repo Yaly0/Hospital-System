@@ -91,10 +91,12 @@ public class Patient extends Person { // some methods may be deleted later
         }
     }
 
-    public Patient(String firstName, String lastName, String citizenNumber, String phoneNumber, int id,
-                   LocalDate birthDate, Gender gender, BloodType bloodType, Height height, Weight weight,
-                   List<Allergy> allergies) {
-        super(firstName, lastName, citizenNumber, phoneNumber, id, birthDate, gender, bloodType);
+    public Patient(String firstName, String lastName, String homeAddress, int id, LocalDate birthDate,
+                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
+                   BloodType bloodType, Height height, Weight weight, List<Allergy> allergies) {
+
+        super(firstName, lastName, homeAddress, id, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
+                bloodType);
         this.height = height;
         this.weight = weight;
         this.allergies = allergies;
@@ -117,7 +119,7 @@ public class Patient extends Person { // some methods may be deleted later
     }
 
     public double getBMI() {
-        return Math.round(weight.getWeight() / (height.getHeight() * height.getHeight() / 10000.0) * 10) / 10.0;
+        return Math.round(weight.weight / (height.height * height.height / 10000.0) * 10) / 10.0;
     }
 
     public List<Allergy> getAllergies() {
