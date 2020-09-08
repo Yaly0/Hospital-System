@@ -1,12 +1,12 @@
 package ba.unsa.etf.rpr.projekat;
 
 public class MedicalMajor {
-    private String medicalMajorName;
     private int id;
+    private String medicalMajorName;
 
-    public MedicalMajor(String medicalMajorName, int id) {
-        this.medicalMajorName = medicalMajorName;
+    public MedicalMajor(int id, String medicalMajorName) {
         this.id = id;
+        this.medicalMajorName = medicalMajorName;
     }
 
     public String getMedicalMajorName() {

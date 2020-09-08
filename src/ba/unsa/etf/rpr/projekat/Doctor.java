@@ -9,7 +9,7 @@ public class Doctor extends Person {  // some methods may be deleted later
     private double sumOfRatings, totalRating;
     private int numberOfVisits;
 
-    private class ShiftHours {
+    public static class ShiftHours {
         LocalTime startTime, endTime, breakStartTime, breakEndTime;
 
         private void throwException() {
@@ -71,7 +71,7 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
     }
 
-    private enum Rating {
+    public enum Rating {
         ONE(1),
         TWO(2),
         THREE(3),
@@ -90,10 +90,10 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
     }
 
-    public Doctor(String firstName, String lastName, String homeAddress, int id, LocalDate birthDate,
+    public Doctor(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                   BloodType bloodType, MedicalMajor medicalMajor, ShiftHours shiftHours) {
-        super(firstName, lastName, homeAddress, id, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
+        super(id, firstName, lastName, homeAddress, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
                 bloodType);
         this.medicalMajor = medicalMajor;
         this.shiftHours = shiftHours;
@@ -124,6 +124,27 @@ public class Doctor extends Person {  // some methods may be deleted later
     public void addRating(Rating rating) {
         numberOfVisits++;
         sumOfRatings += rating.ratingValue;
-        this.totalRating = sumOfRatings / numberOfVisits;
+        this.totalRating = Math.round(sumOfRatings / numberOfVisits * 10) / 10.0;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" + "\n" +
+                " medicalMajor = " + medicalMajor + "\n" +
+                " shiftHours = " + shiftHours + "\n" +
+                " sumOfRatings = " + sumOfRatings + "\n" +
+                " totalRating = " + totalRating + "\n" +
+                " numberOfVisits = " + numberOfVisits + "\n" +
+                " id = " + id + "\n" +
+                " firstName = '" + firstName + '\'' + "\n" +
+                " lastName = '" + lastName + '\'' + "\n" +
+                " homeAddress = '" + homeAddress + '\'' + "\n" +
+                " birthDate = " + birthDate + "\n" +
+                " citizenNumber = " + citizenNumber + "\n" +
+                " phoneNumber = " + phoneNumber + "\n" +
+                " emailAddress = " + emailAddress + "\n" +
+                " gender = " + gender + "\n" +
+                " bloodType = " + bloodType + "\n" +
+                '}' + "\n";
     }
 }

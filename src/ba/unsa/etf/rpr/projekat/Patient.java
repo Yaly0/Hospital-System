@@ -61,19 +61,11 @@ public class Patient extends Person { // some methods may be deleted later
     }
 
     public static class Allergy {
-        private String allergyName;
         private int id;
+        private String allergyName;
 
-        public Allergy(String allergyName, int id) {
-            this.allergyName = allergyName;
+        public Allergy(int id, String allergyName) {
             this.id = id;
-        }
-
-        public String getAllergyName() {
-            return allergyName;
-        }
-
-        public void setAllergyName(String allergyName) {
             this.allergyName = allergyName;
         }
 
@@ -85,17 +77,25 @@ public class Patient extends Person { // some methods may be deleted later
             this.id = id;
         }
 
+        public String getAllergyName() {
+            return allergyName;
+        }
+
+        public void setAllergyName(String allergyName) {
+            this.allergyName = allergyName;
+        }
+
         @Override
         public String toString() {
             return allergyName;
         }
     }
 
-    public Patient(String firstName, String lastName, String homeAddress, int id, LocalDate birthDate,
+    public Patient(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                    CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                    BloodType bloodType, Height height, Weight weight, List<Allergy> allergies) {
 
-        super(firstName, lastName, homeAddress, id, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
+        super(id, firstName, lastName, homeAddress, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
                 bloodType);
         this.height = height;
         this.weight = weight;
@@ -132,5 +132,25 @@ public class Patient extends Person { // some methods may be deleted later
 
     public void addAllergy(Allergy allergy) {
         allergies.add(allergy);
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" + "\n" +
+                " height = " + height + "\n" +
+                " weight = " + weight + "\n" +
+                " BMI = " + getBMI() + "\n" +
+                " allergies = " + allergies + "\n" +
+                " id = " + id + "\n" +
+                " firstName = '" + firstName + '\'' + "\n" +
+                " lastName = '" + lastName + '\'' + "\n" +
+                " homeAddress = '" + homeAddress + '\'' + "\n" +
+                " birthDate = " + birthDate + "\n" +
+                " citizenNumber = " + citizenNumber + "\n" +
+                " phoneNumber = " + phoneNumber + "\n" +
+                " emailAddress = " + emailAddress + "\n" +
+                " gender = " + gender + "\n" +
+                " bloodType = " + bloodType + "\n" +
+                '}' + "\n";
     }
 }

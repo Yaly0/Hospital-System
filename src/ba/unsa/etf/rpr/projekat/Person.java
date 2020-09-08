@@ -9,8 +9,8 @@ import static ba.unsa.etf.rpr.projekat.Person.Gender.*;
 import org.apache.commons.validator.routines.EmailValidator;
 
 public abstract class Person { // some methods may be deleted later
-    protected String firstName, lastName, homeAddress;
     protected int id;
+    protected String firstName, lastName, homeAddress;
     protected LocalDate birthDate;
     protected CitizenNumber citizenNumber;
     protected PhoneNumber phoneNumber;
@@ -141,22 +141,31 @@ public abstract class Person { // some methods may be deleted later
                         (Integer.parseInt(genderFromCitizenNumber) < 500 || gender != FEMALE));
     }
 
-    public Person(String firstName, String lastName, String homeAddress, int id, LocalDate birthDate,
+    public Person(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                   BloodType bloodType) {
         if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
-            throw new InvalidInformationException("Invalid citizen number");
+            throw new InvalidInformationException("Invalid citizen number, birth date or gender");
 
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.homeAddress = homeAddress;
-        this.id = id;
         this.birthDate = birthDate;
         this.citizenNumber = citizenNumber;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.gender = gender;
         this.bloodType = bloodType;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+
     }
 
     public String getFirstName() {
@@ -181,14 +190,6 @@ public abstract class Person { // some methods may be deleted later
 
     public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public LocalDate getBirthDate() {
