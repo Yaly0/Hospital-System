@@ -19,11 +19,11 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
 
         public ShiftHours(LocalTime startTime, LocalTime endTime, LocalTime breakStartTime, LocalTime breakEndTime) {
-            ValidateShiftHours();
             this.startTime = LocalTime.of(startTime.getHour(), startTime.getMinute());
             this.endTime = LocalTime.of(endTime.getHour(), endTime.getMinute());
             this.breakStartTime = LocalTime.of(breakStartTime.getHour(), breakStartTime.getMinute());
             this.breakEndTime = LocalTime.of(breakEndTime.getHour(), breakEndTime.getMinute());
+            ValidateShiftHours();
         }
 
         public LocalTime getStartTime() {
@@ -69,24 +69,6 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
     }
 
-    public enum Rating {
-        ONE(1),
-        TWO(2),
-        THREE(3),
-        FOUR(4),
-        FIVE(5);
-
-        private final int ratingValue;
-
-        Rating(int ratingValue) {
-            this.ratingValue = ratingValue;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(ratingValue);
-        }
-    }
 
     public Doctor(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
@@ -121,7 +103,7 @@ public class Doctor extends Person {  // some methods may be deleted later
 
     public void addRating(Rating rating) {
         numberOfVisits++;
-        sumOfRatings += rating.ratingValue;
+        sumOfRatings += rating.getRatingValue();
         this.totalRating = Math.round(sumOfRatings / numberOfVisits * 10) / 10.0;
     }
 
