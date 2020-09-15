@@ -2,37 +2,38 @@ package ba.unsa.etf.rpr.projekat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Appointment {
     private int id;
     private Patient patient;
     private Doctor doctor;
     private Disease disease;
-    private LocalDate date;
-    private LocalTime time;
-    private Treatment treatment;
-    private String treatmentDescription;
+    private LocalDate appointmentDate;
+    private LocalTime appointmentTime;
+    private List<Treatment> treatments;
+    private String treatmentsDescription;
     private int diseaseTreatmentRating;
     private String appointmentReport;
     private Appointment previousAppointment;
     private Appointment nextAppointment;
 
-    public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate date, LocalTime time) {
+    public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate appointmentDate, LocalTime appointmentTime) {
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;
         this.disease = disease;
-        this.date = date;
-        this.time = time;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
     }
 
-    public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate date, LocalTime time, Appointment previousAppointment) {
+    public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate appointmentDate, LocalTime appointmentTime, Appointment previousAppointment) {
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;
         this.disease = disease;
-        this.date = date;
-        this.time = time;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
         this.previousAppointment = previousAppointment;
     }
 
@@ -68,36 +69,40 @@ public class Appointment {
         this.disease = disease;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getAppointmentDate() {
+        return appointmentDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setAppointmentDate(LocalDate appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public LocalTime getAppointmentTime() {
+        return appointmentTime;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setAppointmentTime(LocalTime appointmentTime) {
+        this.appointmentTime = appointmentTime;
     }
 
-    public Treatment getTreatment() {
-        return treatment;
+    public List<Treatment> getTreatments() {
+        return treatments;
     }
 
-    public void setTreatment(Treatment treatment) {
-        this.treatment = treatment;
+    public void setTreatments(List<Treatment> treatments) {
+        this.treatments = treatments;
     }
 
-    public String getTreatmentDescription() {
-        return treatmentDescription;
+    public void addTreatment(Treatment treatment) {
+        treatments.add(treatment);
     }
 
-    public void setTreatmentDescription(String treatmentDescription) {
-        this.treatmentDescription = treatmentDescription;
+    public String getTreatmentsDescription() {
+        return treatmentsDescription;
+    }
+
+    public void setTreatmentsDescription(String treatmentsDescription) {
+        this.treatmentsDescription = treatmentsDescription;
     }
 
     public int getDiseaseTreatmentRating() {
@@ -138,13 +143,14 @@ public class Appointment {
                 " patient = " + patient + '\n' +
                 " doctor = " + doctor + '\n' +
                 " disease = " + disease + '\n' +
-                " treatment = " + treatment + '\n' +
-                " treatmentDescription = '" + treatmentDescription + '\'' + '\n' +
-                " date = " + date + '\n' +
-                " time = " + time + '\n' +
-                " previousAppointment Date = " + ((previousAppointment != null) ? (previousAppointment.date) : "null") + '\n' +
-                " nextAppointment Date = " + ((nextAppointment != null) ? (nextAppointment.date) : "null") + '\n' +
+                " treatments = " + treatments + '\n' +
+                " treatmentsDescription = '" + treatmentsDescription + '\'' + '\n' +
                 " diseaseTreatmentRating = " + diseaseTreatmentRating + '\n' +
+                " appointmentReport = '" + appointmentReport + '\'' + '\n' +
+                " appointmentDate = " + appointmentDate + '\n' +
+                " appointmentTime = " + appointmentTime + '\n' +
+                " previousAppointment Date = " + ((previousAppointment != null) ? (previousAppointment.appointmentDate) : "null") + '\n' +
+                " nextAppointment Date = " + ((nextAppointment != null) ? (nextAppointment.appointmentDate) : "null") + '\n' +
                 '}';
     }
 }
