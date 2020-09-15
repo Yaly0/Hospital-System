@@ -12,15 +12,14 @@ public class Doctor extends Person {  // some methods may be deleted later
     public static class ShiftHours {
         LocalTime startTime, endTime, breakStartTime, breakEndTime;
 
-        private void throwException() {
-            throw new InvalidInformationException("Invalid shift hours");
+        private void ValidateShiftHours() {
+            if (startTime.compareTo(breakStartTime) >= 0 || breakStartTime.compareTo(breakEndTime) > 0 ||
+                    breakEndTime.compareTo(endTime) >= 0)
+                throw new InvalidInformationException("Invalid shift hours");
         }
 
         public ShiftHours(LocalTime startTime, LocalTime endTime, LocalTime breakStartTime, LocalTime breakEndTime) {
-
-            if (startTime.compareTo(breakStartTime) >= 0 || breakStartTime.compareTo(breakEndTime) > 0 ||
-                    breakEndTime.compareTo(endTime) >= 0)
-                throwException();
+            ValidateShiftHours();
             this.startTime = LocalTime.of(startTime.getHour(), startTime.getMinute());
             this.endTime = LocalTime.of(endTime.getHour(), endTime.getMinute());
             this.breakStartTime = LocalTime.of(breakStartTime.getHour(), breakStartTime.getMinute());
@@ -32,7 +31,7 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
 
         public void setStartTime(LocalTime startTime) {
-            if (startTime.compareTo(breakStartTime) >= 0) throwException();
+            ValidateShiftHours();
             this.startTime = startTime;
         }
 
@@ -41,7 +40,7 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
 
         public void setEndTime(LocalTime endTime) {
-            if (breakEndTime.compareTo(endTime) >= 0) throwException();
+            ValidateShiftHours();
             this.endTime = endTime;
         }
 
@@ -50,8 +49,7 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
 
         public void setBreakStartTime(LocalTime breakStartTime) {
-            if (startTime.compareTo(breakStartTime) >= 0 || breakStartTime.compareTo(breakEndTime) > 0)
-                throwException();
+            ValidateShiftHours();
             this.breakStartTime = breakStartTime;
         }
 
@@ -60,7 +58,7 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
 
         public void setBreakEndTime(LocalTime breakEndTime) {
-            if (breakStartTime.compareTo(breakEndTime) > 0 || breakEndTime.compareTo(endTime) >= 0) throwException();
+            ValidateShiftHours();
             this.breakEndTime = breakEndTime;
         }
 

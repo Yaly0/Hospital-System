@@ -126,7 +126,7 @@ public abstract class Person { // some methods may be deleted later
     }
 
     private boolean isCitizenNumberInvalid(CitizenNumber citizenNumber, LocalDate birthDate, Gender gender) {
-        String genderFromCitizenNumber = citizenNumber.citizenNumber.substring(7, 10);
+        String genderFromCitizenNumber = citizenNumber.citizenNumber.substring(9, 12);
         String birthDateFromCitizenNumber = citizenNumber.citizenNumber.substring(0, 7); // e.g. 3112999 -> 1999-12-31
 
         birthDateFromCitizenNumber = "X" + birthDateFromCitizenNumber.substring(4, 7) + "-" +
