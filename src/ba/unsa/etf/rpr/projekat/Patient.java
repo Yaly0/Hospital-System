@@ -58,37 +58,6 @@ public class Patient extends Person { // some methods may be deleted later
         }
     }
 
-    public static class Allergy {
-        private int id;
-        private String allergyName;
-
-        public Allergy(int id, String allergyName) {
-            this.id = id;
-            this.allergyName = allergyName;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getAllergyName() {
-            return allergyName;
-        }
-
-        public void setAllergyName(String allergyName) {
-            this.allergyName = allergyName;
-        }
-
-        @Override
-        public String toString() {
-            return allergyName;
-        }
-    }
-
     public Patient(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                    CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                    BloodType bloodType, Height height, Weight weight) {
