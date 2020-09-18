@@ -6,8 +6,7 @@ import java.time.LocalTime;
 public class Doctor extends Person {  // some methods may be deleted later
     private MedicalMajor medicalMajor;
     private ShiftHours shiftHours;
-    private double sumOfRatings, totalRating;
-    private int numberOfVisits;
+    private int numberOfVisits, sumOfRatings;
 
     public static class ShiftHours {
         LocalTime startTime, endTime, breakStartTime, breakEndTime;
@@ -96,14 +95,13 @@ public class Doctor extends Person {  // some methods may be deleted later
         this.shiftHours = shiftHours;
     }
 
-    public double getTotalRating() {
-        return totalRating;
+    public double getRating() {
+        return Math.round(sumOfRatings * 10.0 / numberOfVisits) / 10.0;
     }
 
     public void addRating(Rating rating) {
         numberOfVisits++;
         sumOfRatings += rating.getRatingValue();
-        this.totalRating = Math.round(sumOfRatings / numberOfVisits * 10) / 10.0;
     }
 
     @Override
@@ -112,7 +110,7 @@ public class Doctor extends Person {  // some methods may be deleted later
                 " medicalMajor = " + medicalMajor + "\n" +
                 " shiftHours = " + shiftHours + "\n" +
                 " sumOfRatings = " + sumOfRatings + "\n" +
-                " totalRating = " + totalRating + "\n" +
+                " totalRating = " + getRating() + "\n" +
                 " numberOfVisits = " + numberOfVisits + "\n" +
                 " id = " + id + "\n" +
                 " firstName = '" + firstName + '\'' + "\n" +

@@ -233,7 +233,7 @@ public abstract class Person { // some methods may be deleted later
     }
 
     public void setBirthDateCitizenNumberAndGender(LocalDate birthDate, CitizenNumber citizenNumber, Gender gender) {
-        // These three attributes are always connected, thats why this method is needed
+        // These three attributes are always connected, that's why this method is needed
         if (isCitizenNumberInvalid(citizenNumber, birthDate, gender))
             throw new InvalidInformationException("Invalid citizen number");
         this.birthDate = birthDate;

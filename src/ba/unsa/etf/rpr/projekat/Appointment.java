@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.projekat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 
 public class Appointment {
@@ -12,8 +13,9 @@ public class Appointment {
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
     private List<Treatment> treatments;
+    private HashMap<Treatment, Rating> treatmentsDiseaseRating;
     private String treatmentsDescription;
-    private int diseaseTreatmentRating;
+
     private String appointmentReport;
     private Appointment previousAppointment;
     private Appointment nextAppointment;
@@ -105,12 +107,12 @@ public class Appointment {
         this.treatmentsDescription = treatmentsDescription;
     }
 
-    public int getDiseaseTreatmentRating() {
-        return diseaseTreatmentRating;
+    public HashMap<Treatment, Rating> getTreatmentsDiseaseRating() {
+        return treatmentsDiseaseRating;
     }
 
-    public void setDiseaseTreatmentRating(Rating diseaseTreatmentRating) {
-        this.diseaseTreatmentRating = diseaseTreatmentRating.getRatingValue();
+    public void setTreatmentsDiseaseRating(HashMap<Treatment, Rating> treatmentsDiseaseRating) {
+        this.treatmentsDiseaseRating = treatmentsDiseaseRating;
     }
 
     public String getAppointmentReport() {
@@ -145,7 +147,7 @@ public class Appointment {
                 " disease = " + disease + '\n' +
                 " treatments = " + treatments + '\n' +
                 " treatmentsDescription = '" + treatmentsDescription + '\'' + '\n' +
-                " diseaseTreatmentRating = " + diseaseTreatmentRating + '\n' +
+                " treatmentsDiseaseRating = " + treatmentsDiseaseRating + '\n' +
                 " appointmentReport = '" + appointmentReport + '\'' + '\n' +
                 " appointmentDate = " + appointmentDate + '\n' +
                 " appointmentTime = " + appointmentTime + '\n' +

@@ -2,12 +2,10 @@ package ba.unsa.etf.rpr.projekat;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Patient extends Person { // some methods may be deleted later
     private Height height;
     private Weight weight;
-    private List<Allergy> allergies;
 
     public static class Height {
         private int height;
@@ -93,13 +91,12 @@ public class Patient extends Person { // some methods may be deleted later
 
     public Patient(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                    CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
-                   BloodType bloodType, Height height, Weight weight, List<Allergy> allergies) {
+                   BloodType bloodType, Height height, Weight weight) {
 
         super(id, firstName, lastName, homeAddress, birthDate, citizenNumber, phoneNumber, emailAddress, gender,
                 bloodType);
         this.height = height;
         this.weight = weight;
-        this.allergies = allergies;
     }
 
     public Height getHeight() {
@@ -122,25 +119,12 @@ public class Patient extends Person { // some methods may be deleted later
         return Math.round(weight.weight / (height.height * height.height / 10000.0) * 10) / 10.0;
     }
 
-    public List<Allergy> getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(List<Allergy> allergies) {
-        this.allergies = allergies;
-    }
-
-    public void addAllergy(Allergy allergy) {
-        allergies.add(allergy);
-    }
-
     @Override
     public String toString() {
         return "Patient{" + "\n" +
                 " height = " + height + "\n" +
                 " weight = " + weight + "\n" +
                 " BMI = " + getBMI() + "\n" +
-                " allergies = " + allergies + "\n" +
                 " id = " + id + "\n" +
                 " firstName = '" + firstName + '\'' + "\n" +
                 " lastName = '" + lastName + '\'' + "\n" +
