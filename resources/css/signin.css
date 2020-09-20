@@ -12,3 +12,7 @@
 
     -fx-font-size: 20px;
 }
+
+.invalidField {
+    -fx-control-inner-background: lightpink;
+}

@@ -6,56 +6,65 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox prefHeight="294.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.projekat.Controller">
+<HBox prefHeight="294.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.projekat.SignInController">
     <stylesheets>
         <URL value="@/css/signin.css" />
     </stylesheets>
-    <children>
-        <Pane id="leftSide" prefHeight="304.0" prefWidth="180.0">
-            <Label id="leftLbl" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="156.0" prefWidth="180.0" text="Hospital app" textAlignment="CENTER" />
-        </Pane>
-        <VBox id="rightSide" alignment="TOP_RIGHT" prefHeight="304.0" prefWidth="180.0">
-            <children>
-            <Pane prefHeight="57.0" prefWidth="180.0" />
-                <Label alignment="CENTER" prefHeight="17.0" prefWidth="180.0" text="Sign in to Hospital app">
-                    <VBox.margin>
-                        <Insets bottom="20.0" right="10.0" top="10.0" />
-                    </VBox.margin>
-               <font>
-                  <Font name="Helvetica Neue Light" size="13.0" />
-               </font>
-                </Label>
-                <TextField alignment="CENTER" prefHeight="27.0" prefWidth="154.0" promptText="Username">
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" />
-                    </VBox.margin>
-                </TextField>
-                <PasswordField alignment="CENTER" promptText="Password" >
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" />
-                    </VBox.margin>
-                </PasswordField>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="206.0" text="Sign in" >
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </VBox.margin>
-                </Button>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="151.0" text="Hospital dev © 2020">
-               <VBox.margin>
-                  <Insets right="10.0" top="50.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="10.0" />
-               </font></Label>
-            </children>
-        </VBox>
+    <Pane id="leftSide" prefHeight="304.0" prefWidth="180.0">
+        <Label id="leftLbl" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="156.0" prefWidth="180.0" text="Hospital app" textAlignment="CENTER" />
+    </Pane>
+    <VBox id="rightSide" alignment="TOP_RIGHT" prefHeight="304.0" prefWidth="180.0">
+        <Pane prefHeight="57.0" prefWidth="180.0" />
+        <Label alignment="CENTER" prefHeight="17.0" prefWidth="180.0" text="Sign in to Hospital app">
+            <VBox.margin>
+                <Insets bottom="20.0" right="10.0" top="10.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Helvetica Neue Light" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="usernameField" alignment="CENTER" prefHeight="27.0" prefWidth="154.0" promptText="Username">
+
+            <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" />
+            </VBox.margin>
+        </TextField>
+        <PasswordField fx:id="passwordField" alignment="CENTER" promptText="Password">
+            <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" />
+            </VBox.margin>
+        </PasswordField>
+        <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="189.0" textFill="RED">
+            <VBox.margin>
+                <Insets left="10.0" right="10.0" />
+            </VBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font>
+        </Label>
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#signInAction" prefHeight="27.0" prefWidth="206.0" text="Sign in">
+            <tooltip>
+                <Tooltip text="admin admin" />
+            </tooltip>
+            <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin>
+        </Button>
+        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="151.0" text="Hospital dev © 2020">
+            <VBox.margin>
+                <Insets right="10.0" top="50.0" />
+            </VBox.margin>
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+    </VBox>
 
 
-    </children>
 </HBox>
