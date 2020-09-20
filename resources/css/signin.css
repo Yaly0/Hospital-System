@@ -1,0 +1,14 @@
+#leftSide {
+    -fx-background-image: url("/images/grey%20background.jpg");
+}
+
+#rightSide {
+    -fx-background-image: url("/images/white_background.jpg");
+}
+
+#leftLbl {
+    -fx-text-fill: white;
+    -fx-font-family: "Helvetica Neue";
+
+    -fx-font-size: 20px;
+}
