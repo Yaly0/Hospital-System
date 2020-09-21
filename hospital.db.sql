@@ -19,34 +19,6 @@ CREATE TABLE IF NOT EXISTS "patient" (
 	"weight"	REAL NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
-CREATE TABLE IF NOT EXISTS "appointment" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"patient_id"	INTEGER NOT NULL,
-	"doctor_id"	INTEGER NOT NULL,
-	"disease_id"	INTEGER NOT NULL,
-	"appointment_date"	TEXT NOT NULL,
-	"appointment_time"	TEXT NOT NULL,
-	"treatment_description"	TEXT NOT NULL,
-	"appointment_report"	TEXT NOT NULL,
-	"previous_appointment_id"	INTEGER,
-	"next_appointment_id"	INTEGER,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("previous_appointment_id") REFERENCES "appointment"("id"),
-	FOREIGN KEY("next_appointment_id") REFERENCES "appointment"("id"),
-	FOREIGN KEY("patient_id") REFERENCES "patient"("id"),
-	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
-	FOREIGN KEY("doctor_id") REFERENCES "doctor"("id")
-);
-CREATE TABLE IF NOT EXISTS "appointment_treatment" (
-	"appointment_id"	INTEGER NOT NULL,
-	"treatment_id"	INTEGER NOT NULL,
-	"disease_id"	INTEGER NOT NULL,
-	"treatment_disease_rating"	INTEGER NOT NULL,
-	PRIMARY KEY("appointment_id","treatment_id"),
-	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
-	FOREIGN KEY("appointment_id") REFERENCES "appointment"("id"),
-	FOREIGN KEY("disease_id") REFERENCES "disease"("id")
-);
 CREATE TABLE IF NOT EXISTS "medical_major" (
 	"id"	INTEGER NOT NULL,
 	"major_name"	TEXT NOT NULL,
@@ -56,15 +28,15 @@ CREATE TABLE IF NOT EXISTS "disease" (
 	"id"	INTEGER,
 	"disease_name"	TEXT,
 	"major_id"	INTEGER,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("major_id") REFERENCES "medical_major"("id")
+	FOREIGN KEY("major_id") REFERENCES "medical_major"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
 );
 CREATE TABLE IF NOT EXISTS "disease_treatment" (
 	"disease_id"	INTEGER,
 	"treatment_id"	INTEGER,
-	PRIMARY KEY("disease_id","treatment_id"),
 	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
-	FOREIGN KEY("disease_id") REFERENCES "disease"("id")
+	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
+	PRIMARY KEY("disease_id","treatment_id")
 );
 CREATE TABLE IF NOT EXISTS "doctor" (
 	"id"	INTEGER NOT NULL UNIQUE,
@@ -81,8 +53,36 @@ CREATE TABLE IF NOT EXISTS "doctor" (
 	"shift_hours"	TEXT NOT NULL,
 	"number_of_visits"	INTEGER NOT NULL,
 	"sum_of_ratings"	INTEGER NOT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("medical_major_id") REFERENCES "medical_major"("id")
+	FOREIGN KEY("medical_major_id") REFERENCES "medical_major"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "appointment" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"patient_id"	INTEGER,
+	"doctor_id"	INTEGER,
+	"disease_id"	INTEGER,
+	"appointment_date"	TEXT,
+	"appointment_time"	TEXT,
+	"treatment_description"	TEXT,
+	"appointment_report"	TEXT,
+	"previous_appointment_id"	INTEGER,
+	"next_appointment_id"	INTEGER,
+	FOREIGN KEY("patient_id") REFERENCES "patient"("id"),
+	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
+	FOREIGN KEY("doctor_id") REFERENCES "doctor"("id"),
+	FOREIGN KEY("previous_appointment_id") REFERENCES "appointment"("id"),
+	FOREIGN KEY("next_appointment_id") REFERENCES "appointment"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "appointment_treatment" (
+	"appointment_id"	INTEGER,
+	"treatment_id"	INTEGER,
+	"disease_id"	INTEGER,
+	"treatment_disease_rating"	INTEGER,
+	FOREIGN KEY("appointment_id") REFERENCES "appointment"("id"),
+	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
+	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
+	PRIMARY KEY("appointment_id","treatment_id")
 );
 INSERT INTO "treatment" VALUES (1,'Paracetamol');
 INSERT INTO "treatment" VALUES (2,'Dexomen');
@@ -151,4 +151,12 @@ INSERT INTO "doctor" VALUES (4,'Olivia','Husanović','254 Walnut St. Brooklyn, N
 INSERT INTO "doctor" VALUES (5,'Muhammad','Samardžija','33 Beacon Dr. Brentwood, NY 11717','1990-11-01','0111990181226','+387 62 546 768','Samardzijam33@gmail.com','Male','O+',5,'08:00-16:00 / {12:00-12:30}',0,0);
 INSERT INTO "doctor" VALUES (6,'Charlie','Hadži','7053 Carriage Street Rochester, NY 14609','1988-08-29','2908988170007','+387 63 555 090','charlie88@hotmail.com','Male','O-',6,'08:00-16:00 / {12:00-12:15}',0,0);
 INSERT INTO "doctor" VALUES (7,'Lisa','Kajić','23 Riverside Ave. Jamaica, NY 11432','1979-07-30','3007979177474','+387 66 763 683','lisalisa79@icloud.com','Female','B-',4,'08:00-16:00 / {12:00-12:30}',0,0);
+INSERT INTO "appointment" VALUES (1,2,3,7,'2020-10-12','14:30',NULL,NULL,NULL,NULL);
+INSERT INTO "appointment" VALUES (2,4,5,14,'2020-10-19','09:45',NULL,NULL,NULL,NULL);
+INSERT INTO "appointment" VALUES (3,3,3,7,'2020-11-02','11:00',NULL,NULL,NULL,NULL);
+INSERT INTO "appointment_treatment" VALUES (1,2,7,4);
+INSERT INTO "appointment_treatment" VALUES (1,8,7,5);
+INSERT INTO "appointment_treatment" VALUES (2,4,14,4);
+INSERT INTO "appointment_treatment" VALUES (2,5,14,5);
+INSERT INTO "appointment_treatment" VALUES (3,2,7,5);
 COMMIT;

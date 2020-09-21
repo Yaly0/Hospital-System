@@ -33,15 +33,15 @@
                     <center>
                         <TableView fx:id="tableViewAppointments" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Appointments yet"/>
+                                <Label text="No Appointments yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnAppointmentsId" prefWidth="50.0" text="ID" />
-                                <TableColumn fx:id="columnAppointmentsPatient" prefWidth="120.0" text="Patient" />
-                                <TableColumn fx:id="columnAppointmentsDoctor" prefWidth="120.0" text="Doctor" />
-                                <TableColumn fx:id="columnAppointmentsDiseases" prefWidth="120.0" text="Disease" />
-                                <TableColumn fx:id="columnAppointmentsDate" prefWidth="120.0" text="Date" />
-                                <TableColumn fx:id="columnAppointmentsTime" prefWidth="128.0" text="Time" />
+                                <TableColumn fx:id="columnAppointmentsPatient" prefWidth="154.0" text="Patient" />
+                                <TableColumn fx:id="columnAppointmentsDoctor" prefWidth="154.0" text="Doctor" />
+                                <TableColumn fx:id="columnAppointmentsDiseases" prefWidth="154.0" text="Disease" />
+                                <TableColumn fx:id="columnAppointmentsDate" text="Date" />
+                                <TableColumn fx:id="columnAppointmentsTime" text="Time" />
                             </columns>
                             <BorderPane.margin>
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -81,7 +81,7 @@
                     <center>
                         <TableView fx:id="tableViewPatients" maxHeight="Infinity" maxWidth="Infinity" prefHeight="300.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Patients yet"/>
+                                <Label text="No Patients yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnPatientsId" prefWidth="50.0" text="ID" />
@@ -129,7 +129,7 @@
                     <center>
                         <TableView fx:id="tableViewDoctors" maxHeight="Infinity" maxWidth="Infinity" prefHeight="300.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Doctors yet"/>
+                                <Label text="No Doctors yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnDoctorsId" prefWidth="50.0" text="ID" />
@@ -177,7 +177,7 @@
                     <center>
                         <TableView fx:id="tableViewTreatments" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Treatments yet"/>
+                                <Label text="No Treatments yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnTreatmentsId" prefWidth="50.0" text="ID" />
@@ -221,7 +221,7 @@
                     <center>
                         <TableView fx:id="tableViewMedicalMajors" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Medical majors yet"/>
+                                <Label text="No Medical majors yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnMedicalMajorsId" prefWidth="50.0" text="ID" />
@@ -265,7 +265,7 @@
                     <center>
                         <TableView fx:id="tableViewDiseases" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Diseases yet"/>
+                                <Label text="No Diseases yet" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnDiseasesId" prefWidth="50.0" text="ID" />

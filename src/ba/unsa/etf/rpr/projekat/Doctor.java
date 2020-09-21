@@ -106,22 +106,6 @@ public class Doctor extends Person {  // some methods may be deleted later
 
     @Override
     public String toString() {
-        return "Doctor{" + "\n" +
-                " medicalMajor = " + medicalMajor + "\n" +
-                " shiftHours = " + shiftHours + "\n" +
-                " sumOfRatings = " + sumOfRatings + "\n" +
-                " totalRating = " + getRating() + "\n" +
-                " numberOfVisits = " + numberOfVisits + "\n" +
-                " id = " + id + "\n" +
-                " firstName = '" + firstName + '\'' + "\n" +
-                " lastName = '" + lastName + '\'' + "\n" +
-                " homeAddress = '" + homeAddress + '\'' + "\n" +
-                " birthDate = " + birthDate + "\n" +
-                " citizenNumber = " + citizenNumber + "\n" +
-                " phoneNumber = " + phoneNumber + "\n" +
-                " emailAddress = " + emailAddress + "\n" +
-                " gender = " + gender + "\n" +
-                " bloodType = " + bloodType + "\n" +
-                '}' + "\n";
+        return firstName + " " + lastName;
     }
 }

@@ -90,20 +90,6 @@ public class Patient extends Person { // some methods may be deleted later
 
     @Override
     public String toString() {
-        return "Patient{" + "\n" +
-                " height = " + height + "\n" +
-                " weight = " + weight + "\n" +
-                " BMI = " + getBMI() + "\n" +
-                " id = " + id + "\n" +
-                " firstName = '" + firstName + '\'' + "\n" +
-                " lastName = '" + lastName + '\'' + "\n" +
-                " homeAddress = '" + homeAddress + '\'' + "\n" +
-                " birthDate = " + birthDate + "\n" +
-                " citizenNumber = " + citizenNumber + "\n" +
-                " phoneNumber = " + phoneNumber + "\n" +
-                " emailAddress = " + emailAddress + "\n" +
-                " gender = " + gender + "\n" +
-                " bloodType = " + bloodType + "\n" +
-                '}' + "\n";
+        return firstName + " " + lastName;
     }
 }

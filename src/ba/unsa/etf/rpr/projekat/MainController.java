@@ -51,7 +51,7 @@ public class MainController {
 
     public MainController() {
         dao = HospitalDAO.getInstance();
-        //listAppointments = FXCollections.observableArrayList(dao.appointments());
+        listAppointments = FXCollections.observableArrayList(dao.appointments());
         listPatients = FXCollections.observableArrayList(dao.patients());
         listDoctors = FXCollections.observableArrayList(dao.doctors());
         listTreatments = FXCollections.observableArrayList(dao.treatments());
@@ -61,6 +61,14 @@ public class MainController {
 
     @FXML
     public void initialize() {
+        tableViewAppointments.setItems(listAppointments);
+        columnAppointmentsId.setCellValueFactory(new PropertyValueFactory("id"));
+        columnAppointmentsPatient.setCellValueFactory(new PropertyValueFactory("patient"));
+        columnAppointmentsDoctor.setCellValueFactory(new PropertyValueFactory("doctor"));
+        columnAppointmentsDiseases.setCellValueFactory(new PropertyValueFactory("disease"));
+        columnAppointmentsDate.setCellValueFactory(new PropertyValueFactory("appointmentDate"));
+        columnAppointmentsTime.setCellValueFactory(new PropertyValueFactory("appointmentTime"));
+
         tableViewPatients.setItems(listPatients);
         columnPatientsId.setCellValueFactory(new PropertyValueFactory("id"));
         columnPatientsFirstName.setCellValueFactory(new PropertyValueFactory("firstName"));
