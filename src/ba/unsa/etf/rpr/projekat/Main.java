@@ -12,7 +12,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml")); // will be changed to /fxml/welcome.fxml at the end
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcome.fxml"));
+
+        // for faster testing
+        Parent root;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        MainController ctrl = new MainController();
+        loader.setController(ctrl);
+        root = loader.load();
+
+
         primaryStage.setTitle("Sign in");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);

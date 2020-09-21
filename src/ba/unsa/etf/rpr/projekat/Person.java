@@ -48,7 +48,11 @@ public abstract class Person { // some methods may be deleted later
             return phoneNumber;
         }
 
-        public void setPhoneNumber(String phoneNumber) { // e.g. 0601234567
+        public void setPhoneNumber(String phoneNumber) { // e.g. 0601234567 or +387 60 123 4567
+            if(phoneNumber.substring(0, 4).equals("+387")) {
+                this.phoneNumber = "0" + phoneNumber.substring(5,7) + phoneNumber.substring(8,11)+ phoneNumber.substring(12);
+                return;
+            }
             if ((phoneNumber.length() != 9 && phoneNumber.length() != 10) || !phoneNumber.matches("[0-9]+"))
                 throw new InvalidInformationException("Invalid phone number format");
             int destinationCode = Integer.parseInt(phoneNumber.substring(1, 3));
@@ -114,6 +118,15 @@ public abstract class Person { // some methods may be deleted later
         AB_POZITIVE("AB+"),
         AB_NEGATIVE("AB-");
         private final String typeName;
+
+        public static BloodType fromString(String text) {
+            for (BloodType b : BloodType.values()) {
+                if (b.typeName.equalsIgnoreCase(text)) {
+                    return b;
+                }
+            }
+            throw new InvalidInformationException("Invalid blood type");
+        }
 
         BloodType(String typeName) {
             this.typeName = typeName;

@@ -1,8 +1,11 @@
 package ba.unsa.etf.rpr.projekat;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainController {
 
@@ -45,4 +48,21 @@ public class MainController {
     private ObservableList<Treatment> listTreatments;
     private ObservableList<MedicalMajor> listMedicalMajors;
     private ObservableList<Disease> listDiseases;
+
+    public MainController() {
+        dao = HospitalDAO.getInstance();
+        //listAppointments = FXCollections.observableArrayList(dao.appointments());
+        listPatients = FXCollections.observableArrayList(dao.patients());
+    }
+
+    @FXML
+    public void initialize() {
+        tableViewPatients.setItems(listPatients);
+        columnPatientsId.setCellValueFactory(new PropertyValueFactory("id"));
+        columnPatientsFirstName.setCellValueFactory(new PropertyValueFactory("firstName"));
+        columnPatientsLastName.setCellValueFactory(new PropertyValueFactory("lastName"));
+        columnPatientsBirthDate.setCellValueFactory(new PropertyValueFactory("birthDate"));
+        columnPatientsCitizenNumber.setCellValueFactory(new PropertyValueFactory("citizenNumber"));
+        columnPatientsPhoneNumber.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
+    }
 }
