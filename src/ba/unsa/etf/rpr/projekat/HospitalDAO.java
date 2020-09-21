@@ -90,16 +90,16 @@ public class HospitalDAO {
     }
 
     public ArrayList<Patient> patients() {
-        ArrayList<Patient> rezultat = new ArrayList();
+        ArrayList<Patient> patients = new ArrayList<>();
         try {
             ResultSet rs = getPatientsStatement.executeQuery();
             while (rs.next()) {
-                rezultat.add(getPatientFromResultSet(rs));
+                patients.add(getPatientFromResultSet(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rezultat;
+        return patients;
     }
 
     private Patient getPatientFromResultSet(ResultSet rs) throws SQLException {
@@ -120,16 +120,16 @@ public class HospitalDAO {
     }
 
     public ArrayList<Doctor> doctors() {
-        ArrayList<Doctor> rezultat = new ArrayList();
+        ArrayList<Doctor> doctors = new ArrayList<>();
         try {
             ResultSet rs = getDoctorsStatement.executeQuery();
             while (rs.next()) {
-                rezultat.add(getDoctorFromResultSet(rs));
+                doctors.add(getDoctorFromResultSet(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rezultat;
+        return doctors;
     }
 
     private Doctor getDoctorFromResultSet(ResultSet rs) throws SQLException {
@@ -156,5 +156,18 @@ public class HospitalDAO {
 
         return new Doctor(rs.getInt(1), rs.getString(2), rs.getString(3),
                 rs.getString(4), date, citizenNumber, phoneNumber, emailAddress, gender, bloodType, medicalMajor, shiftHours);
+    }
+
+    public ArrayList<Treatment> treatments() {
+        ArrayList<Treatment> treatments = new ArrayList<>();
+        try {
+            ResultSet rs = getTreatmentsStatement.executeQuery();
+            while (rs.next()) {
+                treatments.add(new Treatment(rs.getInt(1),rs.getString(2)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return treatments;
     }
 }
