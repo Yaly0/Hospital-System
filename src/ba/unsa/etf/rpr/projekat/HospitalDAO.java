@@ -16,7 +16,7 @@ public class HospitalDAO {
     private static HospitalDAO instance = null;
     private Connection connection;
 
-    private PreparedStatement getAppointmentsStatement, getPatientsStatement, getDoctorsStatement, getTreatmentsStatement, getDiseasesStatement, getMedicalMajor;
+    private PreparedStatement getAppointmentsStatement, getPatientsStatement, getDoctorsStatement, getTreatmentsStatement, getMedicalMajors, getDiseasesStatement, getMedicalMajor;
 
     private HospitalDAO() {
         try {
@@ -36,11 +36,12 @@ public class HospitalDAO {
             }
         }
         try {
+            getAppointmentsStatement = connection.prepareStatement("SELECT * FROM appointment");
             getDoctorsStatement = connection.prepareStatement("SELECT * FROM doctor");
             getTreatmentsStatement = connection.prepareStatement("SELECT * FROM treatment");
-            getDiseasesStatement = connection.prepareStatement("SELECT * FROM disease");
-            getAppointmentsStatement = connection.prepareStatement("SELECT * FROM appointment");
             getMedicalMajor = connection.prepareStatement("SELECT major_name FROM medical_major WHERE id = ?");
+            getMedicalMajors = connection.prepareStatement("SELECT * FROM medical_major");
+            getDiseasesStatement = connection.prepareStatement("SELECT * FROM disease");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -169,5 +170,18 @@ public class HospitalDAO {
             e.printStackTrace();
         }
         return treatments;
+    }
+
+    public ArrayList<MedicalMajor> medicalMajors() {
+        ArrayList<MedicalMajor> medicalMajors = new ArrayList<>();
+        try {
+            ResultSet rs = getMedicalMajors.executeQuery();
+            while (rs.next()) {
+                medicalMajors.add(new MedicalMajor(rs.getInt(1),rs.getString(2)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return medicalMajors;
     }
 }

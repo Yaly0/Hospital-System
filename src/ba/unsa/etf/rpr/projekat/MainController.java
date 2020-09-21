@@ -55,6 +55,7 @@ public class MainController {
         listPatients = FXCollections.observableArrayList(dao.patients());
         listDoctors = FXCollections.observableArrayList(dao.doctors());
         listTreatments = FXCollections.observableArrayList(dao.treatments());
+        listMedicalMajors = FXCollections.observableArrayList(dao.medicalMajors());
     }
 
     @FXML
@@ -79,5 +80,8 @@ public class MainController {
         columnTreatmentsId.setCellValueFactory(new PropertyValueFactory("id"));
         columnTreatmentsName.setCellValueFactory(new PropertyValueFactory("treatmentName"));
 
+        tableViewMedicalMajors.setItems(listMedicalMajors);
+        columnMedicalMajorsId.setCellValueFactory(new PropertyValueFactory("id"));
+        columnMedicalMajorsName.setCellValueFactory(new PropertyValueFactory("medicalMajorName"));
     }
 }
