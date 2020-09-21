@@ -184,4 +184,20 @@ public class HospitalDAO {
         }
         return medicalMajors;
     }
+
+    public ArrayList<Disease> diseases() {
+        ArrayList<Disease> diseases = new ArrayList<>();
+        try {
+            ResultSet rs = getDiseasesStatement.executeQuery();
+            while (rs.next()) {
+                getMedicalMajor.setInt(1, rs.getInt(3));
+                ResultSet rs2 = getMedicalMajor.executeQuery();
+                MedicalMajor medicalMajor = new MedicalMajor(rs.getInt(3), rs2.getString(1));
+                diseases.add(new Disease(rs.getInt(1),rs.getString(2), medicalMajor));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return diseases;
+    }
 }
