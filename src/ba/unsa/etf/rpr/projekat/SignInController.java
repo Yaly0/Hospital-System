@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.projekat;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -21,7 +19,7 @@ public class SignInController {
 
     public void signInAction() {
         if(!usernameField.getText().equals("admin") || !passwordField.getText().equals("admin")) {
-            errorLabel.setText("Username or password incorrect!");
+            errorLabel.setText("Incorrect username or password!");
             usernameField.getStyleClass().add("invalidField");
             passwordField.getStyleClass().add("invalidField");
         } else {
@@ -33,7 +31,7 @@ public class SignInController {
                 root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
                 newStage.setTitle("Hospital");
                 newStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-                newStage.show();
+                newStage.setResizable(false);
 
                 oldStage.close();
                 newStage.show();
