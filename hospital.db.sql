@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS "medical_major" (
 CREATE TABLE IF NOT EXISTS "disease" (
 	"id"	INTEGER,
 	"disease_name"	TEXT,
-	"major_id"	INTEGER,
-	FOREIGN KEY("major_id") REFERENCES "medical_major"("id"),
+	"medical_major_id"	INTEGER,
+	FOREIGN KEY("medical_major_id") REFERENCES "medical_major"("id"),
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 CREATE TABLE IF NOT EXISTS "disease_treatment" (

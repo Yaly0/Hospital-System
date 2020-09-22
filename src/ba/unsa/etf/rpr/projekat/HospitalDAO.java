@@ -20,9 +20,10 @@ public class HospitalDAO {
             getMedicalMajorsStatement, getDiseasesStatement, getMedicalMajorStatement, getPatientStatement, getDoctorStatement,
             getDiseaseStatement, removeTreatmentFromAppointmentStatement, removeTreatmentFromDiseaseStatement, removeTreatmentStatement,
             removeAppointmentFromTreatmentStatement, removeAppointmentStatement, removePatientFromAppointmentStatement,
-            removePatientStatement, removeDoctorFromAppointmentStatement, removeDoctorStatement, removeMedicalMajorFromDoctorStatement,
-            removeMedicalMajorStatement, removeDiseaseFromAppointmentStatement, removeDiseaseStatement,
-            removeDiseaseFromAppointmentTreatmentStatement, removeDiseaseFromTreatmentStatement;
+            removePatientStatement, removeDoctorFromAppointmentStatement, removeDoctorStatement, getDiseasesFromMedicalMajorStatement,
+            removeMedicalMajorFromDoctorStatement, removeMedicalMajorStatement, removeDiseaseFromAppointmentStatement, removeDiseaseStatement,
+            removeDiseaseFromAppointmentTreatmentStatement, removeDiseaseFromTreatmentStatement, determineMedicalMajorIdStatement,
+            addMedicalMajorStatement;
 
     private HospitalDAO() {
         try {
@@ -52,7 +53,7 @@ public class HospitalDAO {
             getDoctorStatement = connection.prepareStatement("SELECT * FROM doctor WHERE id = ?");
             getDiseaseStatement = connection.prepareStatement("SELECT * FROM disease WHERE id = ?");
             getMedicalMajorStatement = connection.prepareStatement("SELECT major_name FROM medical_major WHERE id = ?");
-
+            getDiseasesFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM disease WHERE medical_major_id = ?");
 
             removeTreatmentFromAppointmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE treatment_id = ?");
             removeTreatmentFromDiseaseStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE treatment_id = ?");
@@ -69,6 +70,9 @@ public class HospitalDAO {
             removeDiseaseFromAppointmentTreatmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE disease_id = ?");
             removeDiseaseFromTreatmentStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE disease_id = ?");
             removeDiseaseStatement = connection.prepareStatement("DELETE FROM disease WHERE id = ?");
+
+            determineMedicalMajorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM medical_major");
+            addMedicalMajorStatement =  connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -317,6 +321,11 @@ public class HospitalDAO {
 
     public void removeMedicalMajor(MedicalMajor medicalMajor) {
         try {
+            getDiseasesFromMedicalMajorStatement.setInt(1, medicalMajor.getId());
+            ResultSet rs = getDiseasesFromMedicalMajorStatement.executeQuery();
+            while (rs.next()) {
+                removeDisease(getDiseaseFromResultSet(rs));
+            }
             removeMedicalMajorFromDoctorStatement.setInt(1, medicalMajor.getId());
             removeMedicalMajorFromDoctorStatement.executeUpdate();
             removeMedicalMajorStatement.setInt(1, medicalMajor.getId());
@@ -336,6 +345,34 @@ public class HospitalDAO {
             removeDiseaseFromTreatmentStatement.executeUpdate();
             removeDiseaseStatement.setInt(1, disease.getId());
             removeDiseaseStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isNameDuplicate(String name) {
+        ArrayList<MedicalMajor> medicalMajors = medicalMajors();
+        for (MedicalMajor m : medicalMajors) {
+            if (name.equals(m.getMedicalMajorName())) return true;
+        }
+        return false;
+    }
+
+    public int determineMedicalMajorId() {
+        try {
+            ResultSet rs = determineMedicalMajorIdStatement.executeQuery();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void addMedicalMajor(MedicalMajor medicalMajor) {
+        try {
+            addMedicalMajorStatement.setInt(1,medicalMajor.getId());
+            addMedicalMajorStatement.setString(2,medicalMajor.getMedicalMajorName());
+            addMedicalMajorStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

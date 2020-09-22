@@ -4,6 +4,9 @@ public class MedicalMajor {
     private int id;
     private String medicalMajorName;
 
+    public MedicalMajor() {
+    }
+
     public MedicalMajor(int id, String medicalMajorName) {
         this.id = id;
         this.medicalMajorName = medicalMajorName;

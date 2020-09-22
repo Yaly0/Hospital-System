@@ -4,10 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class MainController {
 
@@ -52,6 +59,7 @@ public class MainController {
     public TextField fieldSearchDisease;
 
     private HospitalDAO dao;
+
     private ObservableList<Appointment> listAppointments;
     private ObservableList<Patient> listPatients;
     private ObservableList<Doctor> listDoctors;
@@ -118,8 +126,8 @@ public class MainController {
                     if (i.getDoctor().getFirstName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
                             i.getDoctor().getLastName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
                             i.getPatient().getFirstName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
-                            i.getPatient().getLastName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase())
-                    )
+                            i.getPatient().getLastName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
+                            i.getDisease().getDiseaseName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()))
                         searched.add(i);
                 }
                 tableViewAppointments.setItems(searched);
@@ -192,7 +200,7 @@ public class MainController {
 
     }
 
-    public void removeAppointmentAction(ActionEvent actionEvent) {
+    public void removeAppointmentAction() {
         if (tableViewAppointments.getSelectionModel().getSelectedItem() == null) return;
         Appointment appointment = tableViewAppointments.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -208,7 +216,7 @@ public class MainController {
         }
     }
 
-    public void removePatientAction(ActionEvent actionEvent) {
+    public void removePatientAction() {
         Patient patient = tableViewPatients.getSelectionModel().getSelectedItem();
         if (patient == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -226,7 +234,7 @@ public class MainController {
         }
     }
 
-    public void removeDoctorAction(ActionEvent actionEvent) {
+    public void removeDoctorAction() {
         Doctor doctor = tableViewDoctors.getSelectionModel().getSelectedItem();
         if (doctor == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -244,7 +252,7 @@ public class MainController {
         }
     }
 
-    public void removeTreatmentAction(ActionEvent actionEvent) {
+    public void removeTreatmentAction() {
         Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
         if (treatment == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -260,25 +268,29 @@ public class MainController {
         }
     }
 
-    public void removeMedicalMajorAction(ActionEvent actionEvent) {
+    public void removeMedicalMajorAction() {
         MedicalMajor medicalMajor = tableViewMedicalMajors.getSelectionModel().getSelectedItem();
         if (medicalMajor == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Removing medical major confirmation");
         alert.setHeaderText("Are you sure you want to remove medical major " + medicalMajor + "?");
-        alert.setContentText("Doctors with this medical major will be deleted");
+        alert.setContentText("Doctors and diseases with this medical major will be deleted");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             dao.removeMedicalMajor(medicalMajor);
             listMedicalMajors.setAll(dao.medicalMajors());
             listDoctors.setAll(dao.doctors());
+            listDiseases.setAll(dao.diseases());
+            listAppointments.setAll(dao.appointments());
+            fieldSearchDisease.setText("");
+            fieldSearchAppointment.setText("");
             fieldSearchMedicalMajor.setText("");
             fieldSearchDoctor.setText("");
         }
     }
 
-    public void removeDiseaseAction(ActionEvent actionEvent) {
+    public void removeDiseaseAction() {
         Disease disease = tableViewDiseases.getSelectionModel().getSelectedItem();
         if (disease == null) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -295,4 +307,29 @@ public class MainController {
             fieldSearchAppointment.setText("");
         }
     }
+
+    public void addMedicalMajorAction() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/medical_major.fxml"));
+            MedicalMajorController medicalMajorController = new MedicalMajorController(dao);
+            loader.setController(medicalMajorController);
+            loader.load();
+
+            stage.setTitle("Medical major");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (medicalMajorController.getButtonText().equals("cancel")) return;
+                MedicalMajor medicalMajor = medicalMajorController.getMedicalMajor();
+                dao.addMedicalMajor(medicalMajor);
+                listMedicalMajors.setAll(dao.medicalMajors());
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

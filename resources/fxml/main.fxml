@@ -15,9 +15,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<!--This is an example text that won't be displayed in the browser                                                                                                                                              fx:controller="ba.unsa.etf.rpr.projekat.MainController" >     -->
+<!--This is an example text that won't be displayed in the browser         fx:controller="ba.unsa.etf.rpr.projekat.MainController" >     -->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="670.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="File">
@@ -68,7 +69,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeAppointmentAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -116,7 +117,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removePatientAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -164,7 +165,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeDoctorAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -208,7 +209,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeTreatmentAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -250,9 +251,9 @@
                             </TextField>
                             <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#addMedicalMajorAction" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeMedicalMajorAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -297,7 +298,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeDiseaseAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit" />
+                                    <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
