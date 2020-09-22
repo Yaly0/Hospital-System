@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.Optional;
 
 public class MainController {
 
@@ -190,5 +190,109 @@ public class MainController {
             }
         });
 
+    }
+
+    public void removeAppointmentAction(ActionEvent actionEvent) {
+        if (tableViewAppointments.getSelectionModel().getSelectedItem() == null) return;
+        Appointment appointment = tableViewAppointments.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing appointment confirmation");
+        alert.setHeaderText("Are you sure you want to remove this appointment?");
+        alert.setContentText("It will be deleted from patients' and doctors' records");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removeAppointment(appointment);
+            listAppointments.setAll(dao.appointments());
+            fieldSearchAppointment.setText("");
+        }
+    }
+
+    public void removePatientAction(ActionEvent actionEvent) {
+        Patient patient = tableViewPatients.getSelectionModel().getSelectedItem();
+        if (patient == null) return;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing patient confirmation");
+        alert.setHeaderText("Are you sure you want to remove patient " + patient + "?");
+        alert.setContentText("He/She will be deleted from doctors' records");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removePatient(patient);
+            listPatients.setAll(dao.patients());
+            listAppointments.setAll(dao.appointments());
+            fieldSearchPatient.setText("");
+            fieldSearchAppointment.setText("");
+        }
+    }
+
+    public void removeDoctorAction(ActionEvent actionEvent) {
+        Doctor doctor = tableViewDoctors.getSelectionModel().getSelectedItem();
+        if (doctor == null) return;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing doctor confirmation");
+        alert.setHeaderText("Are you sure you want to remove doctor " + doctor + "?");
+        alert.setContentText("He/She will be deleted from patients' records");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removeDoctor(doctor);
+            listDoctors.setAll(dao.doctors());
+            listAppointments.setAll(dao.appointments());
+            fieldSearchDoctor.setText("");
+            fieldSearchAppointment.setText("");
+        }
+    }
+
+    public void removeTreatmentAction(ActionEvent actionEvent) {
+        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
+        if (treatment == null) return;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing treatment confirmation");
+        alert.setHeaderText("Are you sure you want to remove treatment " + treatment + "?");
+        alert.setContentText("It will be deleted from appointments and diseases where it is used");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removeTreatment(treatment);
+            listTreatments.setAll(dao.treatments());
+            fieldSearchTreatment.setText("");
+        }
+    }
+
+    public void removeMedicalMajorAction(ActionEvent actionEvent) {
+        MedicalMajor medicalMajor = tableViewMedicalMajors.getSelectionModel().getSelectedItem();
+        if (medicalMajor == null) return;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing medical major confirmation");
+        alert.setHeaderText("Are you sure you want to remove medical major " + medicalMajor + "?");
+        alert.setContentText("Doctors with this medical major will be deleted");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removeMedicalMajor(medicalMajor);
+            listMedicalMajors.setAll(dao.medicalMajors());
+            listDoctors.setAll(dao.doctors());
+            fieldSearchMedicalMajor.setText("");
+            fieldSearchDoctor.setText("");
+        }
+    }
+
+    public void removeDiseaseAction(ActionEvent actionEvent) {
+        Disease disease = tableViewDiseases.getSelectionModel().getSelectedItem();
+        if (disease == null) return;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Removing disease confirmation");
+        alert.setHeaderText("Are you sure you want to remove disease " + disease + "?");
+        alert.setContentText("It will be deleted from patients' and doctors' records");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dao.removeDisease(disease);
+            listDiseases.setAll(dao.diseases());
+            listAppointments.setAll(dao.appointments());
+            fieldSearchDisease.setText("");
+            fieldSearchAppointment.setText("");
+        }
     }
 }
