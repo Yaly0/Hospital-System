@@ -24,7 +24,8 @@ public class HospitalDAO {
             removePatientStatement, removeDoctorFromAppointmentStatement, removeDoctorStatement, getDiseasesFromMedicalMajorStatement,
             removeMedicalMajorFromDoctorStatement, removeMedicalMajorStatement, removeDiseaseFromAppointmentStatement, removeDiseaseStatement,
             removeDiseaseFromAppointmentTreatmentStatement, removeDiseaseFromTreatmentStatement, determineMedicalMajorIdStatement,
-            addMedicalMajorStatement, determineTreatmentIdStatement, addMTreatmentStatement, addTreatmentDiseasesStatement;
+            addMedicalMajorStatement, determineTreatmentIdStatement, addTreatmentStatement, addDiseaseTreatmentStatement,
+            determineDiseaseIdStatement, addDiseaseStatement;
 
     private HospitalDAO() {
         try {
@@ -75,9 +76,10 @@ public class HospitalDAO {
             determineMedicalMajorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM medical_major");
             addMedicalMajorStatement = connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
             determineTreatmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM treatment");
-            addMTreatmentStatement = connection.prepareStatement("INSERT INTO treatment VALUES (?,?)");
-            addTreatmentDiseasesStatement = connection.prepareStatement("INSERT INTO disease_treatment VALUES (?,?)");
-
+            addTreatmentStatement = connection.prepareStatement("INSERT INTO treatment VALUES (?,?)");
+            addDiseaseTreatmentStatement = connection.prepareStatement("INSERT INTO disease_treatment VALUES (?,?)");
+            determineDiseaseIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM disease");
+            addDiseaseStatement = connection.prepareStatement("INSERT INTO disease VALUES (?,?,?)");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,6 +125,7 @@ public class HospitalDAO {
         instance = null;
     }
 
+
     public ArrayList<Appointment> appointments() {
         ArrayList<Appointment> appointments = new ArrayList<>();
         try {
@@ -135,7 +138,6 @@ public class HospitalDAO {
         }
         return appointments;
     }
-
     private Appointment getAppointmentFromResultSet(ResultSet rs) throws SQLException {
 
         ResultSet rs2;
@@ -175,7 +177,6 @@ public class HospitalDAO {
         }
         return patients;
     }
-
     private Patient getPatientFromResultSet(ResultSet rs) throws SQLException {
         LocalDate date = LocalDate.of(
                 Integer.valueOf(rs.getString(5).substring(0, 4)),
@@ -205,7 +206,6 @@ public class HospitalDAO {
         }
         return doctors;
     }
-
     private Doctor getDoctorFromResultSet(ResultSet rs) throws SQLException {
         LocalDate date = LocalDate.of(
                 Integer.valueOf(rs.getString(5).substring(0, 4)),
@@ -270,7 +270,6 @@ public class HospitalDAO {
         }
         return diseases;
     }
-
     private Disease getDiseaseFromResultSet(ResultSet rs) throws SQLException {
         getMedicalMajorStatement.setInt(1, rs.getInt(3));
         ResultSet rs2 = getMedicalMajorStatement.executeQuery();
@@ -355,17 +354,9 @@ public class HospitalDAO {
         }
     }
 
-    public boolean isMedicalMajorNameDuplicate(String name) {
-        ArrayList<MedicalMajor> medicalMajors = medicalMajors();
-        for (MedicalMajor m : medicalMajors) {
-            if (name.toLowerCase().equals(m.getMedicalMajorName().toLowerCase())) return true;
-        }
-        return false;
-    }
-
-    public int determineMedicalMajorId() {
+    private int determineId(PreparedStatement ps) {
         try {
-            ResultSet rs = determineMedicalMajorIdStatement.executeQuery();
+            ResultSet rs = ps.executeQuery();
             return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -373,6 +364,16 @@ public class HospitalDAO {
         return 0;
     }
 
+    public boolean isMedicalMajorNameDuplicate(String name) {
+        ArrayList<MedicalMajor> medicalMajors = medicalMajors();
+        for (MedicalMajor m : medicalMajors) {
+            if (name.toLowerCase().equals(m.getMedicalMajorName().toLowerCase())) return true;
+        }
+        return false;
+    }
+    public int determineMedicalMajorId() {
+        return determineId(determineMedicalMajorIdStatement);
+    }
     public void addMedicalMajor(MedicalMajor medicalMajor) {
         try {
             addMedicalMajorStatement.setInt(1, medicalMajor.getId());
@@ -390,34 +391,56 @@ public class HospitalDAO {
         }
         return false;
     }
-
     public int determineTreatmentId() {
-        try {
-            ResultSet rs = determineTreatmentIdStatement.executeQuery();
-            return rs.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        return determineId(determineTreatmentIdStatement);
     }
-
     public void addTreatment(Treatment treatment) {
         try {
-            addMTreatmentStatement.setInt(1, treatment.getId());
-            addMTreatmentStatement.setString(2, treatment.getTreatmentName());
-            addMTreatmentStatement.executeUpdate();
+            addTreatmentStatement.setInt(1, treatment.getId());
+            addTreatmentStatement.setString(2, treatment.getTreatmentName());
+            addTreatmentStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-
     public void addTreatmentDiseases(Treatment treatment, List<Disease> diseases) {
         try {
             for (Disease d : diseases) {
-                addTreatmentDiseasesStatement.setInt(1, d.getId());
-                addTreatmentDiseasesStatement.setInt(2, treatment.getId());
-                addTreatmentDiseasesStatement.executeUpdate();
+                addDiseaseTreatmentStatement.setInt(1, d.getId());
+                addDiseaseTreatmentStatement.setInt(2, treatment.getId());
+                addDiseaseTreatmentStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isDiseaseNameDuplicate(String name) {
+        ArrayList<Disease> diseases = diseases();
+        for (Disease d : diseases) {
+            if (name.toLowerCase().equals(d.getDiseaseName().toLowerCase())) return true;
+        }
+        return false;
+    }
+    public int determineDiseaseId() {
+        return determineId(determineDiseaseIdStatement);
+    }
+    public void addDisease(Disease disease) {
+        try {
+            addDiseaseStatement.setInt(1, disease.getId());
+            addDiseaseStatement.setString(2, disease.getDiseaseName());
+            addDiseaseStatement.setInt(3,disease.getMedicalMajor().getId());
+            addDiseaseStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addDiseaseTreatments(Disease disease, List<Treatment> treatments) {
+        try {
+            for (Treatment t : treatments) {
+                addDiseaseTreatmentStatement.setInt(1, disease.getId());
+                addDiseaseTreatmentStatement.setInt(2, t.getId());
+                addDiseaseTreatmentStatement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();

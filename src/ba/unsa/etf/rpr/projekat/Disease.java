@@ -11,6 +11,8 @@ public class Disease {
         this.medicalMajor = medicalMajor;
     }
 
+    public Disease() {}
+
     public int getId() {
         return id;
     }

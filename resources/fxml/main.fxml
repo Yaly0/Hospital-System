@@ -295,7 +295,7 @@
                             </TextField>
                             <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#addDiseaseAction" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeDiseaseAction" text="Remove" />
                                     <Button mnemonicParsing="false" text="Edit/Info" />
                                 </buttons>

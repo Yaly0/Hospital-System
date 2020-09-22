@@ -9,9 +9,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class TreatmentController {
 
     public TextField fieldTreatmentName;
@@ -68,7 +65,7 @@ public class TreatmentController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Treatment name error");
             alert.setHeaderText("Change treatment name");
-            alert.setContentText(fieldTreatmentName.getText().isEmpty() ? "Treatment name can't be empty" : "Treatment name already exists");
+            alert.setContentText(fieldTreatmentName.getText().isEmpty() ? "Treatment name can't be empty" : fieldTreatmentName.getText() + " already exists");
             alert.showAndWait();
             buttonText = "cancel";
             return;

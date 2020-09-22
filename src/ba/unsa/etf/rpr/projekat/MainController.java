@@ -351,4 +351,25 @@ public class MainController {
         }
     }
 
+    public void addDiseaseAction() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/disease.fxml"));
+            DiseaseController diseaseController = new DiseaseController(dao);
+            loader.setController(diseaseController);
+            loader.load();
+
+            stage.setTitle("Disease");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (diseaseController.getButtonText().equals("cancel")) return;
+                listDiseases.setAll(dao.diseases());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
