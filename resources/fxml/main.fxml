@@ -33,7 +33,7 @@
                     <center>
                         <TableView fx:id="tableViewAppointments" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Appointments yet" />
+                                <Label text="No Appointments" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnAppointmentsId" prefWidth="50.0" text="ID" />
@@ -57,16 +57,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchAppointment" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -81,7 +81,7 @@
                     <center>
                         <TableView fx:id="tableViewPatients" maxHeight="Infinity" maxWidth="Infinity" prefHeight="300.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Patients yet" />
+                                <Label text="No Patients" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnPatientsId" prefWidth="50.0" text="ID" />
@@ -105,16 +105,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchPatient" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -129,7 +129,7 @@
                     <center>
                         <TableView fx:id="tableViewDoctors" maxHeight="Infinity" maxWidth="Infinity" prefHeight="300.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Doctors yet" />
+                                <Label text="No Doctors" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnDoctorsId" prefWidth="50.0" text="ID" />
@@ -153,16 +153,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchDoctor" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -177,7 +177,7 @@
                     <center>
                         <TableView fx:id="tableViewTreatments" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Treatments yet" />
+                                <Label text="No Treatments" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnTreatmentsId" prefWidth="50.0" text="ID" />
@@ -197,16 +197,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchTreatment" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -221,7 +221,7 @@
                     <center>
                         <TableView fx:id="tableViewMedicalMajors" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Medical majors yet" />
+                                <Label text="No Medical majors" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnMedicalMajorsId" prefWidth="50.0" text="ID" />
@@ -241,16 +241,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchMedicalMajor" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />
@@ -265,7 +265,7 @@
                     <center>
                         <TableView fx:id="tableViewDiseases" maxHeight="Infinity" maxWidth="Infinity" prefHeight="287.0" prefWidth="590.0" BorderPane.alignment="CENTER">
                             <placeholder>
-                                <Label text="No Diseases yet" />
+                                <Label text="No Diseases" />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="columnDiseasesId" prefWidth="50.0" text="ID" />
@@ -286,16 +286,16 @@
                                 <Insets top="5.0" />
                             </BorderPane.margin>
                             <Label text="Search:" />
-                            <TextField prefHeight="27.0" prefWidth="250.0">
+                            <TextField fx:id="fieldSearchDisease" prefHeight="27.0" prefWidth="243.0">
                                 <HBox.margin>
                                     <Insets />
                                 </HBox.margin>
                             </TextField>
-                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="312.0">
+                            <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="283.0">
                                 <buttons>
-                                    <Button mnemonicParsing="false" text="Search" />
-                                    <Button mnemonicParsing="false" text="Add/Modify" />
+                                    <Button mnemonicParsing="false" text="Add" />
                                     <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Edit" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />

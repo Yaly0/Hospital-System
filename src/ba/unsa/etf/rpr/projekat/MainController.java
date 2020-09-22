@@ -2,9 +2,11 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainController {
@@ -15,6 +17,7 @@ public class MainController {
     public TableView<Treatment> tableViewTreatments;
     public TableView<MedicalMajor> tableViewMedicalMajors;
     public TableView<Disease> tableViewDiseases;
+
     public TableColumn columnAppointmentsId;
     public TableColumn columnAppointmentsPatient;
     public TableColumn columnAppointmentsDoctor;
@@ -40,6 +43,13 @@ public class MainController {
     public TableColumn columnDiseasesId;
     public TableColumn columnDiseasesName;
     public TableColumn columnDiseasesMedicalMajor;
+
+    public TextField fieldSearchAppointment;
+    public TextField fieldSearchPatient;
+    public TextField fieldSearchDoctor;
+    public TextField fieldSearchTreatment;
+    public TextField fieldSearchMedicalMajor;
+    public TextField fieldSearchDisease;
 
     private HospitalDAO dao;
     private ObservableList<Appointment> listAppointments;
@@ -95,8 +105,90 @@ public class MainController {
 
         tableViewDiseases.setItems(listDiseases);
         columnDiseasesId.setCellValueFactory(new PropertyValueFactory("id"));
-        columnDiseasesName.setCellValueFactory(new PropertyValueFactory("diseaseName"));;
+        columnDiseasesName.setCellValueFactory(new PropertyValueFactory("diseaseName"));
+        ;
         columnDiseasesMedicalMajor.setCellValueFactory(new PropertyValueFactory("medicalMajor"));
+
+        fieldSearchAppointment.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewAppointments.setItems(listAppointments);
+            } else {
+                ObservableList<Appointment> searched = FXCollections.observableArrayList();
+                for (Appointment i : listAppointments) {
+                    if (i.getDoctor().getFirstName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
+                            i.getDoctor().getLastName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
+                            i.getPatient().getFirstName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase()) ||
+                            i.getPatient().getLastName().toLowerCase().contains(fieldSearchAppointment.getText().toLowerCase())
+                    )
+                        searched.add(i);
+                }
+                tableViewAppointments.setItems(searched);
+            }
+        });
+        fieldSearchPatient.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewPatients.setItems(listPatients);
+            } else {
+                ObservableList<Patient> searched = FXCollections.observableArrayList();
+                for (Patient i : listPatients) {
+                    if (i.getFirstName().toLowerCase().contains(fieldSearchPatient.getText().toLowerCase()) ||
+                            i.getLastName().toLowerCase().contains(fieldSearchPatient.getText().toLowerCase())
+                    )
+                        searched.add(i);
+                }
+                tableViewPatients.setItems(searched);
+            }
+        });
+        fieldSearchDoctor.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewDoctors.setItems(listDoctors);
+            } else {
+                ObservableList<Doctor> searched = FXCollections.observableArrayList();
+                for (Doctor i : listDoctors) {
+                    if (i.getFirstName().toLowerCase().contains(fieldSearchDoctor.getText().toLowerCase()) ||
+                            i.getLastName().toLowerCase().contains(fieldSearchDoctor.getText().toLowerCase())
+                    )
+                        searched.add(i);
+                }
+                tableViewDoctors.setItems(searched);
+            }
+        });
+        fieldSearchTreatment.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewTreatments.setItems(listTreatments);
+            } else {
+                ObservableList<Treatment> searched = FXCollections.observableArrayList();
+                for (Treatment i : listTreatments) {
+                    if (i.getTreatmentName().toLowerCase().contains(fieldSearchTreatment.getText().toLowerCase()))
+                        searched.add(i);
+                }
+                tableViewTreatments.setItems(searched);
+            }
+        });
+        fieldSearchMedicalMajor.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewMedicalMajors.setItems(listMedicalMajors);
+            } else {
+                ObservableList<MedicalMajor> searched = FXCollections.observableArrayList();
+                for (MedicalMajor i : listMedicalMajors) {
+                    if (i.getMedicalMajorName().toLowerCase().contains(fieldSearchMedicalMajor.getText().toLowerCase()))
+                        searched.add(i);
+                }
+                tableViewMedicalMajors.setItems(searched);
+            }
+        });
+        fieldSearchDisease.textProperty().addListener((obs, oldSearch, newSearch) -> {
+            if (newSearch.isEmpty()) {
+                tableViewDiseases.setItems(listDiseases);
+            } else {
+                ObservableList<Disease> searched = FXCollections.observableArrayList();
+                for (Disease i : listDiseases) {
+                    if (i.getDiseaseName().toLowerCase().contains(fieldSearchDisease.getText().toLowerCase()))
+                        searched.add(i);
+                }
+                tableViewDiseases.setItems(searched);
+            }
+        });
 
     }
 }
