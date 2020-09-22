@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class MedicalMajorController {
 
-    public TextField fieldMedicalMajor;
+    public TextField fieldMedicalMajorName;
     private String buttonText;
     private MedicalMajor medicalMajor;
     private HospitalDAO dao;
@@ -14,6 +14,7 @@ public class MedicalMajorController {
     public MedicalMajorController(HospitalDAO dao) {
         medicalMajor = new MedicalMajor();
         this.dao = dao;
+        buttonText = "cancel";
     }
 
     public String getButtonText() {
@@ -31,21 +32,22 @@ public class MedicalMajorController {
 
     public void okAction() {
         buttonText = "ok";
-        if(dao.isNameDuplicate(fieldMedicalMajor.getText()) || fieldMedicalMajor.getText().isEmpty()) {
+        if(dao.isMedicalMajorNameDuplicate(fieldMedicalMajorName.getText()) || fieldMedicalMajorName.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Medical major name error");
             alert.setHeaderText("Change medical major name");
-            alert.setContentText(fieldMedicalMajor.getText().isEmpty() ? "Medical major name can't be empty" : "Medical major name already exists");
+            alert.setContentText(fieldMedicalMajorName.getText().isEmpty() ? "Medical major name can't be empty" : fieldMedicalMajorName.getText() + " already exists");
             alert.showAndWait();
+            buttonText = "cancel";
             return;
         }
         medicalMajor.setId(dao.determineMedicalMajorId());
-        medicalMajor.setMedicalMajorName(fieldMedicalMajor.getText());
+        medicalMajor.setMedicalMajorName(fieldMedicalMajorName.getText());
         closeWindows();
     }
 
     private void closeWindows() {
-        Stage stage = (Stage) fieldMedicalMajor.getScene().getWindow();
+        Stage stage = (Stage) fieldMedicalMajorName.getScene().getWindow();
         stage.close();
     }
 }

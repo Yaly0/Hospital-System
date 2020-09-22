@@ -2,10 +2,8 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -327,6 +325,27 @@ public class MainController {
                 listMedicalMajors.setAll(dao.medicalMajors());
             });
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addTreatmentAction() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
+            TreatmentController treatmentController = new TreatmentController(dao);
+            loader.setController(treatmentController);
+            loader.load();
+
+            stage.setTitle("Treatment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (treatmentController.getButtonText().equals("cancel")) return;
+                listTreatments.setAll(dao.treatments());
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

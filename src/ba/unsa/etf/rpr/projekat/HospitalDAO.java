@@ -6,6 +6,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static ba.unsa.etf.rpr.projekat.Person.*;
@@ -23,7 +24,7 @@ public class HospitalDAO {
             removePatientStatement, removeDoctorFromAppointmentStatement, removeDoctorStatement, getDiseasesFromMedicalMajorStatement,
             removeMedicalMajorFromDoctorStatement, removeMedicalMajorStatement, removeDiseaseFromAppointmentStatement, removeDiseaseStatement,
             removeDiseaseFromAppointmentTreatmentStatement, removeDiseaseFromTreatmentStatement, determineMedicalMajorIdStatement,
-            addMedicalMajorStatement;
+            addMedicalMajorStatement, determineTreatmentIdStatement, addMTreatmentStatement, addTreatmentDiseasesStatement;
 
     private HospitalDAO() {
         try {
@@ -72,7 +73,11 @@ public class HospitalDAO {
             removeDiseaseStatement = connection.prepareStatement("DELETE FROM disease WHERE id = ?");
 
             determineMedicalMajorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM medical_major");
-            addMedicalMajorStatement =  connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
+            addMedicalMajorStatement = connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
+            determineTreatmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM treatment");
+            addMTreatmentStatement = connection.prepareStatement("INSERT INTO treatment VALUES (?,?)");
+            addTreatmentDiseasesStatement = connection.prepareStatement("INSERT INTO disease_treatment VALUES (?,?)");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -350,10 +355,10 @@ public class HospitalDAO {
         }
     }
 
-    public boolean isNameDuplicate(String name) {
+    public boolean isMedicalMajorNameDuplicate(String name) {
         ArrayList<MedicalMajor> medicalMajors = medicalMajors();
         for (MedicalMajor m : medicalMajors) {
-            if (name.equals(m.getMedicalMajorName())) return true;
+            if (name.toLowerCase().equals(m.getMedicalMajorName().toLowerCase())) return true;
         }
         return false;
     }
@@ -370,9 +375,50 @@ public class HospitalDAO {
 
     public void addMedicalMajor(MedicalMajor medicalMajor) {
         try {
-            addMedicalMajorStatement.setInt(1,medicalMajor.getId());
-            addMedicalMajorStatement.setString(2,medicalMajor.getMedicalMajorName());
+            addMedicalMajorStatement.setInt(1, medicalMajor.getId());
+            addMedicalMajorStatement.setString(2, medicalMajor.getMedicalMajorName());
             addMedicalMajorStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isTreatmentNameDuplicate(String name) {
+        ArrayList<Treatment> treatments = treatments();
+        for (Treatment t : treatments) {
+            if (name.toLowerCase().equals(t.getTreatmentName().toLowerCase())) return true;
+        }
+        return false;
+    }
+
+    public int determineTreatmentId() {
+        try {
+            ResultSet rs = determineTreatmentIdStatement.executeQuery();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void addTreatment(Treatment treatment) {
+        try {
+            addMTreatmentStatement.setInt(1, treatment.getId());
+            addMTreatmentStatement.setString(2, treatment.getTreatmentName());
+            addMTreatmentStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void addTreatmentDiseases(Treatment treatment, List<Disease> diseases) {
+        try {
+            for (Disease d : diseases) {
+                addTreatmentDiseasesStatement.setInt(1, d.getId());
+                addTreatmentDiseasesStatement.setInt(2, treatment.getId());
+                addTreatmentDiseasesStatement.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

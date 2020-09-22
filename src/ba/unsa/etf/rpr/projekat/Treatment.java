@@ -9,6 +9,8 @@ public class Treatment {
         this.treatmentName = treatmentName;
     }
 
+    public Treatment() {}
+
     public int getId() {
         return id;
     }

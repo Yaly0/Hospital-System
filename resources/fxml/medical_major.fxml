@@ -28,7 +28,7 @@
     <Label contentDisplay="CENTER" disable="true" text="Doctors" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
     <Label disable="true" text="Diseases" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
     <Label text="Medical major name:" GridPane.halignment="CENTER" />
-    <TextField fx:id="fieldMedicalMajor" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+    <TextField fx:id="fieldMedicalMajorName" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
     <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
     <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
 </GridPane>
