@@ -3,11 +3,10 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static ba.unsa.etf.rpr.projekat.Person.*;
 import static ba.unsa.etf.rpr.projekat.Person.Gender.*;
@@ -21,37 +20,73 @@ public class PatientController {
     public TextField textFieldPatientCitizen;
     public TextField textFieldPatientEmailAddress;
     public RadioButton radioButtonPatientMaleButton;
+    public RadioButton radioButtonPatientFemaleButton;
     public ToggleGroup toggleGroupGender;
     public ChoiceBox<BloodType> choiceBoxPatientBloodType;
     public TextField textFieldPatientPhoneNumber;
     public Spinner spinnerPatientHeight;
     public Spinner spinnerPatientWeight;
     public Label labelPatientBMI;
+
+    private boolean edit;
+    public Label labelPatientAppointments;
+    public TableView<Appointment> tableViewPatientAppointments;
+    public TableColumn columnPatientAppointmentDisease;
+    public TableColumn columnPatientAppointmentDoctor;
+    public TableColumn columnPatientAppointmentDate;
+    public TableColumn columnPatientAppointmentTime;
     private String buttonText;
     private Patient patient;
     private HospitalDAO dao;
 
-    public PatientController(HospitalDAO dao) {
-        patient = new Patient();
+    public PatientController(HospitalDAO dao, Patient patient) {
+        if (patient != null) {
+            this.patient = patient;
+            edit = true;
+        } else {
+            this.patient = new Patient();
+            edit = false;
+        }
         this.dao = dao;
         buttonText = "cancel";
     }
 
     @FXML
     public void initialize() {
-
         AppointmentController.datePickerConverter(datePickerPatientBirthDate);
         choiceBoxPatientBloodType.setItems(FXCollections.observableArrayList(BloodType.values()));
-        spinnerPatientHeight.getValueFactory().setValue(170);
-        spinnerPatientWeight.getValueFactory().setValue(70);
+        if (edit) {
+            labelPatientBMI.setDisable(false);
+            labelPatientAppointments.setDisable(false);
+            tableViewPatientAppointments.setDisable(false);
+            textFieldPatientFirstName.setText(patient.getFirstName());
+            textFieldPatientLastName.setText(patient.getLastName());
+            textFieldPatientHomeAddress.setText(patient.getHomeAddress());
+            datePickerPatientBirthDate.setValue(patient.getBirthDate());
+            textFieldPatientCitizen.setText(patient.getCitizenNumber().toString());
+            textFieldPatientEmailAddress.setText(patient.getEmailAddress().toString());
+            if (patient.getGender().toString().equals("Male"))
+                radioButtonPatientMaleButton.setSelected(true);
+            else radioButtonPatientFemaleButton.setSelected(true);
+            choiceBoxPatientBloodType.getSelectionModel().select(patient.getBloodType());
+            textFieldPatientPhoneNumber.setText(patient.getPhoneNumber().toString());
+            spinnerPatientHeight.getValueFactory().setValue(patient.getHeight().getHeight());
+            spinnerPatientWeight.getValueFactory().setValue(patient.getWeight().getWeight());
+
+            labelPatientBMI.setText(String.valueOf(patient.getBMI()));
+            tableViewPatientAppointments.setItems(FXCollections.observableArrayList(dao.getAppointmentsFromPatient(patient)));
+            columnPatientAppointmentDisease.setCellValueFactory(new PropertyValueFactory("disease"));
+            columnPatientAppointmentDoctor.setCellValueFactory(new PropertyValueFactory("doctor"));
+            columnPatientAppointmentDate.setCellValueFactory(new PropertyValueFactory("appointmentDate"));
+            columnPatientAppointmentTime.setCellValueFactory(new PropertyValueFactory("appointmentTime"));
+        } else {
+            spinnerPatientHeight.getValueFactory().setValue(170);
+            spinnerPatientWeight.getValueFactory().setValue(70);
+        }
     }
 
     public String getButtonText() {
         return buttonText;
-    }
-
-    public Patient getPatient() {
-        return patient;
     }
 
     public void cancelAction() {
@@ -124,30 +159,18 @@ public class PatientController {
             buttonText = "cancel";
             return;
         }
-
-        try {
-            patient.setHeight(new Patient.Height((Integer) spinnerPatientHeight.getValue()));
-            patient.setWeight(new Patient.Weight((Integer) spinnerPatientWeight.getValue()));
-        } catch (InvalidInformationException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Patient error");
-            alert.setHeaderText("Change height or weight");
-            alert.setContentText("Height must be between 50 and 250 cm\nWeight must be between 5 and 500 kg");
-            alert.showAndWait();
-            buttonText = "cancel";
-            return;
-        }
-
-        patient.setId(dao.determinePatientId());
         patient.setHeight(new Patient.Height((Integer) spinnerPatientHeight.getValue()));
         patient.setWeight(new Patient.Weight((Integer) spinnerPatientWeight.getValue()));
         patient.setFirstName(textFieldPatientFirstName.getText());
         patient.setLastName(textFieldPatientLastName.getText());
         patient.setHomeAddress(textFieldPatientHomeAddress.getText());
         patient.setBloodType(choiceBoxPatientBloodType.getSelectionModel().getSelectedItem());
-
-        dao.addPatient(patient);
-
+        if (edit) {
+            dao.updatePatient(patient);
+        } else {
+            patient.setId(dao.determinePatientId());
+            dao.addPatient(patient);
+        }
         closeWindows();
     }
 

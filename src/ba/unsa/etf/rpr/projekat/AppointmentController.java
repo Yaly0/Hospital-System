@@ -39,7 +39,7 @@ public class AppointmentController {
 
         comboBoxAppointmentDoctor.getSelectionModel().selectedItemProperty().addListener((obs, oldDoctor, newDoctor) -> {
             if (comboBoxAppointmentDisease.getSelectionModel().getSelectedIndex() == -1 && newDoctor != null)
-                comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.diseasesFromDoctor(comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem())));
+                comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.getDiseasesFromDoctor(comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem())));
             if (newDoctor == null) {
                 Disease disease = comboBoxAppointmentDisease.getSelectionModel().getSelectedItem();
                 comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.diseases()));
@@ -49,7 +49,7 @@ public class AppointmentController {
 
         comboBoxAppointmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
             if (comboBoxAppointmentDoctor.getSelectionModel().getSelectedIndex() == -1 && newDisease != null)
-                comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.doctorsFromDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem())));
+                comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.getDoctorsFromDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem())));
             if (newDisease == null) {
                 Doctor doctor = comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem();
                 comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.doctors()));

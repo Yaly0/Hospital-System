@@ -72,7 +72,6 @@ public class MedicalMajorController {
             dao.updateMedicalMajor(medicalMajor);
         } else {
             medicalMajor.setId(dao.determineMedicalMajorId());
-            medicalMajor.setMedicalMajorName(textFieldMedicalMajorName.getText());
             dao.addMedicalMajor(medicalMajor);
         }
         closeWindows();

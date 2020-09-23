@@ -29,7 +29,8 @@ public class HospitalDAO {
             determineAppointmentIdStatement, addAppointmentStatement, getDiseasesFromTreatmentStatement, removeDiseaseTreatmentFromDiseasesTreatmentStatement,
             removeDiseaseFromAppointmentTreatmentStatement, updateTreatmentStatement, determinePatientIdStatement, addPatientStatement,
             determineDoctorIdStatement, addDoctorStatement, getDoctorsFromMedicalMajorStatement, getDiseaseFromMedicalMajorStatement,
-            updateMedicalMajorStatement, getTreatmentsFromDiseaseStatement, getTreatmentStatement, updateDiseaseStatement;
+            updateMedicalMajorStatement, getTreatmentsFromDiseaseStatement, getTreatmentStatement, updateDiseaseStatement,
+            getAppointmentsFromPatientStatement, getAppointmentStatement, updatePatientStatement;
 
     private HospitalDAO() {
         try {
@@ -59,7 +60,9 @@ public class HospitalDAO {
             getDoctorStatement = connection.prepareStatement("SELECT * FROM doctor WHERE id = ?");
             getDiseaseStatement = connection.prepareStatement("SELECT * FROM disease WHERE id = ?");
             getTreatmentStatement = connection.prepareStatement("SELECT * FROM treatment WHERE id = ?");
+            getAppointmentStatement = connection.prepareStatement("SELECT * FROM appointment WHERE id = ?");
             getMedicalMajorStatement = connection.prepareStatement("SELECT medical_major_name FROM medical_major WHERE id = ?");
+
             getDiseasesFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM disease WHERE medical_major_id = ?");
             getMedicalMajorFromDoctorStatement = connection.prepareStatement("SELECT medical_major_id FROM doctor WHERE id = ?");
             getDoctorFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM doctor WHERE medical_major_id = ?");
@@ -67,6 +70,7 @@ public class HospitalDAO {
             getDoctorsFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM doctor WHERE medical_major_id=?");
             getDiseaseFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM disease WHERE medical_major_id=?");
             getTreatmentsFromDiseaseStatement = connection.prepareStatement("SELECT treatment_id FROM disease_treatment WHERE disease_id=?");
+            getAppointmentsFromPatientStatement = connection.prepareStatement("SELECT * FROM appointment WHERE patient_id=?");
 
             removeTreatmentFromAppointmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE treatment_id = ?");
             removeTreatmentFromDiseaseStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE treatment_id = ?");
@@ -105,6 +109,7 @@ public class HospitalDAO {
             updateTreatmentStatement = connection.prepareStatement("UPDATE treatment SET treatment_name=? WHERE id=?");
             updateMedicalMajorStatement = connection.prepareStatement("UPDATE medical_major SET medical_major_name=? WHERE id=?");
             updateDiseaseStatement = connection.prepareStatement("UPDATE disease SET disease_name=?, medical_major_id=? WHERE id=?");
+            updatePatientStatement = connection.prepareStatement("UPDATE patient SET first_name=?, last_name=?, home_address=?, birth_date=?, citizen_number=?, phone_number=?, email_address=?, gender=?, blood_type=?, height=?, weight=? WHERE id=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -484,7 +489,7 @@ public class HospitalDAO {
         }
     }
 
-    public ArrayList<Disease> diseasesFromDoctor(Doctor doctor) {
+    public ArrayList<Disease> getDiseasesFromDoctor(Doctor doctor) {
         ArrayList<Disease> diseases = new ArrayList<>();
         try {
             getMedicalMajorFromDoctorStatement.setInt(1, doctor.getId());
@@ -500,7 +505,7 @@ public class HospitalDAO {
         return diseases;
     }
 
-    public ArrayList<Doctor> doctorsFromDisease(Disease disease) {
+    public ArrayList<Doctor> getDoctorsFromDisease(Disease disease) {
         ArrayList<Doctor> doctors = new ArrayList<>();
         try {
             getDoctorFromMedicalMajorStatement.setInt(1, disease.getMedicalMajor().getId());
@@ -600,7 +605,6 @@ public class HospitalDAO {
     }
 
     public int determineDoctorId() {return determineId(determineDoctorIdStatement);}
-
     public void addDoctor(Doctor doctor) {
         try {
             addDoctorStatement.setInt(1, doctor.getId());
@@ -703,10 +707,45 @@ public class HospitalDAO {
             e.printStackTrace();
         }
     }
+
     public void updateDiseaseAppointments(Disease disease) {
         try {
             removeDiseaseFromAppointmentStatement.setInt(1,disease.getId());
             removeDiseaseFromAppointmentStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Appointment> getAppointmentsFromPatient(Patient patient) {
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        try {
+            getAppointmentsFromPatientStatement.setInt(1, patient.getId());
+            ResultSet rs = getAppointmentsFromPatientStatement.executeQuery();
+            while (rs.next()) {
+                getAppointmentStatement.setInt(1, rs.getInt(1));
+                ResultSet rs1 = getAppointmentStatement.executeQuery();
+                appointments.add(getAppointmentFromResultSet(rs1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return appointments;
+    }
+    public void updatePatient(Patient patient) {
+        try {
+            updatePatientStatement.setString(1, patient.getFirstName());
+            updatePatientStatement.setString(2, patient.getLastName());
+            updatePatientStatement.setString(3, patient.getHomeAddress());
+            updatePatientStatement.setString(4, patient.getBirthDate().toString());
+            updatePatientStatement.setString(5, patient.getCitizenNumber().toString());
+            updatePatientStatement.setString(6, patient.getPhoneNumber().toString());
+            updatePatientStatement.setString(7, patient.getEmailAddress().toString());
+            updatePatientStatement.setString(8, patient.getGender().toString());
+            updatePatientStatement.setString(9, patient.getBloodType().toString());
+            updatePatientStatement.setInt(10, patient.getHeight().getHeight());
+            updatePatientStatement.setInt(11, patient.getWeight().getWeight());
+            updatePatientStatement.setInt(12, patient.getId());
+            updatePatientStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

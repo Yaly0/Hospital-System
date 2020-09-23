@@ -400,6 +400,37 @@ public class MainController {
         addOrEditDiseaseAction(disease);
     }
 
+    private void addOrEditPatientAction(Patient patient) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/patient.fxml"));
+            PatientController patientController = new PatientController(dao, patient);
+            loader.setController(patientController);
+            loader.load();
+
+            stage.setTitle("Patient");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (patientController.getButtonText().equals("cancel")) return;
+                listPatients.setAll(dao.patients());
+                listAppointments.setAll(dao.appointments());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addPatientAction() {
+        addOrEditPatientAction(null);
+    }
+    public void editPatientAction() {
+        Patient patient = tableViewPatients.getSelectionModel().getSelectedItem();
+        if(patient == null) return;
+        addOrEditPatientAction(patient);
+    }
+
     public void addAppointmentAction() {
         try {
             Stage stage = new Stage();
@@ -416,28 +447,6 @@ public class MainController {
             stage.setOnHiding(event -> {
                 if (appointmentController.getButtonText().equals("cancel")) return;
                 listAppointments.setAll(dao.appointments());
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void addPatientAction() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/patient.fxml"));
-            PatientController patientController = new PatientController(dao);
-            loader.setController(patientController);
-            loader.load();
-
-            stage.setTitle("Patient");
-            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setMaxWidth(400);
-            stage.show();
-
-            stage.setOnHiding(event -> {
-                if (patientController.getButtonText().equals("cancel")) return;
-                listPatients.setAll(dao.patients());
             });
         } catch (IOException e) {
             e.printStackTrace();
