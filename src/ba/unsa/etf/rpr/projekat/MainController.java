@@ -307,11 +307,11 @@ public class MainController {
         }
     }
 
-    public void addMedicalMajorAction() {
+    private void addOrEditMedicalMajorAction(MedicalMajor medicalMajor) {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/medical_major.fxml"));
-            MedicalMajorController medicalMajorController = new MedicalMajorController(dao);
+            MedicalMajorController medicalMajorController = new MedicalMajorController(dao, medicalMajor);
             loader.setController(medicalMajorController);
             loader.load();
 
@@ -328,6 +328,14 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void addMedicalMajorAction() {
+        addOrEditMedicalMajorAction(null);
+    }
+    public void editMedicalMajorAction() {
+        MedicalMajor medicalMajor = tableViewMedicalMajors.getSelectionModel().getSelectedItem();
+        if (medicalMajor == null) return;
+        addOrEditMedicalMajorAction(medicalMajor);
     }
 
     private void addOrEditTreatmentAction(Treatment treatment) {

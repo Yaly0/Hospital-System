@@ -23,12 +23,12 @@
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
-    <ListView disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-    <ListView disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <Label contentDisplay="CENTER" disable="true" text="Doctors" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-    <Label disable="true" text="Diseases" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+    <ListView fx:id="listViewMedicalMajorDoctors" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+    <ListView fx:id="listViewMedicalMajorDiseases" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label fx:id="labelMedicalMajorDoctors" contentDisplay="CENTER" disable="true" text="Doctors" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+    <Label fx:id="labelMedicalMajorDiseases" disable="true" text="Diseases" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
     <Label text="Medical major name:" GridPane.halignment="LEFT" />
-    <TextField fx:id="fieldMedicalMajorName" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+    <TextField fx:id="textFieldMedicalMajorName" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
     <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
     <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
 </GridPane>

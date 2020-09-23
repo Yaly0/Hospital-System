@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS "doctor" (
 );
 CREATE TABLE IF NOT EXISTS "medical_major" (
 	"id"	INTEGER NOT NULL,
-	"major_name"	TEXT,
+	"medical_major_name"	TEXT,
 	PRIMARY KEY("id")
 );
 CREATE TABLE IF NOT EXISTS "patient" (

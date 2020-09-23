@@ -9,8 +9,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class TreatmentController {
-
-    public TextField fieldTreatmentName;
+    public TextField textFieldTreatmentName;
     public ListView<Disease> listViewTreatmentDiseases;
     public ComboBox<Disease> comboBoxTreatmentDisease;
     private String buttonText;
@@ -46,11 +45,11 @@ public class TreatmentController {
             diseases = new ArrayList<>(initialDiseases);
             listViewTreatmentDiseases.setItems(FXCollections.observableArrayList(initialDiseases));
             initialTreatmentName = treatment.getTreatmentName();
-            fieldTreatmentName.setText(initialTreatmentName);
+            textFieldTreatmentName.setText(initialTreatmentName);
         }
         comboBoxTreatmentDisease.setItems(FXCollections.observableArrayList(allDiseases));
         comboBoxTreatmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
-            if(newDisease != null) {
+            if (newDisease != null) {
                 diseases.add(newDisease);
                 allDiseases.removeAll(diseases);
                 listViewTreatmentDiseases.setItems(FXCollections.observableArrayList(diseases));
@@ -79,17 +78,16 @@ public class TreatmentController {
 
     public void okAction() {
         buttonText = "ok";
-        if (fieldTreatmentName.getText().trim().isEmpty() || (!fieldTreatmentName.getText().equals(initialTreatmentName) && dao.isTreatmentNameDuplicate(fieldTreatmentName.getText()))) {
+        if (textFieldTreatmentName.getText().trim().isEmpty() || (!textFieldTreatmentName.getText().equals(initialTreatmentName) && dao.isTreatmentNameDuplicate(textFieldTreatmentName.getText()))) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Treatment name error");
             alert.setHeaderText("Change treatment name");
-            alert.setContentText(fieldTreatmentName.getText().isEmpty() ? "Treatment name can't be empty" : fieldTreatmentName.getText() + " already exists");
+            alert.setContentText(textFieldTreatmentName.getText().isEmpty() ? "Treatment name can't be empty" : textFieldTreatmentName.getText() + " already exists");
             alert.showAndWait();
             buttonText = "cancel";
             return;
         }
-        treatment.setTreatmentName(fieldTreatmentName.getText());
-
+        treatment.setTreatmentName(textFieldTreatmentName.getText());
         if (edit) {
             ArrayList<Disease> diseasesForDelete = new ArrayList<>(), diseasesForAdd = new ArrayList<>();
             for (Disease d : initialDiseases) if (!diseases.contains(d)) diseasesForDelete.add(d);
@@ -105,7 +103,7 @@ public class TreatmentController {
     }
 
     private void closeWindows() {
-        Stage stage = (Stage) fieldTreatmentName.getScene().getWindow();
+        Stage stage = (Stage) textFieldTreatmentName.getScene().getWindow();
         stage.close();
     }
 }
