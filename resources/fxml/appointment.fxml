@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="161.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="159.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="147.0" minHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="9.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="1.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="1.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="63.0" minHeight="9.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="172.0" minHeight="7.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <Label text="Patient:" />
+    <ComboBox fx:id="comboBoxAppointmentPatient" prefWidth="160.0" GridPane.columnIndex="1" />
+    <Label text="Doctor:" GridPane.rowIndex="1" />
+    <HBox prefHeight="100.0" prefWidth="200.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <ComboBox fx:id="comboBoxAppointmentDoctor" prefWidth="160.0" />
+        <Button mnemonicParsing="false" onAction="#clearDoctorSelectionAction">
+            <tooltip>
+                <Tooltip text="Clear doctor selection" />
+            </tooltip>
+        </Button>
+    </HBox>
+    <Label text="Disease:" GridPane.rowIndex="2" />
+    <HBox prefHeight="100.0" prefWidth="200.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <ComboBox fx:id="comboBoxAppointmentDisease" prefHeight="27.0" prefWidth="160.0" />
+        <Button mnemonicParsing="false" onAction="#clearDiseaseSelectionAction">
+            <tooltip>
+                <Tooltip text="Clear disease selection" />
+            </tooltip>
+        </Button>
+    </HBox>
+    <Label text="Date:" GridPane.rowIndex="3" />
+    <DatePicker fx:id="datePickerAppointmentDate" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="Time:" GridPane.rowIndex="4" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <ComboBox fx:id="comboBoxAppointmentHour" prefHeight="27.0" prefWidth="73.0" />
+        <Label text=":" />
+        <ComboBox fx:id="comboBoxAppointmentMinute" prefHeight="27.0" prefWidth="73.0" />
+    </HBox>
+    <Label disable="true" text="Add treatment:" GridPane.rowIndex="5" />
+    <ComboBox disable="true" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label disable="true" text="Treatments" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+    <ListView disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
+    <Label disable="true" text="Treatments' description" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+    <TextArea disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+    <Label disable="true" text="Appointments' report" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM" />
+    <TextArea disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+    <Button disable="true" mnemonicParsing="false" text="Delete treatment" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+    <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+    <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+
+</GridPane>

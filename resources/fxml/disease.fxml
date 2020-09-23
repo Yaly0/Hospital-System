@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.ComboBox?>
+<GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" >
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,8 +34,8 @@
     <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
     <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
     <Label text="Add treatment:" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-    <ChoiceBox fx:id="choiceBoxDiseaseTreatment" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+    <ComboBox fx:id="comboBoxDiseaseTreatment" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
     <Button mnemonicParsing="false" onAction="#deleteDiseaseAction" text="Delete disease" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-   <ChoiceBox fx:id="choiceBoxDiseaseMeidcalMajor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   <ComboBox fx:id="comboBoxDiseaseMedicalMajor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    <Label text="Medical major:" GridPane.rowIndex="1" />
 </GridPane>

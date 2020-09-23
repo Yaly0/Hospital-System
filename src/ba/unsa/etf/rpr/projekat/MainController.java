@@ -316,6 +316,7 @@ public class MainController {
 
             stage.setTitle("Medical major");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
             stage.show();
 
             stage.setOnHiding(event -> {
@@ -340,6 +341,7 @@ public class MainController {
 
             stage.setTitle("Treatment");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
             stage.show();
 
             stage.setOnHiding(event -> {
@@ -361,6 +363,7 @@ public class MainController {
 
             stage.setTitle("Disease");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
             stage.show();
 
             stage.setOnHiding(event -> {
@@ -372,4 +375,25 @@ public class MainController {
         }
     }
 
+    public void addAppointmentAction() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
+            AppointmentController appointmentController = new AppointmentController(dao);
+            loader.setController(appointmentController);
+            loader.load();
+
+            stage.setTitle("Appointment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (appointmentController.getButtonText().equals("cancel")) return;
+                listAppointments.setAll(dao.appointments());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -25,7 +25,8 @@ public class HospitalDAO {
             removeMedicalMajorFromDoctorStatement, removeMedicalMajorStatement, removeDiseaseFromAppointmentStatement, removeDiseaseStatement,
             removeDiseaseFromAppointmentTreatmentStatement, removeDiseaseFromTreatmentStatement, determineMedicalMajorIdStatement,
             addMedicalMajorStatement, determineTreatmentIdStatement, addTreatmentStatement, addDiseaseTreatmentStatement,
-            determineDiseaseIdStatement, addDiseaseStatement;
+            determineDiseaseIdStatement, addDiseaseStatement, getMedicalMajorFromDoctorStatement, getDoctorFromMedicalMajorStatement,
+            determineAppointmentIdStatement, addAppointmentStatement;
 
     private HospitalDAO() {
         try {
@@ -56,6 +57,8 @@ public class HospitalDAO {
             getDiseaseStatement = connection.prepareStatement("SELECT * FROM disease WHERE id = ?");
             getMedicalMajorStatement = connection.prepareStatement("SELECT major_name FROM medical_major WHERE id = ?");
             getDiseasesFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM disease WHERE medical_major_id = ?");
+            getMedicalMajorFromDoctorStatement = connection.prepareStatement("SELECT medical_major_id FROM doctor WHERE id = ?");
+            getDoctorFromMedicalMajorStatement = connection.prepareStatement("SELECT * FROM doctor WHERE medical_major_id = ?");
 
             removeTreatmentFromAppointmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE treatment_id = ?");
             removeTreatmentFromDiseaseStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE treatment_id = ?");
@@ -80,6 +83,8 @@ public class HospitalDAO {
             addDiseaseTreatmentStatement = connection.prepareStatement("INSERT INTO disease_treatment VALUES (?,?)");
             determineDiseaseIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM disease");
             addDiseaseStatement = connection.prepareStatement("INSERT INTO disease VALUES (?,?,?)");
+            determineAppointmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM appointment");
+            addAppointmentStatement = connection.prepareStatement("INSERT INTO appointment VALUES (?,?,?,?,?,?,NULL,NULL)");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,6 +143,7 @@ public class HospitalDAO {
         }
         return appointments;
     }
+
     private Appointment getAppointmentFromResultSet(ResultSet rs) throws SQLException {
 
         ResultSet rs2;
@@ -177,6 +183,7 @@ public class HospitalDAO {
         }
         return patients;
     }
+
     private Patient getPatientFromResultSet(ResultSet rs) throws SQLException {
         LocalDate date = LocalDate.of(
                 Integer.valueOf(rs.getString(5).substring(0, 4)),
@@ -206,6 +213,7 @@ public class HospitalDAO {
         }
         return doctors;
     }
+
     private Doctor getDoctorFromResultSet(ResultSet rs) throws SQLException {
         LocalDate date = LocalDate.of(
                 Integer.valueOf(rs.getString(5).substring(0, 4)),
@@ -270,6 +278,7 @@ public class HospitalDAO {
         }
         return diseases;
     }
+
     private Disease getDiseaseFromResultSet(ResultSet rs) throws SQLException {
         getMedicalMajorStatement.setInt(1, rs.getInt(3));
         ResultSet rs2 = getMedicalMajorStatement.executeQuery();
@@ -429,7 +438,7 @@ public class HospitalDAO {
         try {
             addDiseaseStatement.setInt(1, disease.getId());
             addDiseaseStatement.setString(2, disease.getDiseaseName());
-            addDiseaseStatement.setInt(3,disease.getMedicalMajor().getId());
+            addDiseaseStatement.setInt(3, disease.getMedicalMajor().getId());
             addDiseaseStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -442,6 +451,50 @@ public class HospitalDAO {
                 addDiseaseTreatmentStatement.setInt(2, t.getId());
                 addDiseaseTreatmentStatement.executeUpdate();
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Disease> diseasesFromDoctor(Doctor doctor) {
+        ArrayList<Disease> diseases = new ArrayList<>();
+        try {
+            getMedicalMajorFromDoctorStatement.setInt(1, doctor.getId());
+            ResultSet rs = getMedicalMajorFromDoctorStatement.executeQuery();
+
+            getDiseasesFromMedicalMajorStatement.setInt(1, rs.getInt(1));
+            ResultSet rs1 = getDiseasesFromMedicalMajorStatement.executeQuery();
+            while (rs1.next()) diseases.add(getDiseaseFromResultSet(rs1));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return diseases;
+    }
+    public ArrayList<Doctor> doctorsFromDisease(Disease disease) {
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        try {
+            getDoctorFromMedicalMajorStatement.setInt(1,disease.getMedicalMajor().getId());
+            ResultSet rs = getDoctorFromMedicalMajorStatement.executeQuery();
+            while (rs.next()) doctors.add(getDoctorFromResultSet(rs));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return doctors;
+    }
+    public int determineAppointmentId() {
+        return determineId(determineAppointmentIdStatement);
+    }
+    public void addAppointment(Appointment appointment) {
+        try {
+            addAppointmentStatement.setInt(1, appointment.getId());
+            addAppointmentStatement.setInt(2, appointment.getPatient().getId());
+            addAppointmentStatement.setInt(3, appointment.getDoctor().getId());
+            addAppointmentStatement.setInt(4, appointment.getDisease().getId());
+            addAppointmentStatement.setString(5, String.valueOf(appointment.getAppointmentDate()));
+            addAppointmentStatement.setString(6, String.valueOf(appointment.getAppointmentTime()));
+            addAppointmentStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

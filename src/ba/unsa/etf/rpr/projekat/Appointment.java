@@ -13,12 +13,8 @@ public class Appointment {
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
     private List<Treatment> treatments;
-    private HashMap<Treatment, Rating> treatmentsDiseaseRating;
     private String treatmentsDescription;
-
     private String appointmentReport;
-    private Appointment previousAppointment;
-    private Appointment nextAppointment;
 
     public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate appointmentDate, LocalTime appointmentTime) {
         this.id = id;
@@ -29,15 +25,7 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
     }
 
-    public Appointment(int id, Patient patient, Doctor doctor, Disease disease, LocalDate appointmentDate, LocalTime appointmentTime, Appointment previousAppointment) {
-        this.id = id;
-        this.patient = patient;
-        this.doctor = doctor;
-        this.disease = disease;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
-        this.previousAppointment = previousAppointment;
-    }
+    public Appointment() {}
 
     public int getId() {
         return id;
@@ -107,36 +95,12 @@ public class Appointment {
         this.treatmentsDescription = treatmentsDescription;
     }
 
-    public HashMap<Treatment, Rating> getTreatmentsDiseaseRating() {
-        return treatmentsDiseaseRating;
-    }
-
-    public void setTreatmentsDiseaseRating(HashMap<Treatment, Rating> treatmentsDiseaseRating) {
-        this.treatmentsDiseaseRating = treatmentsDiseaseRating;
-    }
-
     public String getAppointmentReport() {
         return appointmentReport;
     }
 
     public void setAppointmentReport(String appointmentReport) {
         this.appointmentReport = appointmentReport;
-    }
-
-    public Appointment getPreviousAppointment() {
-        return previousAppointment;
-    }
-
-    public void setPreviousAppointment(Appointment previousAppointment) {
-        this.previousAppointment = previousAppointment;
-    }
-
-    public Appointment getNextAppointment() {
-        return nextAppointment;
-    }
-
-    public void setNextAppointment(Appointment nextAppointment) {
-        this.nextAppointment = nextAppointment;
     }
 
     @Override
@@ -147,12 +111,9 @@ public class Appointment {
                 " disease = " + disease + '\n' +
                 " treatments = " + treatments + '\n' +
                 " treatmentsDescription = '" + treatmentsDescription + '\'' + '\n' +
-                " treatmentsDiseaseRating = " + treatmentsDiseaseRating + '\n' +
                 " appointmentReport = '" + appointmentReport + '\'' + '\n' +
                 " appointmentDate = " + appointmentDate + '\n' +
                 " appointmentTime = " + appointmentTime + '\n' +
-                " previousAppointment Date = " + ((previousAppointment != null) ? (previousAppointment.appointmentDate) : "null") + '\n' +
-                " nextAppointment Date = " + ((nextAppointment != null) ? (nextAppointment.appointmentDate) : "null") + '\n' +
                 '}';
     }
 }

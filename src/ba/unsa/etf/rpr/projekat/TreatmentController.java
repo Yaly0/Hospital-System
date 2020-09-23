@@ -3,17 +3,14 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class TreatmentController {
 
     public TextField fieldTreatmentName;
     public ListView<Disease> listViewTreatmentDiseases;
-    public ChoiceBox<Disease> choiceBoxTreatmentDisease;
+    public ComboBox<Disease> comboBoxTreatmentDisease;
     private String buttonText;
     private Treatment treatment;
     private HospitalDAO dao;
@@ -30,8 +27,8 @@ public class TreatmentController {
 
     @FXML
     public void initialize() {
-        choiceBoxTreatmentDisease.setItems(allDiseases);
-        choiceBoxTreatmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
+        comboBoxTreatmentDisease.setItems(allDiseases);
+        comboBoxTreatmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
             diseases.addAll(newDisease);
             listViewTreatmentDiseases.setItems(diseases);
             allDiseases.removeAll(diseases);

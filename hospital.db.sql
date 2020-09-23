@@ -13,32 +13,14 @@ CREATE TABLE IF NOT EXISTS "disease_treatment" (
 	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
 	FOREIGN KEY("disease_id") REFERENCES "disease"("id")
 );
-CREATE TABLE IF NOT EXISTS "appointment" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"patient_id"	INTEGER,
-	"doctor_id"	INTEGER,
-	"disease_id"	INTEGER,
-	"appointment_date"	TEXT,
-	"appointment_time"	TEXT,
-	"treatment_description"	TEXT,
-	"appointment_report"	TEXT,
-	"previous_appointment_id"	INTEGER,
-	"next_appointment_id"	INTEGER,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("patient_id") REFERENCES "patient"("id"),
-	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
-	FOREIGN KEY("doctor_id") REFERENCES "doctor"("id"),
-	FOREIGN KEY("previous_appointment_id") REFERENCES "appointment"("id"),
-	FOREIGN KEY("next_appointment_id") REFERENCES "appointment"("id")
-);
 CREATE TABLE IF NOT EXISTS "appointment_treatment" (
 	"appointment_id"	INTEGER,
 	"treatment_id"	INTEGER,
 	"disease_id"	INTEGER,
 	"treatment_disease_rating"	INTEGER,
 	PRIMARY KEY("appointment_id","treatment_id"),
-	FOREIGN KEY("appointment_id") REFERENCES "appointment"("id"),
 	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
+	FOREIGN KEY("appointment_id") REFERENCES "appointment"("id"),
 	FOREIGN KEY("disease_id") REFERENCES "disease"("id")
 );
 CREATE TABLE IF NOT EXISTS "doctor" (
@@ -84,6 +66,20 @@ CREATE TABLE IF NOT EXISTS "treatment" (
 	"treatment_name"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
+CREATE TABLE IF NOT EXISTS "appointment" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"patient_id"	INTEGER,
+	"doctor_id"	INTEGER,
+	"disease_id"	INTEGER,
+	"appointment_date"	TEXT,
+	"appointment_time"	TEXT,
+	"treatment_description"	TEXT,
+	"appointment_report"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("doctor_id") REFERENCES "doctor"("id"),
+	FOREIGN KEY("disease_id") REFERENCES "disease"("id"),
+	FOREIGN KEY("patient_id") REFERENCES "patient"("id")
+);
 INSERT INTO "disease" VALUES (1,'Headache',1);
 INSERT INTO "disease" VALUES (2,'Stomachache',1);
 INSERT INTO "disease" VALUES (3,'Heart attack',2);
@@ -100,6 +96,7 @@ INSERT INTO "disease" VALUES (13,'Cataract',5);
 INSERT INTO "disease" VALUES (14,'Diabetic Retinopathy',5);
 INSERT INTO "disease" VALUES (15,'Anxiety disorder',6);
 INSERT INTO "disease" VALUES (16,'Phobia',6);
+INSERT INTO "disease" VALUES (17,'Back pain',1);
 INSERT INTO "disease_treatment" VALUES (3,7);
 INSERT INTO "disease_treatment" VALUES (4,7);
 INSERT INTO "disease_treatment" VALUES (15,7);
@@ -125,9 +122,9 @@ INSERT INTO "disease_treatment" VALUES (16,9);
 INSERT INTO "disease_treatment" VALUES (7,2);
 INSERT INTO "disease_treatment" VALUES (9,2);
 INSERT INTO "disease_treatment" VALUES (11,2);
-INSERT INTO "appointment" VALUES (1,2,3,7,'2020-10-12','14:30',NULL,NULL,NULL,NULL);
-INSERT INTO "appointment" VALUES (2,4,5,14,'2020-10-19','09:45',NULL,NULL,NULL,NULL);
-INSERT INTO "appointment" VALUES (3,3,3,7,'2020-11-02','11:00',NULL,NULL,NULL,NULL);
+INSERT INTO "disease_treatment" VALUES (1,10);
+INSERT INTO "disease_treatment" VALUES (17,10);
+INSERT INTO "disease_treatment" VALUES (17,2);
 INSERT INTO "appointment_treatment" VALUES (1,2,7,4);
 INSERT INTO "appointment_treatment" VALUES (1,8,7,5);
 INSERT INTO "appointment_treatment" VALUES (2,4,14,4);
@@ -138,7 +135,7 @@ INSERT INTO "doctor" VALUES (2,'Jack','Lalić','33 Beacon Dr. Brentwood, NY 1171
 INSERT INTO "doctor" VALUES (3,'Emily','Džananović','9164 S. Birchwood St. Staten Island, NY 10312','1985-02-03','0302985176542','+387 61 456 287','emilydz@yahoo.com','Female','A+',3,'12:00-20:00 / {16:00-16:30}',0,0);
 INSERT INTO "doctor" VALUES (4,'Olivia','Husanović','254 Walnut St. Brooklyn, NY 11218','1983-01-12','1201983195525','+387 60 213 9500','husanovico@gmail.com','Female','AB+',4,'08:00-16:00',0,0);
 INSERT INTO "doctor" VALUES (5,'Muhammad','Samardžija','33 Beacon Dr. Brentwood, NY 11717','1990-11-01','0111990181226','+387 62 546 768','Samardzijam33@gmail.com','Male','O+',5,'08:00-16:00 / {12:00-12:30}',0,0);
-INSERT INTO "doctor" VALUES (6,'Charlie','Hadži','7053 Carriage Street Rochester, NY 14609','1988-08-29','2908988170007','+387 63 555 090','charlie88@hotmail.com','Male','O-',6,'08:00-16:00 / {12:00-12:15}',0,0);
+INSERT INTO "doctor" VALUES (6,'Charlie','Turkovič','7053 Carriage Street Rochester, NY 14609','1988-08-29','2908988170007','+387 63 555 090','charlie88@hotmail.com','Male','O-',6,'08:00-16:00 / {12:00-12:15}',0,0);
 INSERT INTO "doctor" VALUES (7,'Lisa','Kajić','23 Riverside Ave. Jamaica, NY 11432','1979-07-30','3007979177474','+387 66 763 683','lisalisa79@icloud.com','Female','B-',4,'08:00-16:00 / {12:00-12:30}',0,0);
 INSERT INTO "medical_major" VALUES (1,'General');
 INSERT INTO "medical_major" VALUES (2,'Cardiology');
@@ -159,4 +156,8 @@ INSERT INTO "treatment" VALUES (6,'Cardioace');
 INSERT INTO "treatment" VALUES (7,'Ultimate memory');
 INSERT INTO "treatment" VALUES (8,'Dent tabs');
 INSERT INTO "treatment" VALUES (9,'Stimuloton');
+INSERT INTO "treatment" VALUES (10,'Panadol');
+INSERT INTO "appointment" VALUES (1,2,3,7,'2020-10-12','14:30',NULL,NULL);
+INSERT INTO "appointment" VALUES (2,4,5,14,'2020-10-19','09:45',NULL,NULL);
+INSERT INTO "appointment" VALUES (3,3,3,7,'2020-11-02','11:00',NULL,NULL);
 COMMIT;

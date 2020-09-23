@@ -3,18 +3,15 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class DiseaseController {
 
     public TextField fieldDiseaseName;
     public ListView<Treatment> listViewDiseaseTreatments;
-    public ChoiceBox<Treatment> choiceBoxDiseaseTreatment;
-    public ChoiceBox<MedicalMajor> choiceBoxDiseaseMeidcalMajor;
+    public ComboBox<Treatment> comboBoxDiseaseTreatment;
+    public ComboBox<MedicalMajor> comboBoxDiseaseMedicalMajor;
     private String buttonText;
     private Disease disease;
     private HospitalDAO dao;
@@ -31,9 +28,9 @@ public class DiseaseController {
 
     @FXML
     public void initialize() {
-        choiceBoxDiseaseMeidcalMajor.setItems(FXCollections.observableArrayList(dao.medicalMajors()));
-        choiceBoxDiseaseTreatment.setItems(allTreatments);
-        choiceBoxDiseaseTreatment.getSelectionModel().selectedItemProperty().addListener((obs, oldTreatment, newTreatment) -> {
+        comboBoxDiseaseMedicalMajor.setItems(FXCollections.observableArrayList(dao.medicalMajors()));
+        comboBoxDiseaseTreatment.setItems(allTreatments);
+        comboBoxDiseaseTreatment.getSelectionModel().selectedItemProperty().addListener((obs, oldTreatment, newTreatment) -> {
             treatments.addAll(newTreatment);
             listViewDiseaseTreatments.setItems(treatments);
             allTreatments.removeAll(treatments);
@@ -72,7 +69,7 @@ public class DiseaseController {
             buttonText = "cancel";
             return;
         }
-        if (choiceBoxDiseaseMeidcalMajor.getSelectionModel().getSelectedIndex() == -1) {
+        if (comboBoxDiseaseMedicalMajor.getSelectionModel().getSelectedIndex() == -1) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Medical major error");
             alert.setHeaderText("Choose medical major");
@@ -83,7 +80,7 @@ public class DiseaseController {
         }
         disease.setId(dao.determineDiseaseId());
         disease.setDiseaseName(fieldDiseaseName.getText());
-        disease.setMedicalMajor(choiceBoxDiseaseMeidcalMajor.getSelectionModel().getSelectedItem());
+        disease.setMedicalMajor(comboBoxDiseaseMedicalMajor.getSelectionModel().getSelectedItem());
         dao.addDisease(disease);
         dao.addDiseaseTreatments(disease, treatments);
         closeWindows();
