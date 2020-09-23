@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.projekat;
 
+import java.util.Objects;
+
 public class Disease {
     private int id;
     private String diseaseName;
@@ -40,5 +42,18 @@ public class Disease {
     @Override
     public String toString() {
         return diseaseName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Disease disease = (Disease) o;
+        return id == disease.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

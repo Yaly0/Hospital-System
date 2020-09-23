@@ -321,8 +321,6 @@ public class MainController {
 
             stage.setOnHiding(event -> {
                 if (medicalMajorController.getButtonText().equals("cancel")) return;
-                MedicalMajor medicalMajor = medicalMajorController.getMedicalMajor();
-                dao.addMedicalMajor(medicalMajor);
                 listMedicalMajors.setAll(dao.medicalMajors());
             });
 
@@ -335,7 +333,7 @@ public class MainController {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
-            TreatmentController treatmentController = new TreatmentController(dao);
+            TreatmentController treatmentController = new TreatmentController(dao, null);
             loader.setController(treatmentController);
             loader.load();
 
@@ -396,4 +394,29 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    public void editTreatmentAction() {
+        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
+        if (treatment == null) return;
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
+            TreatmentController treatmentController = new TreatmentController(dao, treatment);
+            loader.setController(treatmentController);
+            loader.load();
+
+            stage.setTitle("Treatment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (treatmentController.getButtonText().equals("cancel")) return;
+                listTreatments.setAll(dao.treatments());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

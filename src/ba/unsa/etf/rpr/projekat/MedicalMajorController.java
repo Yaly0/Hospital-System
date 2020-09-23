@@ -43,6 +43,7 @@ public class MedicalMajorController {
         }
         medicalMajor.setId(dao.determineMedicalMajorId());
         medicalMajor.setMedicalMajorName(fieldMedicalMajorName.getText());
+        dao.addMedicalMajor(medicalMajor);
         closeWindows();
     }
 

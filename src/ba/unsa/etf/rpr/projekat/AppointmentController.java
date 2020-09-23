@@ -4,10 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AppointmentController {
 
@@ -25,8 +27,6 @@ public class AppointmentController {
         appointment = new Appointment();
         this.dao = dao;
         buttonText = "cancel";
-//        allTreatments = FXCollections.observableArrayList(dao.treatments());
-        //      treatments = FXCollections.observableArrayList();
     }
 
     @FXML
@@ -40,7 +40,7 @@ public class AppointmentController {
         comboBoxAppointmentDoctor.getSelectionModel().selectedItemProperty().addListener((obs, oldDoctor, newDoctor) -> {
             if (comboBoxAppointmentDisease.getSelectionModel().getSelectedIndex() == -1 && newDoctor != null)
                 comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.diseasesFromDoctor(comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem())));
-            if(newDoctor == null) {
+            if (newDoctor == null) {
                 Disease disease = comboBoxAppointmentDisease.getSelectionModel().getSelectedItem();
                 comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.diseases()));
                 comboBoxAppointmentDisease.getSelectionModel().select(disease);
@@ -50,10 +50,36 @@ public class AppointmentController {
         comboBoxAppointmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
             if (comboBoxAppointmentDoctor.getSelectionModel().getSelectedIndex() == -1 && newDisease != null)
                 comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.doctorsFromDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem())));
-            if(newDisease == null) {
+            if (newDisease == null) {
                 Doctor doctor = comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem();
                 comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.doctors()));
                 comboBoxAppointmentDoctor.getSelectionModel().select(doctor);
+            }
+        });
+        datePickerAppointmentDate.setConverter(new StringConverter<LocalDate>() {
+            String pattern = "yyyy-MM-dd";
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            {
+                datePickerAppointmentDate.setPromptText(pattern.toLowerCase());
+            }
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
             }
         });
     }
@@ -74,7 +100,7 @@ public class AppointmentController {
         LocalTime appointmentTime, startTime, endTime, breakStartTime, breakEndTime;
         int hour = Integer.parseInt(comboBoxAppointmentHour.getSelectionModel().getSelectedItem());
         int minute = Integer.parseInt(comboBoxAppointmentMinute.getSelectionModel().getSelectedItem());
-        appointmentTime = LocalTime.of(hour,minute);
+        appointmentTime = LocalTime.of(hour, minute);
         Doctor.ShiftHours shiftHours = comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem().getShiftHours();
         startTime = shiftHours.startTime;
         endTime = shiftHours.endTime;
@@ -84,7 +110,7 @@ public class AppointmentController {
 
         return !(startTime.compareTo(appointmentTime) > 0 ||
                 (appointmentTime.compareTo(breakStartTime) > 0 && breakEndTime.compareTo(appointmentTime) > 0) ||
-                appointmentTime.compareTo(endTime) > 0 );
+                appointmentTime.compareTo(endTime) > 0);
     }
 
     public String getButtonText() {
@@ -140,8 +166,8 @@ public class AppointmentController {
             alert.setTitle("Appointment error");
             alert.setHeaderText("Change appointment time");
             Doctor doctor = comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem();
-            alert.setContentText("Doctor " + doctor + " can't have patients at " + LocalTime.of(hour,minute)
-            + ",\ndoctor " + doctor + "'s working hours are: " + doctor.getShiftHours());
+            alert.setContentText("Doctor " + doctor + " can't have patients at " + LocalTime.of(hour, minute)
+                    + ",\ndoctor " + doctor + "'s working hours are: " + doctor.getShiftHours());
             alert.showAndWait();
             buttonText = "cancel";
             return;
@@ -151,7 +177,7 @@ public class AppointmentController {
         appointment.setDoctor(comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem());
         appointment.setDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem());
         appointment.setAppointmentDate(datePickerAppointmentDate.getValue());
-        appointment.setAppointmentTime(LocalTime.of(hour,minute));
+        appointment.setAppointmentTime(LocalTime.of(hour, minute));
         dao.addAppointment(appointment);
         closeWindows();
     }
