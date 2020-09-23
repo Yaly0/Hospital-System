@@ -27,7 +27,8 @@ public class HospitalDAO {
             addMedicalMajorStatement, determineTreatmentIdStatement, addTreatmentStatement, addDiseaseTreatmentStatement,
             determineDiseaseIdStatement, addDiseaseStatement, getMedicalMajorFromDoctorStatement, getDoctorFromMedicalMajorStatement,
             determineAppointmentIdStatement, addAppointmentStatement, getDiseasesFromTreatmentStatement, removeDiseaseFromTreatmentStatement,
-            removeDiseaseFromAppointmentTreatmentStatement, updateTreatmentStatement, determinePatientIdStatement, addPatientStatement;
+            removeDiseaseFromAppointmentTreatmentStatement, updateTreatmentStatement, determinePatientIdStatement, addPatientStatement,
+            determineDoctorIdStatement, addDoctorStatement;
 
     private HospitalDAO() {
         try {
@@ -82,16 +83,20 @@ public class HospitalDAO {
             removeDiseaseFromAppointmentTreatmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE disease_id = ? AND treatment_id=?");
 
             determineMedicalMajorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM medical_major");
-            addMedicalMajorStatement = connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
             determineTreatmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM treatment");
+            determineDiseaseIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM disease");
+            determineAppointmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM appointment");
+            determinePatientIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM patient");
+            determineDoctorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM doctor");
+
+            addMedicalMajorStatement = connection.prepareStatement("INSERT INTO medical_major VALUES (?,?)");
             addTreatmentStatement = connection.prepareStatement("INSERT INTO treatment VALUES (?,?)");
             addDiseaseTreatmentStatement = connection.prepareStatement("INSERT INTO disease_treatment VALUES (?,?)");
-            determineDiseaseIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM disease");
             addDiseaseStatement = connection.prepareStatement("INSERT INTO disease VALUES (?,?,?)");
-            determineAppointmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM appointment");
             addAppointmentStatement = connection.prepareStatement("INSERT INTO appointment VALUES (?,?,?,?,?,?,NULL,NULL)");
-            determinePatientIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM patient");
             addPatientStatement = connection.prepareStatement("INSERT INTO patient VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            addDoctorStatement = connection.prepareStatement("INSERT INTO doctor VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+
 
             updateTreatmentStatement = connection.prepareStatement("UPDATE treatment SET treatment_name=? WHERE id=?");
 
@@ -584,6 +589,28 @@ public class HospitalDAO {
             addPatientStatement.setInt(11, patient.getHeight().getHeight());
             addPatientStatement.setInt(12, patient.getWeight().getWeight());
             addPatientStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int determineDoctorId() {return determineId(determineDoctorIdStatement);}
+
+    public void addDoctor(Doctor doctor) {
+        try {
+            addDoctorStatement.setInt(1, doctor.getId());
+            addDoctorStatement.setString(2, doctor.getFirstName());
+            addDoctorStatement.setString(3, doctor.getLastName());
+            addDoctorStatement.setString(4, doctor.getHomeAddress());
+            addDoctorStatement.setString(5, doctor.getBirthDate().toString());
+            addDoctorStatement.setString(6, doctor.getCitizenNumber().toString());
+            addDoctorStatement.setString(7, doctor.getPhoneNumber().toString());
+            addDoctorStatement.setString(8, doctor.getEmailAddress().toString());
+            addDoctorStatement.setString(9, doctor.getGender().toString());
+            addDoctorStatement.setString(10, doctor.getBloodType().toString());
+            addDoctorStatement.setInt(11, doctor.getMedicalMajor().getId());
+            addDoctorStatement.setString(12, doctor.getShiftHours().toString());
+            addDoctorStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

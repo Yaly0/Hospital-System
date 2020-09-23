@@ -36,8 +36,6 @@ CREATE TABLE IF NOT EXISTS "doctor" (
 	"blood_type"	TEXT,
 	"medical_major_id"	INTEGER,
 	"shift_hours"	TEXT,
-	"number_of_visits"	INTEGER,
-	"sum_of_ratings"	INTEGER,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("medical_major_id") REFERENCES "medical_major"("id")
 );
@@ -130,13 +128,13 @@ INSERT INTO "appointment_treatment" VALUES (1,8,7,5);
 INSERT INTO "appointment_treatment" VALUES (2,4,14,4);
 INSERT INTO "appointment_treatment" VALUES (2,5,14,5);
 INSERT INTO "appointment_treatment" VALUES (3,2,7,5);
-INSERT INTO "doctor" VALUES (1,'Oliver','Hadžiefendić','92 Wrangler Street Ridgewood, NY 11385','1974-05-15','1505974172341','+387 62 533 657','oliver74@gmail.com','Male','A+',1,'08:00-16:00 / {12:00-12:30}',0,0);
-INSERT INTO "doctor" VALUES (2,'Jack','Lalić','33 Beacon Dr. Brentwood, NY 11717','1980-04-25','2504980180012','+387 62 938 940','lalic80@hotmail.com','Male','B+',2,'08:00-16:00 / {12:00-12:30}',0,0);
-INSERT INTO "doctor" VALUES (3,'Emily','Džananović','9164 S. Birchwood St. Staten Island, NY 10312','1985-02-03','0302985176542','+387 61 456 287','emilydz@yahoo.com','Female','A+',3,'12:00-20:00 / {16:00-16:30}',0,0);
-INSERT INTO "doctor" VALUES (4,'Olivia','Husanović','254 Walnut St. Brooklyn, NY 11218','1983-01-12','1201983195525','+387 60 213 9500','husanovico@gmail.com','Female','AB+',4,'08:00-16:00',0,0);
-INSERT INTO "doctor" VALUES (5,'Muhammad','Samardžija','33 Beacon Dr. Brentwood, NY 11717','1990-11-01','0111990181226','+387 62 546 768','Samardzijam33@gmail.com','Male','O+',5,'08:00-16:00 / {12:00-12:30}',0,0);
-INSERT INTO "doctor" VALUES (6,'Charlie','Turkovič','7053 Carriage Street Rochester, NY 14609','1988-08-29','2908988170007','+387 63 555 090','charlie88@hotmail.com','Male','O-',6,'08:00-16:00 / {12:00-12:15}',0,0);
-INSERT INTO "doctor" VALUES (7,'Lisa','Kajić','23 Riverside Ave. Jamaica, NY 11432','1979-07-30','3007979177474','+387 66 763 683','lisalisa79@icloud.com','Female','B-',4,'08:00-16:00 / {12:00-12:30}',0,0);
+INSERT INTO "doctor" VALUES (1,'Oliver','Hadžiefendić','92 Wrangler Street Ridgewood, NY 11385','1974-05-15','1505974172341','+387 62 533 657','oliver74@gmail.com','Male','A+',1,'08:00-16:00 / {12:00-12:30}');
+INSERT INTO "doctor" VALUES (2,'Jack','Lalić','33 Beacon Dr. Brentwood, NY 11717','1980-04-25','2504980180012','+387 62 938 940','lalic80@hotmail.com','Male','B+',2,'08:00-16:00 / {12:00-12:30}');
+INSERT INTO "doctor" VALUES (3,'Emily','Džananović','9164 S. Birchwood St. Staten Island, NY 10312','1985-02-03','0302985176542','+387 61 456 287','emilydz@yahoo.com','Female','A+',3,'12:00-20:00 / {16:00-16:30}');
+INSERT INTO "doctor" VALUES (4,'Olivia','Husanović','254 Walnut St. Brooklyn, NY 11218','1983-01-12','1201983195525','+387 60 213 9500','husanovico@gmail.com','Female','AB+',4,'08:00-16:00');
+INSERT INTO "doctor" VALUES (5,'Muhammad','Samardžija','33 Beacon Dr. Brentwood, NY 11717','1990-11-01','0111990181226','+387 62 546 768','Samardzijam33@gmail.com','Male','O+',5,'08:00-16:00 / {12:00-12:30}');
+INSERT INTO "doctor" VALUES (6,'Charlie','Turkovič','7053 Carriage Street Rochester, NY 14609','1988-08-29','2908988170007','+387 63 555 090','charlie88@hotmail.com','Male','O-',6,'08:00-16:00 / {12:00-12:15}');
+INSERT INTO "doctor" VALUES (7,'Lisa','Kajić','23 Riverside Ave. Jamaica, NY 11432','1979-07-30','3007979177474','+387 66 763 683','lisalisa79@icloud.com','Female','B-',4,'08:00-16:00 / {12:00-12:30}');
 INSERT INTO "medical_major" VALUES (1,'General');
 INSERT INTO "medical_major" VALUES (2,'Cardiology');
 INSERT INTO "medical_major" VALUES (3,'Stomatology');

@@ -40,39 +40,10 @@ public class PatientController {
     @FXML
     public void initialize() {
 
-        datePickerConverter(datePickerPatientBirthDate);
+        AppointmentController.datePickerConverter(datePickerPatientBirthDate);
         choiceBoxPatientBloodType.setItems(FXCollections.observableArrayList(BloodType.values()));
         spinnerPatientHeight.getValueFactory().setValue(170);
         spinnerPatientWeight.getValueFactory().setValue(70);
-    }
-
-    static void datePickerConverter(DatePicker datePickerPatientBirthDate) {
-        datePickerPatientBirthDate.setConverter(new StringConverter<LocalDate>() {
-            String pattern = "yyyy-MM-dd";
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-
-            {
-                datePickerPatientBirthDate.setPromptText(pattern.toLowerCase());
-            }
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        });
     }
 
     public String getButtonText() {

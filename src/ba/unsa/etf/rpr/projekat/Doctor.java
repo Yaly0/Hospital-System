@@ -6,7 +6,6 @@ import java.time.LocalTime;
 public class Doctor extends Person {  // some methods may be deleted later
     private MedicalMajor medicalMajor;
     private ShiftHours shiftHours;
-    private int numberOfVisits, sumOfRatings;
 
     public static class ShiftHours {
         LocalTime startTime, endTime, breakStartTime, breakEndTime;
@@ -68,6 +67,8 @@ public class Doctor extends Person {  // some methods may be deleted later
         }
     }
 
+    public Doctor() {}
+
     public Doctor(int id, String firstName, String lastName, String homeAddress, LocalDate birthDate,
                   CitizenNumber citizenNumber, PhoneNumber phoneNumber, EmailAddress emailAddress, Gender gender,
                   BloodType bloodType, MedicalMajor medicalMajor, ShiftHours shiftHours) {
@@ -75,8 +76,6 @@ public class Doctor extends Person {  // some methods may be deleted later
                 bloodType);
         this.medicalMajor = medicalMajor;
         this.shiftHours = shiftHours;
-        this.sumOfRatings = 0;
-        this.numberOfVisits = 0;
     }
 
     public MedicalMajor getMedicalMajor() {
@@ -93,15 +92,6 @@ public class Doctor extends Person {  // some methods may be deleted later
 
     public void setShiftHours(ShiftHours shiftHours) {
         this.shiftHours = shiftHours;
-    }
-
-    public double getRating() {
-        return Math.round(sumOfRatings * 10.0 / numberOfVisits) / 10.0;
-    }
-
-    public void addRating(Rating rating) {
-        numberOfVisits++;
-        sumOfRatings += rating.getRatingValue();
     }
 
     @Override

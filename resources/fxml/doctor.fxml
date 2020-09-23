@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="350.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="106.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="214.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="147.0" minHeight="4.0" prefHeight="27.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="9.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="1.0" prefHeight="27.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="1.0" prefHeight="27.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="172.0" minHeight="7.0" prefHeight="14.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="189.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <Label text="First name:" />
+    <Label text="Last name:" GridPane.rowIndex="1" />
+    <Label text="Home address:" GridPane.rowIndex="2" />
+    <Label text="Birth date:" GridPane.rowIndex="3" />
+
+    <Label text="Citizen number:" GridPane.rowIndex="4" />
+    <Label text="Phone number:" GridPane.rowIndex="5" />
+    <Label disable="true" text="Appointments" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
+    <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
+    <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
+    <Label text="Email address:" GridPane.rowIndex="6" />
+    <Label text="Gender:" GridPane.rowIndex="7" GridPane.rowSpan="2" />
+    <Label text="Blood type:" GridPane.rowIndex="9" />
+    <TextField fx:id="textFieldDoctorFirstName" GridPane.columnIndex="1" />
+    <TextField fx:id="textFieldDoctorLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="textFieldDoctorHomeAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <DatePicker fx:id="datePickerDoctorBirthDate" prefHeight="27.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <TextField fx:id="textFieldDoctorCitizen" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <TextField fx:id="textFieldDoctorEmailAddress" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <RadioButton fx:id="radioButtonDoctorMaleButton" mnemonicParsing="false" text="Male" GridPane.columnIndex="1" GridPane.rowIndex="7">
+        <toggleGroup>
+            <ToggleGroup fx:id="toggleGroupGender" />
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$toggleGroupGender" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+    <ChoiceBox fx:id="choiceBoxDoctorBloodType" prefHeight="27.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    <TableView disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="14">
+        <columns>
+            <TableColumn prefWidth="82.0" text="Disease" />
+            <TableColumn prefWidth="82.0" text="Patient" />
+            <TableColumn prefWidth="82.0" text="Date" />
+            <TableColumn prefWidth="82.0" text="Time" />
+        </columns>
+    </TableView>
+    <TextField fx:id="textFieldDoctorPhoneNumber" promptText="e.g. 0601235678 or 061234567" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label text="Medical major" GridPane.rowIndex="10" />
+    <Label text="Working hours:" GridPane.rowIndex="11" />
+    <Label text="Break hours:" GridPane.rowIndex="12" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+        <ChoiceBox fx:id="choiceBoxDoctorStartTimeHour" prefHeight="27.0" prefWidth="58.0" />
+        <Label text=":" />
+        <ChoiceBox fx:id="choiceBoxDoctorStartTimeMinute" prefHeight="27.0" prefWidth="58.0" />
+        <Label text="-" />
+        <ChoiceBox fx:id="choiceBoxDoctorEndTimeHour" prefHeight="27.0" prefWidth="58.0" />
+        <Label text=":" />
+        <ChoiceBox fx:id="choiceBoxDoctorEndTimeMinute" prefHeight="27.0" prefWidth="58.0" />
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+        <ChoiceBox fx:id="choiceBoxDoctorBreakStartTimeHour" prefHeight="27.0" prefWidth="58.0" />
+        <Label text=":" />
+        <ChoiceBox fx:id="choiceBoxDoctorBreakStartTimeMinute" prefHeight="27.0" prefWidth="58.0" />
+        <Label text="-" />
+        <ChoiceBox fx:id="choiceBoxDoctorBreakEndTimeHour" prefHeight="27.0" prefWidth="58.0" />
+        <Label text=":" />
+        <ChoiceBox fx:id="choiceBoxDoctorBreakEndTimeMinute" prefHeight="27.0" prefWidth="58.0" />
+    </HBox>
+    <ChoiceBox fx:id="choiceBoxDoctorMedicalMajor" prefHeight="27.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+</GridPane>

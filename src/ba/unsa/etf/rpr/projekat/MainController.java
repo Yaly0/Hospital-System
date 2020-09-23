@@ -427,4 +427,26 @@ public class MainController {
         }
     }
 
+    public void addDoctorAction() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doctor.fxml"));
+            DoctorController doctorController = new DoctorController(dao);
+            loader.setController(doctorController);
+            loader.load();
+
+            stage.setTitle("Doctor");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (doctorController.getButtonText().equals("cancel")) return;
+                listDoctors.setAll(dao.doctors());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
