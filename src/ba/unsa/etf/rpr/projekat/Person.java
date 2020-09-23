@@ -18,6 +18,8 @@ public abstract class Person { // some methods may be deleted later
     protected Gender gender;
     protected BloodType bloodType;
 
+    public Person() {}
+
     public static class CitizenNumber {
         private String citizenNumber;
 
@@ -49,6 +51,7 @@ public abstract class Person { // some methods may be deleted later
         }
 
         public void setPhoneNumber(String phoneNumber) { // e.g. 0601234567 or +387 60 123 4567
+            if(phoneNumber.length() < 9) throw new InvalidInformationException("Invalid phone number format");
             if(phoneNumber.substring(0, 4).equals("+387")) {
                 this.phoneNumber = "0" + phoneNumber.substring(5,7) + phoneNumber.substring(8,11)+ phoneNumber.substring(12);
                 return;

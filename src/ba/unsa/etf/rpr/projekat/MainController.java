@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -329,17 +330,18 @@ public class MainController {
         }
     }
 
-    public void addTreatmentAction() {
+    private void addOrEditTreatmentAction(Treatment treatment) {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
-            TreatmentController treatmentController = new TreatmentController(dao, null);
+            TreatmentController treatmentController = new TreatmentController(dao, treatment);
             loader.setController(treatmentController);
             loader.load();
 
             stage.setTitle("Treatment");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
@@ -349,6 +351,14 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void addTreatmentAction() {
+        addOrEditTreatmentAction(null);
+    }
+    public void editTreatmentAction() {
+        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
+        if (treatment == null) return;
+        addOrEditTreatmentAction(treatment);
     }
 
     public void addDiseaseAction() {
@@ -395,24 +405,22 @@ public class MainController {
         }
     }
 
-    public void editTreatmentAction() {
-        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
-        if (treatment == null) return;
+    public void addPatientAction() {
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
-            TreatmentController treatmentController = new TreatmentController(dao, treatment);
-            loader.setController(treatmentController);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/patient.fxml"));
+            PatientController patientController = new PatientController(dao);
+            loader.setController(patientController);
             loader.load();
 
-            stage.setTitle("Treatment");
+            stage.setTitle("Patient");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (treatmentController.getButtonText().equals("cancel")) return;
-                listTreatments.setAll(dao.treatments());
+                if (patientController.getButtonText().equals("cancel")) return;
+                listPatients.setAll(dao.patients());
             });
         } catch (IOException e) {
             e.printStackTrace();

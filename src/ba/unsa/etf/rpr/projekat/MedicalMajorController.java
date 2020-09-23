@@ -32,7 +32,7 @@ public class MedicalMajorController {
 
     public void okAction() {
         buttonText = "ok";
-        if(dao.isMedicalMajorNameDuplicate(fieldMedicalMajorName.getText()) || fieldMedicalMajorName.getText().isEmpty()) {
+        if(dao.isMedicalMajorNameDuplicate(fieldMedicalMajorName.getText()) || fieldMedicalMajorName.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Medical major name error");
             alert.setHeaderText("Change medical major name");

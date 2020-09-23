@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr.projekat;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class Patient extends Person { // some methods may be deleted later
@@ -36,25 +35,25 @@ public class Patient extends Person { // some methods may be deleted later
     }
 
     public static class Weight {
-        private double weight;
+        private int weight;
 
-        public Weight(double weight) {
+        public Weight(int weight) {
             if (weight < 5 || weight > 500) throw new InvalidInformationException("Invalid weight");
             this.weight = weight;
         }
 
-        public double getWeight() {
+        public int getWeight() {
             return weight;
         }
 
-        public void setWeight(double weight) {
+        public void setWeight(int weight) {
             if (weight < 5 || weight > 500) throw new InvalidInformationException("Invalid weight");
             this.weight = weight;
         }
 
         @Override
         public String toString() {
-            return new DecimalFormat("#.#").format(weight) + "kg";
+            return weight + "kg";
         }
     }
 
@@ -66,6 +65,10 @@ public class Patient extends Person { // some methods may be deleted later
                 bloodType);
         this.height = height;
         this.weight = weight;
+    }
+
+    public Patient() {
+        super();
     }
 
     public Height getHeight() {

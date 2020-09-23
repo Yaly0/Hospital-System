@@ -63,10 +63,6 @@ public class TreatmentController {
         return buttonText;
     }
 
-    public Treatment getTreatment() {
-        return treatment;
-    }
-
     public void deleteDiseaseAction() {
         Disease disease = listViewTreatmentDiseases.getSelectionModel().getSelectedItem();
         if (disease == null) return;
@@ -83,7 +79,7 @@ public class TreatmentController {
 
     public void okAction() {
         buttonText = "ok";
-        if (fieldTreatmentName.getText().isEmpty() || (!fieldTreatmentName.getText().equals(initialTreatmentName) && dao.isTreatmentNameDuplicate(fieldTreatmentName.getText()))) {
+        if (fieldTreatmentName.getText().trim().isEmpty() || (!fieldTreatmentName.getText().equals(initialTreatmentName) && dao.isTreatmentNameDuplicate(fieldTreatmentName.getText()))) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Treatment name error");
             alert.setHeaderText("Change treatment name");

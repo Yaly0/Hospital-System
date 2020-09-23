@@ -27,7 +27,7 @@ public class HospitalDAO {
             addMedicalMajorStatement, determineTreatmentIdStatement, addTreatmentStatement, addDiseaseTreatmentStatement,
             determineDiseaseIdStatement, addDiseaseStatement, getMedicalMajorFromDoctorStatement, getDoctorFromMedicalMajorStatement,
             determineAppointmentIdStatement, addAppointmentStatement, getDiseasesFromTreatmentStatement, removeDiseaseFromTreatmentStatement,
-            removeDiseaseFromAppointmentTreatmentStatement, updateTreatmentStatement;
+            removeDiseaseFromAppointmentTreatmentStatement, updateTreatmentStatement, determinePatientIdStatement, addPatientStatement;
 
     private HospitalDAO() {
         try {
@@ -90,6 +90,8 @@ public class HospitalDAO {
             addDiseaseStatement = connection.prepareStatement("INSERT INTO disease VALUES (?,?,?)");
             determineAppointmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM appointment");
             addAppointmentStatement = connection.prepareStatement("INSERT INTO appointment VALUES (?,?,?,?,?,?,NULL,NULL)");
+            determinePatientIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM patient");
+            addPatientStatement = connection.prepareStatement("INSERT INTO patient VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
             updateTreatmentStatement = connection.prepareStatement("UPDATE treatment SET treatment_name=? WHERE id=?");
 
@@ -202,7 +204,7 @@ public class HospitalDAO {
         Gender gender = !(rs.getString(9).equals("Male")) ? !(rs.getString(9).equals("Female")) ? null : Gender.FEMALE : Gender.MALE;
         BloodType bloodType = BloodType.fromString(rs.getString(10));
         Height height = new Height(rs.getInt(11));
-        Weight weight = new Weight(rs.getDouble(12));
+        Weight weight = new Weight(rs.getInt(12));
 
         return new Patient(rs.getInt(1), rs.getString(2), rs.getString(3),
                 rs.getString(4), date, citizenNumber, phoneNumber, emailAddress, gender, bloodType, height, weight);
@@ -553,12 +555,35 @@ public class HospitalDAO {
             e.printStackTrace();
         }
     }
-
     public void updateTreatment(Treatment treatment) {
         try {
             updateTreatmentStatement.setString(1,treatment.getTreatmentName());
             updateTreatmentStatement.setInt(2,treatment.getId());
             updateTreatmentStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int determinePatientId() {
+        return determineId(determinePatientIdStatement);
+    }
+
+    public void addPatient(Patient patient) {
+        try {
+            addPatientStatement.setInt(1, patient.getId());
+            addPatientStatement.setString(2, patient.getFirstName());
+            addPatientStatement.setString(3, patient.getLastName());
+            addPatientStatement.setString(4, patient.getHomeAddress());
+            addPatientStatement.setString(5, patient.getBirthDate().toString());
+            addPatientStatement.setString(6, patient.getCitizenNumber().toString());
+            addPatientStatement.setString(7, patient.getPhoneNumber().toString());
+            addPatientStatement.setString(8, patient.getEmailAddress().toString());
+            addPatientStatement.setString(9, patient.getGender().toString());
+            addPatientStatement.setString(10, patient.getBloodType().toString());
+            addPatientStatement.setInt(11, patient.getHeight().getHeight());
+            addPatientStatement.setInt(12, patient.getWeight().getWeight());
+            addPatientStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

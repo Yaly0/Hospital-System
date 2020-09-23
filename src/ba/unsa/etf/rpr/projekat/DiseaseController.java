@@ -60,11 +60,11 @@ public class DiseaseController {
 
     public void okAction() {
         buttonText = "ok";
-        if (dao.isDiseaseNameDuplicate(fieldDiseaseName.getText()) || fieldDiseaseName.getText().isEmpty()) {
+        if (dao.isDiseaseNameDuplicate(fieldDiseaseName.getText()) || fieldDiseaseName.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Treatment name error");
             alert.setHeaderText("Change disease name");
-            alert.setContentText(fieldDiseaseName.getText().isEmpty() ? "Disease name can't be empty" : fieldDiseaseName.getText() + " already exists");
+            alert.setContentText(fieldDiseaseName.getText().trim().isEmpty() ? "Disease name can't be empty" : fieldDiseaseName.getText() + " already exists");
             alert.showAndWait();
             buttonText = "cancel";
             return;
