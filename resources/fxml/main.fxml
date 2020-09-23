@@ -297,7 +297,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" onAction="#addDiseaseAction" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeDiseaseAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit/Info" />
+                                    <Button mnemonicParsing="false" onAction="#editDiseaseAction" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />

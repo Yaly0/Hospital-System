@@ -369,11 +369,11 @@ public class MainController {
         addOrEditTreatmentAction(treatment);
     }
 
-    public void addDiseaseAction() {
+    private void addOrEditDiseaseAction(Disease disease) {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/disease.fxml"));
-            DiseaseController diseaseController = new DiseaseController(dao);
+            DiseaseController diseaseController = new DiseaseController(dao, disease);
             loader.setController(diseaseController);
             loader.load();
 
@@ -385,10 +385,19 @@ public class MainController {
             stage.setOnHiding(event -> {
                 if (diseaseController.getButtonText().equals("cancel")) return;
                 listDiseases.setAll(dao.diseases());
+                listAppointments.setAll(dao.appointments());
             });
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void addDiseaseAction() {
+        addOrEditDiseaseAction(null);
+    }
+    public void editDiseaseAction() {
+        Disease disease = tableViewDiseases.getSelectionModel().getSelectedItem();
+        if (disease == null) return;
+        addOrEditDiseaseAction(disease);
     }
 
     public void addAppointmentAction() {

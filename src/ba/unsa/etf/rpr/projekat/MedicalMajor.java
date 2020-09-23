@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.projekat;
 
+import java.util.Objects;
+
 public class MedicalMajor {
     private int id;
     private String medicalMajorName;
@@ -31,5 +33,18 @@ public class MedicalMajor {
     @Override
     public String toString() {
         return medicalMajorName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MedicalMajor that = (MedicalMajor) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
