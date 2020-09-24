@@ -2,14 +2,21 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import static ba.unsa.etf.rpr.projekat.Person.*;
 import static ba.unsa.etf.rpr.projekat.Person.Gender.*;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class PatientController {
 
@@ -79,9 +86,38 @@ public class PatientController {
             columnPatientAppointmentDoctor.setCellValueFactory(new PropertyValueFactory("doctor"));
             columnPatientAppointmentDate.setCellValueFactory(new PropertyValueFactory("appointmentDate"));
             columnPatientAppointmentTime.setCellValueFactory(new PropertyValueFactory("appointmentTime"));
+            tableViewPatientAppointments.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                openAppointmentAction();
+            }
+        });
         } else {
             spinnerPatientHeight.getValueFactory().setValue(170);
             spinnerPatientWeight.getValueFactory().setValue(70);
+        }
+    }
+
+    private void openAppointmentAction() {
+        Appointment appointment = tableViewPatientAppointments.getSelectionModel().getSelectedItem();
+        if(appointment == null) return;
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
+            AppointmentController appointmentController = new AppointmentController(dao, appointment);
+            loader.setController(appointmentController);
+            loader.load();
+
+            stage.setTitle("Appointment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                tableViewPatientAppointments.setItems(FXCollections.observableArrayList(dao.getAppointmentsFromPatient(patient)));
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

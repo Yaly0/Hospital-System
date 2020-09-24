@@ -2,16 +2,23 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 import static ba.unsa.etf.rpr.projekat.Person.*;
 import static ba.unsa.etf.rpr.projekat.Person.Gender.*;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class DoctorController {
 
@@ -109,6 +116,36 @@ public class DoctorController {
             columnDoctorAppointmentTime.setCellValueFactory(new PropertyValueFactory("appointmentTime"));
 
             initialMedicalMajor = new MedicalMajor(doctor.getMedicalMajor().getId(), doctor.getMedicalMajor().getMedicalMajorName());
+
+            tableViewDoctorAppointments.setOnMouseClicked((MouseEvent event) -> {
+                if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                    openAppointmentAction();
+                }
+            });
+        }
+    }
+
+    private void openAppointmentAction() {
+        Appointment appointment = tableViewDoctorAppointments.getSelectionModel().getSelectedItem();
+        if (appointment == null) return;
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
+            AppointmentController appointmentController = new AppointmentController(dao, appointment);
+            loader.setController(appointmentController);
+            loader.load();
+
+            stage.setTitle("Appointment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                tableViewDoctorAppointments.setItems(FXCollections.observableArrayList(dao.getAppointmentsFromDoctor(doctor)));
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     private ArrayList<String> hours() {

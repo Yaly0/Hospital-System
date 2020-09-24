@@ -326,10 +326,10 @@ public class MainController {
             stage.setTitle("Medical major");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (medicalMajorController.getButtonText().equals("cancel")) return;
                 listMedicalMajors.setAll(dao.medicalMajors());
             });
 
@@ -358,10 +358,10 @@ public class MainController {
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (treatmentController.getButtonText().equals("cancel")) return;
                 listTreatments.setAll(dao.treatments());
             });
         } catch (IOException e) {
@@ -388,10 +388,10 @@ public class MainController {
             stage.setTitle("Disease");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (diseaseController.getButtonText().equals("cancel")) return;
                 listDiseases.setAll(dao.diseases());
                 listAppointments.setAll(dao.appointments());
             });
@@ -419,10 +419,10 @@ public class MainController {
             stage.setTitle("Patient");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (patientController.getButtonText().equals("cancel")) return;
                 listPatients.setAll(dao.patients());
                 listAppointments.setAll(dao.appointments());
             });
@@ -450,10 +450,10 @@ public class MainController {
             stage.setTitle("Doctor");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (doctorController.getButtonText().equals("cancel")) return;
                 listDoctors.setAll(dao.doctors());
                 listAppointments.setAll(dao.appointments());
             });
@@ -481,10 +481,10 @@ public class MainController {
             stage.setTitle("Appointment");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                if (appointmentController.getButtonText().equals("cancel")) return;
                 listAppointments.setAll(dao.appointments());
             });
         } catch (IOException e) {
