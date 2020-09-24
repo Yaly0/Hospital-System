@@ -164,7 +164,7 @@
                                 <buttons>
                                     <Button mnemonicParsing="false" onAction="#addDoctorAction" text="Add" />
                                     <Button mnemonicParsing="false" onAction="#removeDoctorAction" text="Remove" />
-                                    <Button mnemonicParsing="false" text="Edit/Info" />
+                                    <Button mnemonicParsing="false" onAction="#editDoctorAction" text="Edit/Info" />
                                 </buttons>
                                 <HBox.margin>
                                     <Insets right="10.0" />

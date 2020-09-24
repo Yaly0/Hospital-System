@@ -48,7 +48,7 @@
 
     <Label text="Citizen number:" GridPane.rowIndex="4" />
     <Label text="Phone number:" GridPane.rowIndex="5" />
-    <Label disable="true" text="Appointments" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
+    <Label fx:id="labelDoctorAppointments" disable="true" text="Appointments" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
     <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
     <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
     <Label text="Email address:" GridPane.rowIndex="6" />
@@ -65,14 +65,14 @@
             <ToggleGroup fx:id="toggleGroupGender" />
         </toggleGroup>
     </RadioButton>
-    <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$toggleGroupGender" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+    <RadioButton fx:id="radioButtonDoctorFemaleButton" mnemonicParsing="false" text="Female" toggleGroup="$toggleGroupGender" GridPane.columnIndex="1" GridPane.rowIndex="8" />
     <ChoiceBox fx:id="choiceBoxDoctorBloodType" prefHeight="27.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-    <TableView disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="14">
+    <TableView fx:id="tableViewDoctorAppointments" disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="14">
         <columns>
-            <TableColumn prefWidth="82.0" text="Disease" />
-            <TableColumn prefWidth="82.0" text="Patient" />
-            <TableColumn prefWidth="82.0" text="Date" />
-            <TableColumn prefWidth="82.0" text="Time" />
+            <TableColumn fx:id="columnDoctorAppointmentDisease" prefWidth="82.0" text="Disease" />
+            <TableColumn fx:id="columnDoctorAppointmentPatient" prefWidth="82.0" text="Patient" />
+            <TableColumn fx:id="columnDoctorAppointmentDate" prefWidth="82.0" text="Date" />
+            <TableColumn fx:id="columnDoctorAppointmentTime" prefWidth="82.0" text="Time" />
         </columns>
     </TableView>
     <TextField fx:id="textFieldDoctorPhoneNumber" promptText="e.g. 0601235678 or 061234567" GridPane.columnIndex="1" GridPane.rowIndex="5" />

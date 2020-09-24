@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -196,6 +198,12 @@ public class MainController {
                 tableViewDiseases.setItems(searched);
             }
         });
+
+//        tableViewMedicalMajors.setOnMouseClicked((MouseEvent event) -> {
+//            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+//                editMedicalMajorAction();
+//            }
+//        });
 
     }
 
@@ -431,6 +439,37 @@ public class MainController {
         addOrEditPatientAction(patient);
     }
 
+    private void addOrEditDoctorAction(Doctor doctor) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doctor.fxml"));
+            DoctorController doctorController = new DoctorController(dao, doctor);
+            loader.setController(doctorController);
+            loader.load();
+
+            stage.setTitle("Doctor");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                if (doctorController.getButtonText().equals("cancel")) return;
+                listDoctors.setAll(dao.doctors());
+                listAppointments.setAll(dao.appointments());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addDoctorAction() {
+        addOrEditDoctorAction(null);
+    }
+    public void editDoctorAction() {
+        Doctor doctor = tableViewDoctors.getSelectionModel().getSelectedItem();
+        if(doctor == null) return;
+        addOrEditDoctorAction(doctor);
+    }
+
     public void addAppointmentAction() {
         try {
             Stage stage = new Stage();
@@ -452,27 +491,4 @@ public class MainController {
             e.printStackTrace();
         }
     }
-
-    public void addDoctorAction() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doctor.fxml"));
-            DoctorController doctorController = new DoctorController(dao);
-            loader.setController(doctorController);
-            loader.load();
-
-            stage.setTitle("Doctor");
-            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setMaxWidth(400);
-            stage.show();
-
-            stage.setOnHiding(event -> {
-                if (doctorController.getButtonText().equals("cancel")) return;
-                listDoctors.setAll(dao.doctors());
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

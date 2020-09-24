@@ -4,13 +4,11 @@
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Edit button functionality added for medical major with its final controller and fxml file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/doctor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/doctor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/patient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/patient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,8 +86,8 @@
           <entry key="Untitled" value="1" />
           <entry key="css" value="3" />
           <entry key="db" value="2" />
-          <entry key="fxml" value="41" />
-          <entry key="java" value="141" />
+          <entry key="fxml" value="42" />
+          <entry key="java" value="147" />
           <entry key="sql" value="10" />
           <entry key="xml" value="1" />
         </counts>
@@ -97,29 +95,29 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="JAVA" value="141" />
+          <entry key="JAVA" value="147" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="SQL" value="10" />
-          <entry key="XML" value="42" />
+          <entry key="XML" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="165" />
           <entry key="dummy" value="9" />
-          <entry key="fxml" value="739" />
-          <entry key="java" value="20906" />
+          <entry key="fxml" value="748" />
+          <entry key="java" value="21603" />
           <entry key="sql" value="24" />
-          <entry key="txt" value="1344" />
+          <entry key="txt" value="1351" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="165" />
-          <entry key="JAVA" value="20906" />
-          <entry key="PLAIN_TEXT" value="1353" />
+          <entry key="JAVA" value="21603" />
+          <entry key="PLAIN_TEXT" value="1360" />
           <entry key="SQL" value="24" />
-          <entry key="XML" value="739" />
+          <entry key="XML" value="748" />
         </counts>
       </usages-collector>
     </session>
@@ -132,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="402" column="57" selection-start-line="402" selection-start-column="57" selection-end-line="402" selection-end-column="57" />
+            <state relative-caret-position="311">
+              <caret line="492" column="5" selection-start-line="492" selection-start-column="5" selection-end-line="492" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6351#6923#0" />
@@ -142,7 +140,6 @@
                 <element signature="e#8241#8816#0" />
                 <element signature="e#8887#9462#0" />
                 <element signature="e#9482#10036#0" />
-                <element signature="e#9936#10739#0" />
                 <element signature="e#10752#11503#0" />
                 <element signature="e#11582#12403#0" />
                 <element signature="e#11578#12343#0" />
@@ -156,48 +153,35 @@
                 <element signature="e#18662#18876#0" />
                 <element signature="e#19787#20687#0" />
                 <element signature="e#20708#20801#0" />
-                <element signature="e#20062#20910#0" />
-                <element signature="e#19846#20654#0" />
+                <element signature="e#21305#22202#0" />
+                <element signature="e#22276#22360#0" />
+                <element signature="e#21624#22472#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="127" column="58" selection-start-line="127" selection-start-column="58" selection-end-line="127" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#hours#0;class#DoctorController#0" />
+                <element signature="method#minutes#0;class#DoctorController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+            <state relative-caret-position="399">
+              <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#PatientController#0;class#PatientController#0" />
-                <element signature="method#initialize#0;class#PatientController#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="73" column="62" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="33" column="9" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="33" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2705#2706#0" expanded="true" />
-                <element signature="e#2738#2739#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -206,8 +190,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="626" lean-forward="true" selection-start-line="626" selection-end-line="626" />
+            <state relative-caret-position="655">
+              <caret line="791" column="56" selection-start-line="791" selection-start-column="56" selection-end-line="791" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5942#6733#0" />
@@ -255,28 +239,34 @@
                 <element signature="e#33735#34157#0" />
                 <element signature="e#33891#34562#0" />
                 <element signature="e#34893#35303#0" />
+                <element signature="e#36307#36977#0" />
+                <element signature="e#37141#38230#0" />
+                <element signature="e#38571#38866#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java">
+        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="49" column="123" selection-start-line="49" selection-start-column="123" selection-end-line="49" selection-end-column="123" />
+            <state relative-caret-position="263">
+              <caret line="53" column="135" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="135" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1534#2201#0" />
-                <element signature="e#2295#2958#0" />
-                <element signature="method#datePickerConverter#0;class#AppointmentController#0" />
-                <element signature="method#hours#0;class#AppointmentController#0" />
-                <element signature="method#minutes#0;class#AppointmentController#0" />
-                <element signature="method#isTimeOkForDoctor#0;class#AppointmentController#0" />
-                <element signature="method#closeWindows#0;class#AppointmentController#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/fxml/doctor.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -292,8 +282,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/fxml/main.fxml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            <state relative-caret-position="461">
+              <caret line="299" column="84" selection-start-line="299" selection-start-column="84" selection-end-line="299" selection-end-column="84" />
             </state>
           </provider>
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
@@ -305,17 +295,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gender.</find>
-      <find>phone number for</find>
-      <find>substring</find>
-      <find>email home</find>
       <find>invalid</find>
       <find>print</find>
       <find>IllegalArgumentException</find>
@@ -337,11 +323,15 @@
       <find>0,0</find>
       <find>,0,0</find>
       <find>Patient</find>
-      <find>patient</find>
       <find>Integer</find>
       <find>major_nam</find>
       <find>major_name</find>
       <find>equals</find>
+      <find>patient</find>
+      <find>select app</find>
+      <find>edit</find>
+      <find>editDo</find>
+      <find>sys</find>
     </findStrings>
     <replaceStrings>
       <replace>A</replace>
@@ -349,6 +339,7 @@
       <replace>time</replace>
       <replace>Doctor</replace>
       <replace>String</replace>
+      <replace>doctor</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -380,8 +371,6 @@
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Person.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Doctor.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/doctor.fxml" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java" />
         <option value="$PROJECT_DIR$/resources/fxml/medical_major.fxml" />
         <option value="$PROJECT_DIR$/hospital.db.sql" />
         <option value="$PROJECT_DIR$/resources/fxml/treatment.fxml" />
@@ -391,12 +380,15 @@
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Disease.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Treatment.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/main.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/patient.fxml" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/doctor.fxml" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/main.fxml" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java" />
       </list>
     </option>
   </component>
@@ -483,7 +475,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600901521672" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600908727827" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -667,7 +659,7 @@
       <workItem from="1600580292486" duration="3360000" />
       <workItem from="1600618016499" duration="497000" />
       <workItem from="1600618569778" duration="24582000" />
-      <workItem from="1600678447530" duration="105370000" />
+      <workItem from="1600678447530" duration="111336000" />
     </task>
     <task id="LOCAL-00001" summary="Class &quot;Person&quot; added">
       <created>1586078576905</created>
@@ -921,11 +913,18 @@
       <option name="project" value="LOCAL" />
       <updated>1600897437199</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Edit button functionality added for patient with its final controller and fxml file">
+      <created>1600901613360</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1600901613360</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241088000" />
+    <option name="totallyTimeSpent" value="247054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -940,7 +939,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.266745" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.43830788" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31139836" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1011,7 +1010,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Class &quot;Appointment&quot; added" />
     <MESSAGE value="Class &quot;HospitalDAO&quot; added without implementation" />
     <MESSAGE value="Dump SQL file added" />
     <MESSAGE value="&quot;HospitalDAO()&quot; implemented, &quot;regenerateBase()&quot; added" />
@@ -1036,7 +1034,8 @@
     <MESSAGE value="Add button functionality added for doctor with its initial controller and fxml file" />
     <MESSAGE value="Edit/Info button functionality added for medical major with its final controller and fxml file" />
     <MESSAGE value="Edit button functionality added for disease with its final controller and fxml file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit button functionality added for disease with its final controller and fxml file" />
+    <MESSAGE value="Edit button functionality added for patient with its final controller and fxml file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit button functionality added for patient with its final controller and fxml file" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1221,14 +1220,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/doctor.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-589">
-          <caret line="17" column="255" selection-start-line="17" selection-start-column="255" selection-end-line="17" selection-end-column="255" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/hospital.db.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -1308,44 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="83" column="28" lean-forward="true" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/main.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="33" column="9" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2705#2706#0" expanded="true" />
-            <element signature="e#2738#2739#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/patient.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1375,10 +1328,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/patient.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="73" column="62" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="53" column="135" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="135" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="626" lean-forward="true" selection-start-line="626" selection-end-line="626" />
+        <state relative-caret-position="655">
+          <caret line="791" column="56" selection-start-line="791" selection-start-column="56" selection-end-line="791" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5942#6733#0" />
@@ -1426,24 +1424,17 @@
             <element signature="e#33735#34157#0" />
             <element signature="e#33891#34562#0" />
             <element signature="e#34893#35303#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="73" column="62" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#36307#36977#0" />
+            <element signature="e#37141#38230#0" />
+            <element signature="e#38571#38866#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="402" column="57" selection-start-line="402" selection-start-column="57" selection-end-line="402" selection-end-column="57" />
+        <state relative-caret-position="311">
+          <caret line="492" column="5" selection-start-line="492" selection-start-column="5" selection-end-line="492" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6351#6923#0" />
@@ -1452,7 +1443,6 @@
             <element signature="e#8241#8816#0" />
             <element signature="e#8887#9462#0" />
             <element signature="e#9482#10036#0" />
-            <element signature="e#9936#10739#0" />
             <element signature="e#10752#11503#0" />
             <element signature="e#11582#12403#0" />
             <element signature="e#11578#12343#0" />
@@ -1466,20 +1456,44 @@
             <element signature="e#18662#18876#0" />
             <element signature="e#19787#20687#0" />
             <element signature="e#20708#20801#0" />
-            <element signature="e#20062#20910#0" />
-            <element signature="e#19846#20654#0" />
+            <element signature="e#21305#22202#0" />
+            <element signature="e#22276#22360#0" />
+            <element signature="e#21624#22472#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java">
+    <entry file="file://$PROJECT_DIR$/resources/fxml/main.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="299" column="84" selection-start-line="299" selection-start-column="84" selection-end-line="299" selection-end-column="84" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/doctor.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="212">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="127" column="58" selection-start-line="127" selection-start-column="58" selection-end-line="127" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#PatientController#0;class#PatientController#0" />
-            <element signature="method#initialize#0;class#PatientController#0" />
+            <element signature="method#hours#0;class#DoctorController#0" />
+            <element signature="method#minutes#0;class#DoctorController#0" />
           </folding>
         </state>
       </provider>

@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class DoctorController {
     public TextField textFieldDoctorCitizen;
     public TextField textFieldDoctorEmailAddress;
     public RadioButton radioButtonDoctorMaleButton;
+    public RadioButton radioButtonDoctorFemaleButton;
     public ToggleGroup toggleGroupGender;
     public ChoiceBox<BloodType> choiceBoxDoctorBloodType;
     public TextField textFieldDoctorPhoneNumber;
@@ -36,12 +38,26 @@ public class DoctorController {
     public ChoiceBox<String> choiceBoxDoctorBreakEndTimeMinute;
 
 
+    private boolean edit;
+    public Label labelDoctorAppointments;
+    public TableView<Appointment> tableViewDoctorAppointments;
+    public TableColumn columnDoctorAppointmentDisease;
+    public TableColumn columnDoctorAppointmentPatient;
+    public TableColumn columnDoctorAppointmentDate;
+    public TableColumn columnDoctorAppointmentTime;
     private String buttonText;
     private Doctor doctor;
     private HospitalDAO dao;
+    private MedicalMajor initialMedicalMajor;
 
-    public DoctorController(HospitalDAO dao) {
-        doctor = new Doctor();
+    public DoctorController(HospitalDAO dao, Doctor doctor) {
+        if (doctor != null) {
+            this.doctor = doctor;
+            edit = true;
+        } else {
+            this.doctor = new Doctor();
+            edit = false;
+        }
         this.dao = dao;
         buttonText = "cancel";
     }
@@ -60,6 +76,40 @@ public class DoctorController {
         choiceBoxDoctorEndTimeMinute.setItems(FXCollections.observableArrayList(minutes()));
         choiceBoxDoctorBreakStartTimeMinute.setItems(FXCollections.observableArrayList(minutes()));
         choiceBoxDoctorBreakEndTimeMinute.setItems(FXCollections.observableArrayList(minutes()));
+        if (edit) {
+            labelDoctorAppointments.setDisable(false);
+            tableViewDoctorAppointments.setDisable(false);
+            textFieldDoctorFirstName.setText(doctor.getFirstName());
+            textFieldDoctorLastName.setText(doctor.getLastName());
+            textFieldDoctorHomeAddress.setText(doctor.getHomeAddress());
+            datePickerDoctorBirthDate.setValue(doctor.getBirthDate());
+            textFieldDoctorCitizen.setText(doctor.getCitizenNumber().toString());
+            textFieldDoctorEmailAddress.setText(doctor.getEmailAddress().toString());
+            if (doctor.getGender().toString().equals("Male"))
+                radioButtonDoctorMaleButton.setSelected(true);
+            else radioButtonDoctorFemaleButton.setSelected(true);
+            choiceBoxDoctorBloodType.getSelectionModel().select(doctor.getBloodType());
+            textFieldDoctorPhoneNumber.setText(doctor.getPhoneNumber().toString());
+
+            choiceBoxDoctorMedicalMajor.getSelectionModel().select(doctor.getMedicalMajor());
+
+            choiceBoxDoctorStartTimeHour.getSelectionModel().select(intToString(doctor.getShiftHours().getStartTime().getHour()));
+            choiceBoxDoctorEndTimeHour.getSelectionModel().select(intToString(doctor.getShiftHours().getEndTime().getHour()));
+            choiceBoxDoctorBreakStartTimeHour.getSelectionModel().select(intToString(doctor.getShiftHours().getBreakStartTime().getHour()));
+            choiceBoxDoctorBreakEndTimeHour.getSelectionModel().select(intToString(doctor.getShiftHours().getBreakEndTime().getHour()));
+            choiceBoxDoctorStartTimeMinute.getSelectionModel().select(intToString(doctor.getShiftHours().getStartTime().getMinute()));
+            choiceBoxDoctorEndTimeMinute.getSelectionModel().select(intToString(doctor.getShiftHours().getEndTime().getMinute()));
+            choiceBoxDoctorBreakStartTimeMinute.getSelectionModel().select(intToString(doctor.getShiftHours().getBreakStartTime().getMinute()));
+            choiceBoxDoctorBreakEndTimeMinute.getSelectionModel().select(intToString(doctor.getShiftHours().getBreakEndTime().getMinute()));
+
+            tableViewDoctorAppointments.setItems(FXCollections.observableArrayList(dao.getAppointmentsFromDoctor(doctor)));
+            columnDoctorAppointmentDisease.setCellValueFactory(new PropertyValueFactory("disease"));
+            columnDoctorAppointmentPatient.setCellValueFactory(new PropertyValueFactory("patient"));
+            columnDoctorAppointmentDate.setCellValueFactory(new PropertyValueFactory("appointmentDate"));
+            columnDoctorAppointmentTime.setCellValueFactory(new PropertyValueFactory("appointmentTime"));
+
+            initialMedicalMajor = new MedicalMajor(doctor.getMedicalMajor().getId(), doctor.getMedicalMajor().getMedicalMajorName());
+        }
     }
     private ArrayList<String> hours() {
         ArrayList<String> hours = new ArrayList<>();
@@ -70,6 +120,9 @@ public class DoctorController {
         ArrayList<String> minutes = new ArrayList<>();
         for (int i = 0; i < 60; i += 5) minutes.add((i < 10 ? "0" : "") + i);
         return minutes;
+    }
+    private String intToString(int time) {
+        return  (time <= 9 ? "0" : "") + String.valueOf(time);
     }
     public String getButtonText() {
         return buttonText;
@@ -179,16 +232,20 @@ public class DoctorController {
             buttonText = "cancel";
             return;
         }
-
-        doctor.setId(dao.determineDoctorId());
         doctor.setFirstName(textFieldDoctorFirstName.getText());
         doctor.setLastName(textFieldDoctorLastName.getText());
         doctor.setHomeAddress(textFieldDoctorHomeAddress.getText());
         doctor.setBloodType(choiceBoxDoctorBloodType.getSelectionModel().getSelectedItem());
         doctor.setMedicalMajor(choiceBoxDoctorMedicalMajor.getSelectionModel().getSelectedItem());
-
-        dao.addDoctor(doctor);
-
+        if(edit) {
+            dao.updateDoctor(doctor);
+            if (!initialMedicalMajor.equals(doctor.getMedicalMajor())) {
+                dao.updateDoctorAppointments(doctor);
+            }
+        } else {
+            doctor.setId(dao.determineDoctorId());
+            dao.addDoctor(doctor);
+        }
         closeWindows();
     }
 
