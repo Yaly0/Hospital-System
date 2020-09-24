@@ -199,11 +199,36 @@ public class MainController {
             }
         });
 
-//        tableViewMedicalMajors.setOnMouseClicked((MouseEvent event) -> {
-//            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
-//                editMedicalMajorAction();
-//            }
-//        });
+        tableViewAppointments.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editAppointmentAction();
+            }
+        });
+        tableViewPatients.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editPatientAction();
+            }
+        });
+        tableViewDoctors.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editDoctorAction();
+            }
+        });
+        tableViewTreatments.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editTreatmentAction();
+            }
+        });
+        tableViewMedicalMajors.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editMedicalMajorAction();
+            }
+        });
+        tableViewDiseases.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                editDiseaseAction();
+            }
+        });
 
     }
 
