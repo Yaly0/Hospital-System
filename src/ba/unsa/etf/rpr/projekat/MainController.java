@@ -524,4 +524,19 @@ public class MainController {
         if(appointment == null) return;
         addOrEditAppointmentAction(appointment);
     }
+
+    public void exitAction() {
+        System.exit(0);
+    }
+
+    public void aboutAction() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Hospital");
+        alert.setHeaderText(null);
+        alert.setContentText("Hospital 1.0.0\n\n" +
+                "Github repository: https://github.com/yaly1/rpr-projekat\n\n" +
+                "TM and © 2020 Hospital dev\n" +
+                "All Rights Reserved.");
+        alert.showAndWait();
+    }
 }
