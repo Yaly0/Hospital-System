@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.projekat;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -23,19 +24,76 @@ public class AppointmentController {
     private Appointment appointment;
     private HospitalDAO dao;
 
-    public AppointmentController(HospitalDAO dao) {
-        appointment = new Appointment();
+    private boolean edit;
+    public Label labelAppointmentTreatment;
+    public ComboBox<Treatment> comboBoxAppointmentTreatment;
+    public Label labelAppointmentTreatments;
+    public ListView<Treatment> listViewAppointmentTreatments;
+    public Label labelAppointmentTreatmentsDescription;
+    public TextArea textAreaAppointmentTreatmentsDescription;
+    public Label labelAppointmentsReport;
+    public TextArea textAreaAppointmentsReport;
+    public Button buttonDeleteTreatment;
+    private ArrayList<Treatment> allTreatments;
+    private ArrayList<Treatment> treatments;
+    private ArrayList<Treatment> initialTreatments;
+    private Disease initialDisease;
+
+    public AppointmentController(HospitalDAO dao, Appointment appointment) {
+        if (appointment != null) {
+            this.appointment = appointment;
+            edit = true;
+        } else {
+            this.appointment = new Appointment();
+            edit = false;
+        }
         this.dao = dao;
         buttonText = "cancel";
+        allTreatments = new ArrayList<>();
+        treatments = new ArrayList<>();
     }
 
     @FXML
     public void initialize() {
+        datePickerConverter(datePickerAppointmentDate);
         comboBoxAppointmentPatient.setItems(FXCollections.observableArrayList(dao.patients()));
         comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.doctors()));
         comboBoxAppointmentDisease.setItems(FXCollections.observableArrayList(dao.diseases()));
         comboBoxAppointmentHour.setItems(FXCollections.observableArrayList(hours()));
         comboBoxAppointmentMinute.setItems(FXCollections.observableArrayList(minutes()));
+
+        if (edit) {
+            labelAppointmentTreatment.setDisable(false);
+            comboBoxAppointmentTreatment.setDisable(false);
+            labelAppointmentTreatments.setDisable(false);
+            listViewAppointmentTreatments.setDisable(false);
+            labelAppointmentTreatmentsDescription.setDisable(false);
+            textAreaAppointmentTreatmentsDescription.setDisable(false);
+            labelAppointmentsReport.setDisable(false);
+            textAreaAppointmentsReport.setDisable(false);
+            buttonDeleteTreatment.setDisable(false);
+
+            comboBoxAppointmentPatient.getSelectionModel().select(appointment.getPatient());
+            comboBoxAppointmentDoctor.getSelectionModel().select(appointment.getDoctor());
+            comboBoxAppointmentDisease.getSelectionModel().select(appointment.getDisease());
+            datePickerAppointmentDate.setValue(appointment.getAppointmentDate());
+            comboBoxAppointmentHour.getSelectionModel().select(intToString(appointment.getAppointmentTime().getHour()));
+            comboBoxAppointmentMinute.getSelectionModel().select(intToString(appointment.getAppointmentTime().getMinute()));
+            textAreaAppointmentTreatmentsDescription.setText(appointment.getTreatmentsDescription());
+            textAreaAppointmentsReport.setText(appointment.getAppointmentReport());
+
+            allTreatments = dao.getTreatmentsFromDisease(appointment.getDisease());
+            initialTreatments = dao.getTreatmentsFromAppointment(appointment);
+            ArrayList<Treatment> otherTreatments = new ArrayList<>();
+            for (Treatment t : allTreatments) if (!initialTreatments.contains(t)) otherTreatments.add(t);
+            allTreatments = new ArrayList<>(otherTreatments);
+            treatments = new ArrayList<>(initialTreatments);
+            listViewAppointmentTreatments.setItems(FXCollections.observableArrayList(initialTreatments));
+
+            initialDisease = new Disease(appointment.getDisease().getId(), appointment.getDisease().getDiseaseName(), appointment.getDisease().getMedicalMajor());
+        }
+
+        comboBoxAppointmentTreatment.setItems(FXCollections.observableArrayList(allTreatments));
 
         comboBoxAppointmentDoctor.getSelectionModel().selectedItemProperty().addListener((obs, oldDoctor, newDoctor) -> {
             if (comboBoxAppointmentDisease.getSelectionModel().getSelectedIndex() == -1 && newDoctor != null)
@@ -48,6 +106,7 @@ public class AppointmentController {
         });
 
         comboBoxAppointmentDisease.getSelectionModel().selectedItemProperty().addListener((obs, oldDisease, newDisease) -> {
+            if (newDisease != null) allTreatments = dao.getTreatmentsFromDisease(newDisease);
             if (comboBoxAppointmentDoctor.getSelectionModel().getSelectedIndex() == -1 && newDisease != null)
                 comboBoxAppointmentDoctor.setItems(FXCollections.observableArrayList(dao.getDoctorsFromDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem())));
             if (newDisease == null) {
@@ -56,7 +115,19 @@ public class AppointmentController {
                 comboBoxAppointmentDoctor.getSelectionModel().select(doctor);
             }
         });
-        datePickerConverter(datePickerAppointmentDate);
+
+        comboBoxAppointmentTreatment.getSelectionModel().selectedItemProperty().addListener((obs, oldTreatment, newTreatment) -> {
+            if (newTreatment != null) {
+                treatments.add(newTreatment);
+                allTreatments.removeAll(treatments);
+                listViewAppointmentTreatments.setItems(FXCollections.observableArrayList(treatments));
+                Platform.runLater(() -> comboBoxAppointmentTreatment.setItems(FXCollections.observableArrayList(allTreatments)));
+            }
+        });
+    }
+
+    private String intToString(int time) {
+        return (time <= 9 ? "0" : "") + String.valueOf(time);
     }
 
     static void datePickerConverter(DatePicker datePickerPatientBirthDate) {
@@ -121,16 +192,21 @@ public class AppointmentController {
         return buttonText;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
-    }
-
     public void clearDoctorSelectionAction() {
         comboBoxAppointmentDoctor.getSelectionModel().select(null);
     }
 
     public void clearDiseaseSelectionAction() {
         comboBoxAppointmentDisease.getSelectionModel().select(null);
+    }
+
+    public void deleteTreatmentAction() {
+        Treatment treatment = listViewAppointmentTreatments.getSelectionModel().getSelectedItem();
+        if (treatment == null) return;
+        allTreatments.add(treatment);
+        treatments.remove(treatment);
+        listViewAppointmentTreatments.setItems(FXCollections.observableArrayList(treatments));
+        comboBoxAppointmentTreatment.setItems(FXCollections.observableArrayList(allTreatments));
     }
 
     public void cancelAction() {
@@ -140,12 +216,12 @@ public class AppointmentController {
 
     public void okAction() {
         buttonText = "ok";
-        if (comboBoxAppointmentPatient.getSelectionModel().getSelectedIndex() == -1 ||
+        if (comboBoxAppointmentPatient.getSelectionModel().getSelectedItem() == null ||
                 comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem() == null ||
                 comboBoxAppointmentDisease.getSelectionModel().getSelectedItem() == null ||
                 datePickerAppointmentDate.getValue() == null ||
-                comboBoxAppointmentHour.getSelectionModel().getSelectedIndex() == -1 ||
-                comboBoxAppointmentMinute.getSelectionModel().getSelectedIndex() == -1) {
+                comboBoxAppointmentHour.getSelectionModel().getSelectedItem() == null ||
+                comboBoxAppointmentMinute.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Appointment error");
             alert.setHeaderText("Some fields are empty");
@@ -176,13 +252,38 @@ public class AppointmentController {
             buttonText = "cancel";
             return;
         }
-        appointment.setId(dao.determineAppointmentId());
+        for (Treatment t : listViewAppointmentTreatments.getItems())
+            if (!dao.isTreatmentForDisease(t, comboBoxAppointmentDisease.getSelectionModel().getSelectedItem())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Appointment error");
+                alert.setHeaderText("Change treatments");
+                alert.setContentText("Treatments and diseases aren't compatible");
+                alert.showAndWait();
+                buttonText = "cancel";
+                return;
+            }
         appointment.setPatient(comboBoxAppointmentPatient.getSelectionModel().getSelectedItem());
         appointment.setDoctor(comboBoxAppointmentDoctor.getSelectionModel().getSelectedItem());
         appointment.setDisease(comboBoxAppointmentDisease.getSelectionModel().getSelectedItem());
         appointment.setAppointmentDate(datePickerAppointmentDate.getValue());
         appointment.setAppointmentTime(LocalTime.of(hour, minute));
-        dao.addAppointment(appointment);
+
+        if (edit) {
+            appointment.setTreatmentsDescription(textAreaAppointmentTreatmentsDescription.getText());
+            appointment.setAppointmentReport(textAreaAppointmentsReport.getText());
+
+            ArrayList<Treatment> treatmentsForDelete = new ArrayList<>(), treatmentsForAdd = new ArrayList<>();
+            for (Treatment t : initialTreatments) if (!treatments.contains(t)) treatmentsForDelete.add(t);
+            for (Treatment t : treatments) if (!initialTreatments.contains(t)) treatmentsForAdd.add(t);
+            dao.updateAppointmentTreatments(appointment, treatmentsForDelete, treatmentsForAdd);
+            dao.updateAppointment(appointment);
+            if (!initialDisease.equals(appointment.getDisease())) {
+                dao.updateAppointmentDiseases(appointment);
+            }
+        } else {
+            appointment.setId(dao.determineAppointmentId());
+            dao.addAppointment(appointment);
+        }
         closeWindows();
     }
 
@@ -190,4 +291,6 @@ public class AppointmentController {
         Stage stage = (Stage) comboBoxAppointmentPatient.getScene().getWindow();
         stage.close();
     }
+
+
 }

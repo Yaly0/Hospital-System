@@ -470,11 +470,11 @@ public class MainController {
         addOrEditDoctorAction(doctor);
     }
 
-    public void addAppointmentAction() {
+    private void addOrEditAppointmentAction(Appointment appointment) {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
-            AppointmentController appointmentController = new AppointmentController(dao);
+            AppointmentController appointmentController = new AppointmentController(dao, appointment);
             loader.setController(appointmentController);
             loader.load();
 
@@ -490,5 +490,13 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void addAppointmentAction() {
+        addOrEditAppointmentAction(null);
+    }
+    public void editAppointmentAction() {
+        Appointment appointment = tableViewAppointments.getSelectionModel().getSelectedItem();
+        if(appointment == null) return;
+        addOrEditAppointmentAction(appointment);
     }
 }

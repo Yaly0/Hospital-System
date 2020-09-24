@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS "appointment_treatment" (
 	"appointment_id"	INTEGER,
 	"treatment_id"	INTEGER,
 	"disease_id"	INTEGER,
-	"treatment_disease_rating"	INTEGER,
 	PRIMARY KEY("appointment_id","treatment_id"),
 	FOREIGN KEY("treatment_id") REFERENCES "treatment"("id"),
 	FOREIGN KEY("appointment_id") REFERENCES "appointment"("id"),
@@ -123,11 +122,11 @@ INSERT INTO "disease_treatment" VALUES (11,2);
 INSERT INTO "disease_treatment" VALUES (1,10);
 INSERT INTO "disease_treatment" VALUES (17,10);
 INSERT INTO "disease_treatment" VALUES (17,2);
-INSERT INTO "appointment_treatment" VALUES (1,2,7,4);
-INSERT INTO "appointment_treatment" VALUES (1,8,7,5);
-INSERT INTO "appointment_treatment" VALUES (2,4,14,4);
-INSERT INTO "appointment_treatment" VALUES (2,5,14,5);
-INSERT INTO "appointment_treatment" VALUES (3,2,7,5);
+INSERT INTO "appointment_treatment" VALUES (1,2,7);
+INSERT INTO "appointment_treatment" VALUES (1,8,7);
+INSERT INTO "appointment_treatment" VALUES (2,4,14);
+INSERT INTO "appointment_treatment" VALUES (2,5,14);
+INSERT INTO "appointment_treatment" VALUES (3,2,7);
 INSERT INTO "doctor" VALUES (1,'Oliver','Hadžiefendić','92 Wrangler Street Ridgewood, NY 11385','1974-05-15','1505974172341','+387 62 533 657','oliver74@gmail.com','Male','A+',1,'08:00-16:00 / {12:00-12:30}');
 INSERT INTO "doctor" VALUES (2,'Jack','Lalić','33 Beacon Dr. Brentwood, NY 11717','1980-04-25','2504980180012','+387 62 938 940','lalic80@hotmail.com','Male','B+',2,'08:00-16:00 / {12:00-12:30}');
 INSERT INTO "doctor" VALUES (3,'Emily','Džananović','9164 S. Birchwood St. Staten Island, NY 10312','1985-02-03','0302985176542','+387 61 456 287','emilydz@yahoo.com','Female','A+',3,'12:00-20:00 / {16:00-16:30}');

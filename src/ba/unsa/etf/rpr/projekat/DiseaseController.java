@@ -68,7 +68,7 @@ public class DiseaseController {
         return buttonText;
     }
 
-    public void deleteDiseaseAction() {
+    public void deleteTreatmentAction() {
         Treatment treatment = listViewDiseaseTreatments.getSelectionModel().getSelectedItem();
         if (treatment == null) return;
         allTreatments.add(treatment);

@@ -63,15 +63,15 @@
         <Label text=":" />
         <ComboBox fx:id="comboBoxAppointmentMinute" prefHeight="27.0" prefWidth="91.0" />
     </HBox>
-    <Label disable="true" text="Add treatment:" GridPane.rowIndex="5" />
-    <ComboBox disable="true" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-    <Label disable="true" text="Treatments" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-    <ListView disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
-    <Label disable="true" text="Treatments' description" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-    <TextArea disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-    <Label disable="true" text="Appointments' report" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM" />
-    <TextArea disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="10" />
-    <Button disable="true" mnemonicParsing="false" text="Delete treatment" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+    <Label fx:id="labelAppointmentTreatment" disable="true" text="Add treatment:" GridPane.rowIndex="5" />
+    <ComboBox fx:id="comboBoxAppointmentTreatment" disable="true" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label fx:id="labelAppointmentTreatments" disable="true" text="Treatments" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+    <ListView fx:id="listViewAppointmentTreatments" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
+    <Label fx:id="labelAppointmentTreatmentsDescription" disable="true" text="Treatments' description" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+    <TextArea fx:id="textAreaAppointmentTreatmentsDescription" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+    <Label fx:id="labelAppointmentsReport" disable="true" text="Appointments' report" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM" />
+    <TextArea fx:id="textAreaAppointmentsReport" disable="true" prefHeight="200.0" prefWidth="330.0" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+    <Button fx:id="buttonDeleteTreatment" disable="true" mnemonicParsing="false" onAction="#deleteTreatmentAction" text="Delete treatment" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
     <Button mnemonicParsing="false" onAction="#cancelAction" prefHeight="27.0" prefWidth="75.0" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
     <Button mnemonicParsing="false" onAction="#okAction" prefHeight="27.0" prefWidth="75.0" text="Ok" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
 

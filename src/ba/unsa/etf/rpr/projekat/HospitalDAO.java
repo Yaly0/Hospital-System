@@ -31,7 +31,9 @@ public class HospitalDAO {
             determineDoctorIdStatement, addDoctorStatement, getDoctorsFromMedicalMajorStatement, getDiseaseFromMedicalMajorStatement,
             updateMedicalMajorStatement, getTreatmentsFromDiseaseStatement, getTreatmentStatement, updateDiseaseStatement,
             getAppointmentsFromPatientStatement, getAppointmentStatement, updatePatientStatement, getAppointmentsFromDoctorStatement,
-            updateDoctorStatement, removeAppointmentTreatmentStatement;
+            updateDoctorStatement, removeAppointmentTreatmentStatement, getTreatmentsFromAppointmentStatement, getDiseaseTreatmentStatement,
+            removeTreatmentFromAppointmentTreatmentStatement, addAppointmentTreatmentStatement, updateAppointmentStatement,
+            removeAppointmentFromAppointmentTreatmentStatement;
 
     private HospitalDAO() {
         try {
@@ -73,6 +75,8 @@ public class HospitalDAO {
             getTreatmentsFromDiseaseStatement = connection.prepareStatement("SELECT treatment_id FROM disease_treatment WHERE disease_id=?");
             getAppointmentsFromPatientStatement = connection.prepareStatement("SELECT * FROM appointment WHERE patient_id=?");
             getAppointmentsFromDoctorStatement = connection.prepareStatement("SELECT * FROM appointment WHERE doctor_id=?");
+            getTreatmentsFromAppointmentStatement = connection.prepareStatement("SELECT treatment_id FROM appointment_treatment WHERE appointment_id=?");
+            getDiseaseTreatmentStatement = connection.prepareStatement("SELECT * FROM disease_treatment WHERE disease_id=? AND treatment_id=?");
 
             removeTreatmentFromAppointmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE treatment_id = ?");
             removeTreatmentFromDiseaseStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE treatment_id = ?");
@@ -93,6 +97,8 @@ public class HospitalDAO {
 
             removeDiseaseTreatmentFromDiseasesTreatmentStatement = connection.prepareStatement("DELETE FROM disease_treatment WHERE disease_id = ? AND treatment_id=?");
             removeDiseaseFromAppointmentTreatmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE disease_id = ? AND treatment_id=?");
+            removeTreatmentFromAppointmentTreatmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE appointment_id = ? AND treatment_id=?");
+            removeAppointmentFromAppointmentTreatmentStatement = connection.prepareStatement("DELETE FROM appointment_treatment WHERE appointment_id=?");
 
             determineMedicalMajorIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM medical_major");
             determineTreatmentIdStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM treatment");
@@ -108,12 +114,14 @@ public class HospitalDAO {
             addAppointmentStatement = connection.prepareStatement("INSERT INTO appointment VALUES (?,?,?,?,?,?,NULL,NULL)");
             addPatientStatement = connection.prepareStatement("INSERT INTO patient VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
             addDoctorStatement = connection.prepareStatement("INSERT INTO doctor VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            addAppointmentTreatmentStatement = connection.prepareStatement("INSERT INTO appointment_treatment VALUES(?,?,?)");
 
             updateTreatmentStatement = connection.prepareStatement("UPDATE treatment SET treatment_name=? WHERE id=?");
             updateMedicalMajorStatement = connection.prepareStatement("UPDATE medical_major SET medical_major_name=? WHERE id=?");
             updateDiseaseStatement = connection.prepareStatement("UPDATE disease SET disease_name=?, medical_major_id=? WHERE id=?");
             updatePatientStatement = connection.prepareStatement("UPDATE patient SET first_name=?, last_name=?, home_address=?, birth_date=?, citizen_number=?, phone_number=?, email_address=?, gender=?, blood_type=?, height=?, weight=? WHERE id=?");
             updateDoctorStatement = connection.prepareStatement("UPDATE doctor SET first_name=?, last_name=?, home_address=?, birth_date=?, citizen_number=?, phone_number=?, email_address=?, gender=?, blood_type=?, medical_major_id=?, shift_hours=? WHERE id=?");
+            updateAppointmentStatement = connection.prepareStatement("UPDATE appointment SET patient_id=?, doctor_id=?, disease_id=?, appointment_date=?, appointment_time=?, treatment_description=?, appointment_report=? WHERE id=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -197,7 +205,10 @@ public class HospitalDAO {
                 Integer.valueOf(rs.getString(6).substring(0, 2)),
                 Integer.valueOf(rs.getString(6).substring(3, 5)));
 
-        return new Appointment(rs.getInt(1), patient, doctor, disease, date, time);
+        Appointment appointment = new Appointment(rs.getInt(1), patient, doctor, disease, date, time);
+        appointment.setTreatmentsDescription(rs.getString(7));
+        appointment.setAppointmentReport(rs.getString(8));
+        return appointment;
     }
 
     public ArrayList<Patient> patients() {
@@ -799,6 +810,73 @@ public class HospitalDAO {
             }
             removeDoctorFromAppointmentStatement.setInt(1,doctor.getId());
             removeDoctorFromAppointmentStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Treatment> getTreatmentsFromAppointment(Appointment appointment) {
+        ArrayList<Treatment> treatments = new ArrayList<>();
+        try {
+            getTreatmentsFromAppointmentStatement.setInt(1, appointment.getId());
+            ResultSet rs = getTreatmentsFromAppointmentStatement.executeQuery();
+            while (rs.next()) {
+                getTreatmentStatement.setInt(1, rs.getInt(1));
+                ResultSet rs1 = getTreatmentStatement.executeQuery();
+                treatments.add(new Treatment(rs1.getInt(1), rs1.getString(2)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return treatments;
+    }
+    public boolean isTreatmentForDisease(Treatment treatment, Disease disease) {
+        try {
+            getDiseaseTreatmentStatement.setInt(1,disease.getId());
+            getDiseaseTreatmentStatement.setInt(2,treatment.getId());
+            ResultSet rs = getDiseaseTreatmentStatement.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public void updateAppointmentTreatments(Appointment appointment, ArrayList<Treatment> treatmentsForDelete, ArrayList<Treatment> treatmentsForAdd) {
+        try {
+            for (Treatment t : treatmentsForDelete) {
+                removeTreatmentFromAppointmentTreatmentStatement.setInt(1, appointment.getId());
+                removeTreatmentFromAppointmentTreatmentStatement.setInt(2, t.getId());
+                removeTreatmentFromAppointmentTreatmentStatement.executeUpdate();
+            }
+            for (Treatment t : treatmentsForAdd) {
+                addAppointmentTreatmentStatement.setInt(1, appointment.getId());
+                addAppointmentTreatmentStatement.setInt(2, t.getId());
+                addAppointmentTreatmentStatement.setInt(3, appointment.getDisease().getId());
+                addAppointmentTreatmentStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateAppointment(Appointment appointment) {
+        try {
+            updateAppointmentStatement.setInt(1, appointment.getPatient().getId());
+            updateAppointmentStatement.setInt(2, appointment.getDoctor().getId());
+            updateAppointmentStatement.setInt(3, appointment.getDisease().getId());
+            updateAppointmentStatement.setString(4, String.valueOf(appointment.getAppointmentDate()));
+            updateAppointmentStatement.setString(5, String.valueOf(appointment.getAppointmentTime()));
+            updateAppointmentStatement.setString(6, appointment.getTreatmentsDescription());
+            updateAppointmentStatement.setString(7, appointment.getAppointmentReport());
+            updateAppointmentStatement.setInt(8, appointment.getId());
+            updateAppointmentStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateAppointmentDiseases(Appointment appointment) {
+        try {
+            removeAppointmentFromAppointmentTreatmentStatement.setInt(1,appointment.getId());
+            removeAppointmentFromAppointmentTreatmentStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
