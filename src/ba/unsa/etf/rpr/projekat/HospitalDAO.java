@@ -42,7 +42,7 @@ class HospitalDAO {
 
     private HospitalDAO() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:hospital.db");
+            connection = DriverManager.getConnection("jdbc:SQLite:hospital.db");
             getPatientsStatement = connection.prepareStatement("SELECT * FROM patient");
         } catch (SQLException e1) {
             regenerateBase();
@@ -708,6 +708,7 @@ class HospitalDAO {
                 removeDiseaseTreatmentFromDiseasesTreatmentStatement.setInt(1, d.getId());
                 removeDiseaseTreatmentFromDiseasesTreatmentStatement.setInt(2, treatment.getId());
                 removeDiseaseTreatmentFromDiseasesTreatmentStatement.executeUpdate();
+                removeDiseaseTreatmentFromDiseasesTreatmentStatement.setInt(1, d.getId());
                 removeDiseaseFromAppointmentTreatmentStatement.setInt(1, d.getId());
                 removeDiseaseFromAppointmentTreatmentStatement.setInt(2, treatment.getId());
                 removeDiseaseFromAppointmentTreatmentStatement.executeUpdate();
