@@ -340,97 +340,38 @@ public class MainController {
         }
     }
 
-    private void addOrEditMedicalMajorAction(MedicalMajor medicalMajor) {
+    private void addOrEditAppointmentAction(Appointment appointment) {
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/medical_major.fxml"));
-            MedicalMajorController medicalMajorController = new MedicalMajorController(dao, medicalMajor);
-            loader.setController(medicalMajorController);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
+            AppointmentController appointmentController = new AppointmentController(dao, appointment);
+            loader.setController(appointmentController);
             loader.load();
 
-            stage.setTitle("Medical major");
+            stage.setTitle("Appointment");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
-                listMedicalMajors.setAll(dao.medicalMajors());
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void addMedicalMajorAction() {
-        addOrEditMedicalMajorAction(null);
-    }
-    public void editMedicalMajorAction() {
-        MedicalMajor medicalMajor = tableViewMedicalMajors.getSelectionModel().getSelectedItem();
-        if (medicalMajor == null) return;
-        addOrEditMedicalMajorAction(medicalMajor);
-    }
-
-    private void addOrEditTreatmentAction(Treatment treatment) {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
-            TreatmentController treatmentController = new TreatmentController(dao, treatment);
-            loader.setController(treatmentController);
-            loader.load();
-
-            stage.setTitle("Treatment");
-            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setMaxWidth(400);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-
-            stage.setOnHiding(event -> {
-                listTreatments.setAll(dao.treatments());
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void addTreatmentAction() {
-        addOrEditTreatmentAction(null);
-    }
-    public void editTreatmentAction() {
-        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
-        if (treatment == null) return;
-        addOrEditTreatmentAction(treatment);
-    }
-
-    private void addOrEditDiseaseAction(Disease disease) {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/disease.fxml"));
-            DiseaseController diseaseController = new DiseaseController(dao, disease);
-            loader.setController(diseaseController);
-            loader.load();
-
-            stage.setTitle("Disease");
-            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setMaxWidth(400);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-
-            stage.setOnHiding(event -> {
-                listDiseases.setAll(dao.diseases());
+                int selectedIndex = tableViewAppointments.getSelectionModel().getSelectedIndex();
                 listAppointments.setAll(dao.appointments());
+                tableViewAppointments.getSelectionModel().select(selectedIndex);
+                if(appointment == null) tableViewAppointments.getSelectionModel().selectLast();
+
             });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void addDiseaseAction() {
-        addOrEditDiseaseAction(null);
+    public void addAppointmentAction() {
+        addOrEditAppointmentAction(null);
     }
-    public void editDiseaseAction() {
-        Disease disease = tableViewDiseases.getSelectionModel().getSelectedItem();
-        if (disease == null) return;
-        addOrEditDiseaseAction(disease);
+    public void editAppointmentAction() {
+        Appointment appointment = tableViewAppointments.getSelectionModel().getSelectedItem();
+        if(appointment == null) return;
+        addOrEditAppointmentAction(appointment);
     }
 
     private void addOrEditPatientAction(Patient patient) {
@@ -448,8 +389,11 @@ public class MainController {
             stage.show();
 
             stage.setOnHiding(event -> {
+                int selectedIndex = tableViewPatients.getSelectionModel().getSelectedIndex();
                 listPatients.setAll(dao.patients());
                 listAppointments.setAll(dao.appointments());
+                tableViewPatients.getSelectionModel().select(selectedIndex);
+                if(patient == null) tableViewPatients.getSelectionModel().selectLast();
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -479,8 +423,11 @@ public class MainController {
             stage.show();
 
             stage.setOnHiding(event -> {
+                int selectedIndex = tableViewDoctors.getSelectionModel().getSelectedIndex();
                 listDoctors.setAll(dao.doctors());
                 listAppointments.setAll(dao.appointments());
+                tableViewDoctors.getSelectionModel().select(selectedIndex);
+                if(doctor == null) tableViewDoctors.getSelectionModel().selectLast();
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -495,38 +442,106 @@ public class MainController {
         addOrEditDoctorAction(doctor);
     }
 
-    private void addOrEditAppointmentAction(Appointment appointment) {
+    private void addOrEditTreatmentAction(Treatment treatment) {
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
-            AppointmentController appointmentController = new AppointmentController(dao, appointment);
-            loader.setController(appointmentController);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/treatment.fxml"));
+            TreatmentController treatmentController = new TreatmentController(dao, treatment);
+            loader.setController(treatmentController);
             loader.load();
 
-            stage.setTitle("Appointment");
+            stage.setTitle("Treatment");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                int selectedIndex = tableViewTreatments.getSelectionModel().getSelectedIndex();
+                listTreatments.setAll(dao.treatments());
+                tableViewTreatments.getSelectionModel().select(selectedIndex);
+                if(treatment == null) tableViewTreatments.getSelectionModel().selectLast();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addTreatmentAction() {
+        addOrEditTreatmentAction(null);
+    }
+    public void editTreatmentAction() {
+        Treatment treatment = tableViewTreatments.getSelectionModel().getSelectedItem();
+        if (treatment == null) return;
+        addOrEditTreatmentAction(treatment);
+    }
+
+    private void addOrEditMedicalMajorAction(MedicalMajor medicalMajor) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/medical_major.fxml"));
+            MedicalMajorController medicalMajorController = new MedicalMajorController(dao, medicalMajor);
+            loader.setController(medicalMajorController);
+            loader.load();
+
+            stage.setTitle("Medical major");
             stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setMaxWidth(400);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
             stage.setOnHiding(event -> {
+                int selectedIndex = tableViewMedicalMajors.getSelectionModel().getSelectedIndex();
+                listMedicalMajors.setAll(dao.medicalMajors());
+                tableViewMedicalMajors.getSelectionModel().select(selectedIndex);
+                if(medicalMajor == null) tableViewMedicalMajors.getSelectionModel().selectLast();
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addMedicalMajorAction() {
+        addOrEditMedicalMajorAction(null);
+    }
+    public void editMedicalMajorAction() {
+        MedicalMajor medicalMajor = tableViewMedicalMajors.getSelectionModel().getSelectedItem();
+        if (medicalMajor == null) return;
+        addOrEditMedicalMajorAction(medicalMajor);
+    }
+
+    private void addOrEditDiseaseAction(Disease disease) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/disease.fxml"));
+            DiseaseController diseaseController = new DiseaseController(dao, disease);
+            loader.setController(diseaseController);
+            loader.load();
+
+            stage.setTitle("Disease");
+            stage.setScene(new Scene(loader.getRoot(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setMaxWidth(400);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                int selectedIndex = tableViewDiseases.getSelectionModel().getSelectedIndex();
+                listDiseases.setAll(dao.diseases());
                 listAppointments.setAll(dao.appointments());
+                tableViewDiseases.getSelectionModel().select(selectedIndex);
+                if(disease == null) tableViewDiseases.getSelectionModel().selectLast();
             });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void addAppointmentAction() {
-        addOrEditAppointmentAction(null);
+    public void addDiseaseAction() {
+        addOrEditDiseaseAction(null);
     }
-    public void editAppointmentAction() {
-        Appointment appointment = tableViewAppointments.getSelectionModel().getSelectedItem();
-        if(appointment == null) return;
-        addOrEditAppointmentAction(appointment);
-    }
-
-    public void exitAction() {
-        System.exit(0);
+    public void editDiseaseAction() {
+        Disease disease = tableViewDiseases.getSelectionModel().getSelectedItem();
+        if (disease == null) return;
+        addOrEditDiseaseAction(disease);
     }
 
     public void aboutAction() {
@@ -538,5 +553,8 @@ public class MainController {
                 "TM and © 2020 Hospital dev\n" +
                 "All Rights Reserved.");
         alert.showAndWait();
+    }
+    public void exitAction() {
+        System.exit(0);
     }
 }

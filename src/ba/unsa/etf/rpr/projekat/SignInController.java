@@ -29,8 +29,6 @@ public class SignInController {
                 Stage newStage = new Stage();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
-                MainController ctrl = new MainController();
-                loader.setController(ctrl);
                 root = loader.load();
 
                 newStage.setTitle("Hospital");

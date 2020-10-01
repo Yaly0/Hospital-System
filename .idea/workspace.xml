@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Menu bar functioning added">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="final commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projekat/ba/unsa/etf/rpr/projekat/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projekat/ba/unsa/etf/rpr/projekat/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/sign_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital.db" beforeDir="false" afterPath="$PROJECT_DIR$/hospital.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/appointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/appointment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Rating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,60 +65,73 @@
     <session id="-1740005119">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.1" value="9" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.20" value="3" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="ClassDiagram" value="1" />
+          <entry key="InvalidInformationException" value="5" />
+          <entry key="JAVA/fxml" value="1" />
+          <entry key="Main" value="1" />
+          <entry key="MainController" value="1" />
+          <entry key="MedicalMajor" value="2" />
+          <entry key="Person" value="1" />
+          <entry key="SQLException" value="1" />
           <entry key="Untitled" value="1" />
-          <entry key="css" value="3" />
+          <entry key="css" value="4" />
           <entry key="db" value="2" />
-          <entry key="fxml" value="48" />
-          <entry key="java" value="158" />
+          <entry key="fxml" value="61" />
+          <entry key="java" value="208" />
+          <entry key="projekat" value="2" />
           <entry key="sql" value="11" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="3" />
-          <entry key="JAVA" value="158" />
-          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="CSS" value="4" />
+          <entry key="JAVA" value="208" />
+          <entry key="PLAIN_TEXT" value="4" />
           <entry key="SQL" value="11" />
-          <entry key="XML" value="49" />
+          <entry key="UML" value="14" />
+          <entry key="XML" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="165" />
           <entry key="dummy" value="9" />
-          <entry key="fxml" value="755" />
-          <entry key="java" value="23299" />
+          <entry key="fxml" value="774" />
+          <entry key="java" value="24595" />
           <entry key="sql" value="31" />
-          <entry key="txt" value="1551" />
+          <entry key="txt" value="1563" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="165" />
-          <entry key="JAVA" value="23299" />
-          <entry key="PLAIN_TEXT" value="1560" />
+          <entry key="JAVA" value="24595" />
+          <entry key="PLAIN_TEXT" value="1572" />
           <entry key="SQL" value="31" />
-          <entry key="XML" value="755" />
+          <entry key="XML" value="774" />
         </counts>
       </usages-collector>
     </session>
@@ -124,23 +141,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="539" column="28" selection-start-line="539" selection-start-column="28" selection-end-line="539" selection-end-column="28" />
+            <state relative-caret-position="302">
+              <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5901#7001#0" />
@@ -149,58 +154,22 @@
                 <element signature="e#8501#9052#0" />
                 <element signature="e#9114#9689#0" />
                 <element signature="e#9746#10281#0" />
-                <element signature="e#10334#10517#0" />
-                <element signature="e#10569#10752#0" />
-                <element signature="e#10804#10987#0" />
-                <element signature="e#11039#11222#0" />
-                <element signature="e#11274#11457#0" />
-                <element signature="e#11509#11692#0" />
-                <element signature="e#10542#11333#0" />
-                <element signature="e#11339#12140#0" />
-                <element signature="e#12146#12935#0" />
-                <element signature="e#12941#13685#0" />
-                <element signature="e#13691#14758#0" />
-                <element signature="e#14764#15575#0" />
-                <element signature="e#15581#16488#0" />
-                <element signature="e#16584#16819#0" />
-                <element signature="e#16825#17750#0" />
-                <element signature="e#17840#18054#0" />
-                <element signature="e#18060#18960#0" />
-                <element signature="e#19046#19246#0" />
-                <element signature="e#19252#20152#0" />
-                <element signature="e#20238#20437#0" />
-                <element signature="e#20443#21330#0" />
-                <element signature="e#21414#21606#0" />
-                <element signature="e#21612#22503#0" />
-                <element signature="e#22597#22824#0" />
-                <element signature="e#23850#23851#0" expanded="true" />
-                <element signature="e#23872#23873#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="92" column="11" lean-forward="true" selection-start-line="88" selection-start-column="12" selection-end-line="92" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4285#4286#0" expanded="true" />
-                <element signature="e#4318#4319#0" expanded="true" />
+                <element signature="e#10333#10515#0" />
+                <element signature="e#10562#10740#0" />
+                <element signature="e#10786#10963#0" />
+                <element signature="e#11012#11192#0" />
+                <element signature="e#11244#11427#0" />
+                <element signature="e#11474#11652#0" />
+                <element signature="e#11667#12458#0" />
+                <element signature="e#12464#13265#0" />
+                <element signature="e#13271#14060#0" />
+                <element signature="e#14066#14810#0" />
+                <element signature="e#14816#15883#0" />
+                <element signature="e#15889#16700#0" />
+                <element signature="e#16706#17849#0" />
+                <element signature="e#17943#18170#0" />
+                <element signature="e#19606#20729#0" />
+                <element signature="e#20813#21005#0" />
               </folding>
             </state>
           </provider>
@@ -209,133 +178,159 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-317">
-              <caret line="89" column="60" lean-forward="true" selection-start-line="89" selection-start-column="60" selection-end-line="89" selection-end-column="60" />
+            <state relative-caret-position="90">
+              <caret line="110" column="89" selection-start-line="110" selection-start-column="89" selection-end-line="110" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1534#2201#0" />
-                <element signature="e#5859#6293#0" />
-                <element signature="e#6837#6838#0" expanded="true" />
-                <element signature="e#6906#6907#0" expanded="true" />
                 <element signature="method#datePickerConverter#0;class#AppointmentController#0" />
                 <element signature="method#hours#0;class#AppointmentController#0" />
                 <element signature="method#minutes#0;class#AppointmentController#0" />
                 <element signature="method#isTimeOkForDoctor#0;class#AppointmentController#0" />
-                <element signature="e#9031#9032#0" expanded="true" />
-                <element signature="e#9064#9065#0" expanded="true" />
-                <element signature="e#9112#9113#0" expanded="true" />
-                <element signature="e#9186#9187#0" expanded="true" />
-                <element signature="e#9235#9236#0" expanded="true" />
-                <element signature="e#9310#9311#0" expanded="true" />
-                <element signature="method#deleteTreatmentAction#0;class#AppointmentController#0" />
                 <element signature="method#closeWindows#0;class#AppointmentController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1875">
-              <caret line="125" column="5" lean-forward="true" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#hours#0;class#DoctorController#0" />
-                <element signature="method#minutes#0;class#DoctorController#0" />
-                <element signature="e#7941#7942#0" expanded="true" />
-                <element signature="e#8010#8011#0" expanded="true" />
-                <element signature="e#8046#8047#0" expanded="true" />
-                <element signature="e#8079#8080#0" expanded="true" />
-                <element signature="e#8111#8112#0" expanded="true" />
-                <element signature="e#8140#8141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="209" column="58" lean-forward="true" selection-start-line="209" selection-start-column="58" selection-end-line="209" selection-end-column="58" />
+            <state relative-caret-position="1678">
+              <caret line="780" column="5" selection-start-line="780" selection-start-column="5" selection-end-line="780" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5942#6733#0" />
-                <element signature="e#6739#6871#0" />
-                <element signature="e#6877#7140#0" />
-                <element signature="e#7147#7566#0" />
-                <element signature="e#8662#9049#0" />
-                <element signature="e#9054#10089#0" />
-                <element signature="e#10095#10474#0" />
-                <element signature="e#10479#12245#0" />
-                <element signature="e#12251#12669#0" />
-                <element signature="e#12675#13117#0" />
-                <element signature="e#13289#13699#0" />
-                <element signature="e#13515#13878#0" />
-                <element signature="e#13884#14447#0" />
-                <element signature="e#14453#14887#0" />
-                <element signature="e#14893#15295#0" />
-                <element signature="e#15301#15694#0" />
-                <element signature="e#15700#16405#0" />
-                <element signature="e#16411#17117#0" />
-                <element signature="e#17123#17365#0" />
-                <element signature="e#17371#17673#0" />
-                <element signature="e#17789#18154#0" />
-                <element signature="e#18160#18441#0" />
-                <element signature="e#18551#18889#0" />
-                <element signature="e#18894#19330#0" />
-                <element signature="e#19336#19603#0" />
-                <element signature="e#19709#20106#0" />
-                <element signature="e#20111#20549#0" />
-                <element signature="e#23513#24141#0" />
-                <element signature="e#24147#24632#0" />
-                <element signature="e#22273#22675#0" />
-                <element signature="e#23363#24246#0" />
-                <element signature="e#24010#24428#0" />
-                <element signature="e#25447#26407#0" />
-                <element signature="e#26183#26885#0" />
-                <element signature="e#27807#28910#0" />
-                <element signature="e#28894#29542#0" />
-                <element signature="e#29585#30235#0" />
-                <element signature="e#30280#30637#0" />
-                <element signature="e#30849#31488#0" />
-                <element signature="e#31822#32867#0" />
-                <element signature="e#33162#33504#0" />
-                <element signature="e#33735#34157#0" />
-                <element signature="e#33891#34562#0" />
-                <element signature="e#34893#35303#0" />
-                <element signature="e#36307#36977#0" />
-                <element signature="e#37141#38230#0" />
-                <element signature="e#38571#38866#0" />
-                <element signature="e#39395#40074#0" />
-                <element signature="e#40455#41010#0" />
-                <element signature="e#40896#42006#0" />
-                <element signature="e#42253#42970#0" />
-                <element signature="e#43439#43745#0" />
+                <element signature="e#2754#11293#0" />
+                <element signature="e#0#21#1" />
+                <element signature="e#0#21#1" />
+                <element signature="e#0#25#1" />
+                <element signature="e#0#20#1" />
+                <element signature="e#0#23#1" />
+                <element signature="e#0#27#1" />
+                <element signature="e#0#21#1" />
+                <element signature="e#0#34#1" />
+                <element signature="e#0#33#1" />
+                <element signature="e#0#34#1" />
+                <element signature="e#0#36#1" />
+                <element signature="e#0#38#1" />
+                <element signature="e#0#57#1" />
+                <element signature="e#0#48#1" />
+                <element signature="e#0#48#1" />
+                <element signature="e#0#61#1" />
+                <element signature="e#0#45#1" />
+                <element signature="e#0#46#1" />
+                <element signature="e#0#61#1" />
+                <element signature="e#0#44#1" />
+                <element signature="e#0#43#1" />
+                <element signature="e#0#69#1" />
+                <element signature="e#0#69#1" />
+                <element signature="e#0#56#1" />
+                <element signature="e#0#52#1" />
+                <element signature="e#0#34#1" />
+                <element signature="e#0#58#1" />
+                <element signature="e#0#36#1" />
+                <element signature="e#0#44#1" />
+                <element signature="e#0#32#1" />
+                <element signature="e#0#43#1" />
+                <element signature="e#0#31#1" />
+                <element signature="e#0#45#1" />
+                <element signature="e#0#38#1" />
+                <element signature="e#0#44#1" />
+                <element signature="e#0#54#1" />
+                <element signature="e#0#50#1" />
+                <element signature="e#0#32#1" />
+                <element signature="e#0#58#1" />
+                <element signature="e#0#69#1" />
+                <element signature="e#0#73#1" />
+                <element signature="e#0#77#1" />
+                <element signature="e#0#56#1" />
+                <element signature="e#0#35#1" />
+                <element signature="e#0#31#1" />
+                <element signature="e#0#29#1" />
+                <element signature="e#0#33#1" />
+                <element signature="e#0#29#1" />
+                <element signature="e#0#28#1" />
+                <element signature="e#0#38#1" />
+                <element signature="e#0#34#1" />
+                <element signature="e#0#42#1" />
+                <element signature="e#0#34#1" />
+                <element signature="e#0#54#1" />
+                <element signature="e#0#52#1" />
+                <element signature="e#0#51#1" />
+                <element signature="e#0#47#1" />
+                <element signature="e#0#160#1" />
+                <element signature="e#0#180#1" />
+                <element signature="e#0#194#1" />
+                <element signature="e#0#48#1" />
+                <element signature="e#0#56#1" />
+                <element signature="e#0#64#1" />
+                <element signature="e#11299#12187#0" />
+                <element signature="e#12193#12318#0" />
+                <element signature="e#12324#12736#0" />
+                <element signature="e#12778#14071#0" />
+                <element signature="e#14002#14382#0" />
+                <element signature="e#14388#15420#0" />
+                <element signature="e#15426#15798#0" />
+                <element signature="e#15804#17570#0" />
+                <element signature="e#17576#17987#0" />
+                <element signature="e#18190#18412#0" />
+                <element signature="e#17993#18428#0" />
+                <element signature="e#18434#18814#0" />
+                <element signature="e#18820#19183#0" />
+                <element signature="e#19189#19503#0" />
+                <element signature="e#20074#20316#0" />
+                <element signature="e#20321#20905#0" />
+                <element signature="e#20910#21488#0" />
+                <element signature="e#19509#19673#0" />
+                <element signature="e#19678#19820#0" />
+                <element signature="e#19825#19961#0" />
+                <element signature="e#19966#20157#0" />
+                <element signature="e#20162#20693#0" />
+                <element signature="e#20698#20927#0" />
+                <element signature="e#22972#23593#0" />
+                <element signature="e#23598#23801#0" />
+                <element signature="e#23908#24615#0" />
+                <element signature="e#24715#25814#0" />
+                <element signature="e#25898#26977#0" />
+                <element signature="e#26983#27257#0" />
+                <element signature="e#27360#27691#0" />
+                <element signature="e#27696#28125#0" />
+                <element signature="e#21181#21476#0" />
+                <element signature="e#21585#21943#0" />
+                <element signature="e#23097#23357#0" />
+                <element signature="e#23456#23847#0" />
+                <element signature="e#23852#24283#0" />
+                <element signature="e#30111#30353#0" />
+                <element signature="e#30358#30787#0" />
+                <element signature="e#30792#31741#0" />
+                <element signature="e#31746#32659#0" />
+                <element signature="e#32664#32993#0" />
+                <element signature="e#32999#33290#0" />
+                <element signature="e#33295#33527#0" />
+                <element signature="e#33532#34673#0" />
+                <element signature="e#34679#34906#0" />
+                <element signature="e#34912#36033#0" />
+                <element signature="e#36038#36666#0" />
+                <element signature="e#30097#30319#0" />
+                <element signature="e#30324#31409#0" />
+                <element signature="e#31414#31755#0" />
+                <element signature="e#30651#31164#0" />
+                <element signature="e#32874#33544#0" />
+                <element signature="e#31694#32062#0" />
+                <element signature="e#32143#32803#0" />
+                <element signature="e#32733#33824#0" />
+                <element signature="e#33829#34232#0" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/fxml/sign_in.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/fxml/main.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="240">
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -413,7 +408,6 @@
         <option value="$PROJECT_DIR$/resources/fxml/Maini.java" />
         <option value="$PROJECT_DIR$/resources/fxml/maini.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/welcome.fxml" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java" />
         <option value="$PROJECT_DIR$/resources/fxml/MedicalMajor.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Appointment.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Patient.java" />
@@ -426,22 +420,24 @@
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Treatment.java" />
         <option value="$PROJECT_DIR$/resources/fxml/patient.fxml" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java" />
         <option value="$PROJECT_DIR$/resources/fxml/doctor.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/disease.fxml" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/llmk.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/aa.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/TreatmentController.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/appointment.fxml" />
         <option value="$PROJECT_DIR$/hospital.db.sql" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java" />
-        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/main.fxml" />
         <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/sign_in.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/main.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/appointment.fxml" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java" />
+        <option value="$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java" />
       </list>
     </option>
   </component>
@@ -452,10 +448,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="793" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1612" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -483,19 +478,7 @@
               <item name="Projekat" type="b2602c69:ProjectViewProjectNode" />
               <item name="Projekat" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projekat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projekat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projekat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projekat" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Projekat" type="b2602c69:ProjectViewProjectNode" />
@@ -528,7 +511,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600927970759" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601541061869" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -712,7 +695,15 @@
       <workItem from="1600580292486" duration="3360000" />
       <workItem from="1600618016499" duration="497000" />
       <workItem from="1600618569778" duration="24582000" />
-      <workItem from="1600678447530" duration="124662000" />
+      <workItem from="1600678447530" duration="126123000" />
+      <workItem from="1600929627666" duration="10150000" />
+      <workItem from="1600984449421" duration="208000" />
+      <workItem from="1600992451570" duration="673000" />
+      <workItem from="1601014082461" duration="21000" />
+      <workItem from="1601016631015" duration="121000" />
+      <workItem from="1601016835614" duration="51000" />
+      <workItem from="1601308652000" duration="4504000" />
+      <workItem from="1601363497548" duration="10595000" />
     </task>
     <task id="LOCAL-00001" summary="Class &quot;Person&quot; added">
       <created>1586078576905</created>
@@ -1008,17 +999,24 @@
       <option name="project" value="LOCAL" />
       <updated>1600927618031</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="final commit">
+      <created>1600928019366</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1600928019366</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260380000" />
+    <option name="totallyTimeSpent" value="288164000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19166666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19166666" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -1027,7 +1025,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.266745" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31139836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25499412" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1098,7 +1096,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Main page added without functionality" />
     <MESSAGE value="Attributes added in &quot;MainController&quot;" />
     <MESSAGE value="Constructor and &quot;initialize&quot; method (only showing Patients table contents) added in &quot;MainController&quot; with corresponding methods in &quot;HospitalDAO&quot;" />
     <MESSAGE value="Doctors Table filled from database" />
@@ -1123,106 +1120,14 @@
     <MESSAGE value="New Appointment window opening ability added from doctor and patient" />
     <MESSAGE value="Ability for opening Edit/Info window with double mouse click added for all tables" />
     <MESSAGE value="Menu bar functioning added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu bar functioning added" />
+    <MESSAGE value="final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/time/Year.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="134" column="19" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/IllegalArgumentException.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/IllegalArgumentException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/time/Duration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="1265" column="23" selection-start-line="1265" selection-start-column="18" selection-end-line="1265" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/javafx-src.zip!/javafx/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/InvalidInformationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Untitled" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1738">
-          <caret line="143" column="17" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="175" column="25" lean-forward="true" selection-start-line="175" selection-start-column="25" selection-end-line="175" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/time/LocalDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="341" column="19" selection-start-line="341" selection-start-column="19" selection-end-line="341" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="1232" column="22" selection-start-line="1232" selection-start-column="22" selection-end-line="1232" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/time/LocalTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="1482" column="15" selection-start-line="1482" selection-start-column="15" selection-end-line="1482" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/Maini.java" />
-    <entry file="file://$PROJECT_DIR$/resources/css/signin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/MedicalMajor.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Rating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hospital.db">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1233,112 +1138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding>
-            <element signature="class#Height#0;class#Patient#0" />
-            <element signature="class#Weight#0;class#Patient#0" />
-            <element signature="method#Weight#0;class#Weight#0;class#Patient#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="143" column="94" selection-start-line="143" selection-start-column="94" selection-end-line="143" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#CitizenNumber#0;class#Person#0" />
-            <element signature="method#setEmailAddress#0;class#EmailAddress#0;class#Person#0" />
-            <element signature="class#Gender#0;class#Person#0" />
-            <element signature="class#BloodType#0;class#Person#0" />
-            <element signature="method#setId#0;class#Person#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Doctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3986#3987#0" expanded="true" />
-            <element signature="e#4035#4036#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/medical_major.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/treatment.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Disease.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Treatment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-          <folding>
-            <element signature="method#Treatment#0;class#Treatment#0" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#955#956#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding>
-            <element signature="e#998#999#0" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/patient.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1346,31 +1145,239 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/llmk.java">
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/llmk.java" />
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/aa.java" />
+    <entry file="file://$PROJECT_DIR$/hospital.db.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        <state relative-caret-position="222">
+          <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/aa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/ClassDiagram" />
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat.Main">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat.Main</OriginalElement>
+          <nodes>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Main</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="59.0" y="54.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/TreatmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2416#2417#0" expanded="true" />
-            <element signature="e#2449#2450#0" expanded="true" />
-          </folding>
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat.MedicalMajor">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat.MedicalMajor</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">ba.unsa.etf.rpr.projekat.MedicalMajor</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-278.0" y="-13.0" />
+          <SelectedNodes>
+            <node>ba.unsa.etf.rpr.projekat.MedicalMajor</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
+    </entry>
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat.MainController">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat.MainController</OriginalElement>
+          <nodes>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.MainController</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="69.0" y="176.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Rating.java" />
+    <entry file="uml://JAVA/fxml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>fxml</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="582.0" y="400.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat</OriginalElement>
+          <nodes>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.PatientController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.InvalidInformationException</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Disease</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.SignInController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.HospitalDAO</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Doctor</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.MedicalMajorController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Appointment</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.TreatmentController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Treatment</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Main</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.DiseaseController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.AppointmentController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Patient</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.MainController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.DoctorController</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.Person</node>
+            <node x="" y="">ba.unsa.etf.rpr.projekat.MedicalMajor</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="553.0" y="1946.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/signin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat.Person">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat.Person</OriginalElement>
+          <nodes>
+            <node x="985.8068181818182" y="407.5">ba.unsa.etf.rpr.projekat.Person.EmailAddress</node>
+            <node x="291.8068181818182" y="674.0">ba.unsa.etf.rpr.projekat.Patient.Weight</node>
+            <node x="144.8068181818182" y="674.0">ba.unsa.etf.rpr.projekat.Patient.Height</node>
+            <node x="440.8068181818182" y="608.0">ba.unsa.etf.rpr.projekat.Doctor.ShiftHours</node>
+            <node x="445.8068181818182" y="408.0">ba.unsa.etf.rpr.projekat.Doctor</node>
+            <node x="217.0" y="397.0">ba.unsa.etf.rpr.projekat.Patient</node>
+            <node x="1196.806818181818" y="419.0">ba.unsa.etf.rpr.projekat.Person.CitizenNumber</node>
+            <node x="0.0" y="407.5">ba.unsa.etf.rpr.projekat.Person.PhoneNumber</node>
+            <node x="794.8068181818182" y="331.0">ba.unsa.etf.rpr.projekat.Person.BloodType</node>
+            <node x="610.3068181818182" y="0.0">ba.unsa.etf.rpr.projekat.Person</node>
+            <node x="681.8068181818182" y="408.0">ba.unsa.etf.rpr.projekat.Person.Gender</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="ba.unsa.etf.rpr.projekat.Person.CitizenNumber" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-25.5" />
+              <point x="1287.806818181818" y="291.0" />
+              <point x="829.4496753246754" y="291.0" />
+              <point x="101.14285714285711" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Doctor" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-36.5" />
+              <point x="553.8068181818182" y="311.0" />
+              <point x="694.5925324675325" y="311.0" />
+              <point x="-33.714285714285666" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Patient" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-47.5" />
+              <point x="287.5" y="301.0" />
+              <point x="660.8782467532467" y="301.0" />
+              <point x="-67.42857142857144" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Doctor.ShiftHours" target="ba.unsa.etf.rpr.projekat.Doctor">
+              <point x="0.0" y="-103.0" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Person.BloodType" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-113.5" />
+              <point x="880.3068181818182" y="311.0" />
+              <point x="762.021103896104" y="311.0" />
+              <point x="33.71428571428578" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Person.EmailAddress" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-37.0" />
+              <point x="1081.3068181818182" y="301.0" />
+              <point x="795.7353896103896" y="301.0" />
+              <point x="67.42857142857144" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Patient.Height" target="ba.unsa.etf.rpr.projekat.Patient">
+              <point x="0.0" y="-37.0" />
+              <point x="208.3068181818182" y="583.0" />
+              <point x="252.25" y="583.0" />
+              <point x="-35.25" y="47.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Person.Gender" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-36.5" />
+              <point x="0.0" y="135.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Patient.Weight" target="ba.unsa.etf.rpr.projekat.Patient">
+              <point x="0.0" y="-37.0" />
+              <point x="356.3068181818182" y="583.0" />
+              <point x="322.75" y="583.0" />
+              <point x="35.25" y="47.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.Person.PhoneNumber" target="ba.unsa.etf.rpr.projekat.Person">
+              <point x="0.0" y="-37.0" />
+              <point x="98.5" y="291.0" />
+              <point x="627.1639610389611" y="291.0" />
+              <point x="-101.14285714285711" y="135.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9592326139088729" x="189.0" y="240.0" />
+          <SelectedNodes>
+            <node>ba.unsa.etf.rpr.projekat.Person</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/medical_major.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/fxml/disease.fxml">
       <provider editor-type-id="text-editor">
@@ -1380,191 +1387,265 @@
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="73" column="62" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/doctor.fxml">
+    <entry file="file://$PROJECT_DIR$/resources/fxml/treatment.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="405">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/appointment.fxml">
+    <entry file="file://$PROJECT_DIR$/resources/fxml/patient.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="-455">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        <state relative-caret-position="300">
+          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospital.db.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="128" column="49" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="209" column="58" lean-forward="true" selection-start-line="209" selection-start-column="58" selection-end-line="209" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5942#6733#0" />
-            <element signature="e#6739#6871#0" />
-            <element signature="e#6877#7140#0" />
-            <element signature="e#7147#7566#0" />
-            <element signature="e#8662#9049#0" />
-            <element signature="e#9054#10089#0" />
-            <element signature="e#10095#10474#0" />
-            <element signature="e#10479#12245#0" />
-            <element signature="e#12251#12669#0" />
-            <element signature="e#12675#13117#0" />
-            <element signature="e#13289#13699#0" />
-            <element signature="e#13515#13878#0" />
-            <element signature="e#13884#14447#0" />
-            <element signature="e#14453#14887#0" />
-            <element signature="e#14893#15295#0" />
-            <element signature="e#15301#15694#0" />
-            <element signature="e#15700#16405#0" />
-            <element signature="e#16411#17117#0" />
-            <element signature="e#17123#17365#0" />
-            <element signature="e#17371#17673#0" />
-            <element signature="e#17789#18154#0" />
-            <element signature="e#18160#18441#0" />
-            <element signature="e#18551#18889#0" />
-            <element signature="e#18894#19330#0" />
-            <element signature="e#19336#19603#0" />
-            <element signature="e#19709#20106#0" />
-            <element signature="e#20111#20549#0" />
-            <element signature="e#23513#24141#0" />
-            <element signature="e#24147#24632#0" />
-            <element signature="e#22273#22675#0" />
-            <element signature="e#23363#24246#0" />
-            <element signature="e#24010#24428#0" />
-            <element signature="e#25447#26407#0" />
-            <element signature="e#26183#26885#0" />
-            <element signature="e#27807#28910#0" />
-            <element signature="e#28894#29542#0" />
-            <element signature="e#29585#30235#0" />
-            <element signature="e#30280#30637#0" />
-            <element signature="e#30849#31488#0" />
-            <element signature="e#31822#32867#0" />
-            <element signature="e#33162#33504#0" />
-            <element signature="e#33735#34157#0" />
-            <element signature="e#33891#34562#0" />
-            <element signature="e#34893#35303#0" />
-            <element signature="e#36307#36977#0" />
-            <element signature="e#37141#38230#0" />
-            <element signature="e#38571#38866#0" />
-            <element signature="e#39395#40074#0" />
-            <element signature="e#40455#41010#0" />
-            <element signature="e#40896#42006#0" />
-            <element signature="e#42253#42970#0" />
-            <element signature="e#43439#43745#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="-261">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Appointment#0;class#Appointment#0" />
-            <element signature="method#toString#0;class#Appointment#0" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Disease.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Doctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-396">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Treatment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/PatientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="92" column="11" lean-forward="true" selection-start-line="88" selection-start-column="12" selection-end-line="92" selection-end-column="11" />
+        <state relative-caret-position="-1596">
+          <caret line="61" column="30" selection-start-line="60" selection-start-column="4" selection-end-line="61" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4285#4286#0" expanded="true" />
-            <element signature="e#4318#4319#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java">
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DiseaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="89" column="60" lean-forward="true" selection-start-line="89" selection-start-column="60" selection-end-line="89" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1534#2201#0" />
-            <element signature="e#5859#6293#0" />
-            <element signature="e#6837#6838#0" expanded="true" />
-            <element signature="e#6906#6907#0" expanded="true" />
-            <element signature="method#datePickerConverter#0;class#AppointmentController#0" />
-            <element signature="method#hours#0;class#AppointmentController#0" />
-            <element signature="method#minutes#0;class#AppointmentController#0" />
-            <element signature="method#isTimeOkForDoctor#0;class#AppointmentController#0" />
-            <element signature="e#9031#9032#0" expanded="true" />
-            <element signature="e#9064#9065#0" expanded="true" />
-            <element signature="e#9112#9113#0" expanded="true" />
-            <element signature="e#9186#9187#0" expanded="true" />
-            <element signature="e#9235#9236#0" expanded="true" />
-            <element signature="e#9310#9311#0" expanded="true" />
-            <element signature="method#deleteTreatmentAction#0;class#AppointmentController#0" />
-            <element signature="method#closeWindows#0;class#AppointmentController#0" />
-          </folding>
+        <state relative-caret-position="-140">
+          <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/DoctorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="125" column="5" lean-forward="true" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
+        <state relative-caret-position="-1596">
+          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#hours#0;class#DoctorController#0" />
             <element signature="method#minutes#0;class#DoctorController#0" />
-            <element signature="e#7941#7942#0" expanded="true" />
-            <element signature="e#8010#8011#0" expanded="true" />
-            <element signature="e#8046#8047#0" expanded="true" />
-            <element signature="e#8079#8080#0" expanded="true" />
-            <element signature="e#8111#8112#0" expanded="true" />
-            <element signature="e#8140#8141#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/TreatmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-620">
+          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/doctor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/InvalidInformationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="61" column="10" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="263" column="11" selection-start-line="263" selection-start-column="11" selection-end-line="263" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/ba.unsa.etf.rpr.projekat.InvalidInformationException">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ba.unsa.etf.rpr.projekat.InvalidInformationException</OriginalElement>
+          <nodes>
+            <node x="53.5" y="79.0">java.lang.Throwable</node>
+            <node x="0.0" y="316.0">ba.unsa.etf.rpr.projekat.InvalidInformationException</node>
+            <node x="30.0" y="237.0">java.lang.RuntimeException</node>
+            <node x="55.0" y="158.0">java.lang.Exception</node>
+            <node x="51.5" y="0.0">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="java.lang.RuntimeException" target="java.lang.Exception">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="ba.unsa.etf.rpr.projekat.InvalidInformationException" target="java.lang.RuntimeException">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="java.lang.Exception" target="java.lang.Throwable">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="java.lang.Throwable" target="java.io.Serializable">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-232.0" y="13.0" />
+          <SelectedNodes>
+            <node>ba.unsa.etf.rpr.projekat.InvalidInformationException</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/java.sql.SQLException">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>java.sql.SQLException</OriginalElement>
+          <nodes>
+            <node x="" y="">java.lang.Throwable</node>
+            <node x="" y="">java.sql.SQLException</node>
+            <node x="" y="">java.lang.Exception</node>
+            <node x="" y="">java.lang.Iterable</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="113.0" y="133.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/sign_in.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="33" lean-forward="true" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/appointment.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="30" column="94" selection-start-line="30" selection-start-column="94" selection-end-line="30" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/fxml/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/javafx-src.zip!/javafx/beans/value/ObservableValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-712">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/javafx-src.zip!/javafx/beans/value/ChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="539" column="28" selection-start-line="539" selection-start-column="28" selection-end-line="539" selection-end-column="28" />
+        <state relative-caret-position="302">
+          <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5901#7001#0" />
@@ -1573,60 +1654,197 @@
             <element signature="e#8501#9052#0" />
             <element signature="e#9114#9689#0" />
             <element signature="e#9746#10281#0" />
-            <element signature="e#10334#10517#0" />
-            <element signature="e#10569#10752#0" />
-            <element signature="e#10804#10987#0" />
-            <element signature="e#11039#11222#0" />
-            <element signature="e#11274#11457#0" />
-            <element signature="e#11509#11692#0" />
-            <element signature="e#10542#11333#0" />
-            <element signature="e#11339#12140#0" />
-            <element signature="e#12146#12935#0" />
-            <element signature="e#12941#13685#0" />
-            <element signature="e#13691#14758#0" />
-            <element signature="e#14764#15575#0" />
-            <element signature="e#15581#16488#0" />
-            <element signature="e#16584#16819#0" />
-            <element signature="e#16825#17750#0" />
-            <element signature="e#17840#18054#0" />
-            <element signature="e#18060#18960#0" />
-            <element signature="e#19046#19246#0" />
-            <element signature="e#19252#20152#0" />
-            <element signature="e#20238#20437#0" />
-            <element signature="e#20443#21330#0" />
-            <element signature="e#21414#21606#0" />
-            <element signature="e#21612#22503#0" />
-            <element signature="e#22597#22824#0" />
-            <element signature="e#23850#23851#0" expanded="true" />
-            <element signature="e#23872#23873#0" expanded="true" />
+            <element signature="e#10333#10515#0" />
+            <element signature="e#10562#10740#0" />
+            <element signature="e#10786#10963#0" />
+            <element signature="e#11012#11192#0" />
+            <element signature="e#11244#11427#0" />
+            <element signature="e#11474#11652#0" />
+            <element signature="e#11667#12458#0" />
+            <element signature="e#12464#13265#0" />
+            <element signature="e#13271#14060#0" />
+            <element signature="e#14066#14810#0" />
+            <element signature="e#14816#15883#0" />
+            <element signature="e#15889#16700#0" />
+            <element signature="e#16706#17849#0" />
+            <element signature="e#17943#18170#0" />
+            <element signature="e#19606#20729#0" />
+            <element signature="e#20813#21005#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/SignInController.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/bla.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/sign_in.fxml">
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/MedicalMajorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
+        <state relative-caret-position="403">
+          <caret line="43" column="87" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/AppointmentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state relative-caret-position="90">
+          <caret line="110" column="89" selection-start-line="110" selection-start-column="89" selection-end-line="110" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#datePickerConverter#0;class#AppointmentController#0" />
+            <element signature="method#hours#0;class#AppointmentController#0" />
+            <element signature="method#minutes#0;class#AppointmentController#0" />
+            <element signature="method#isTimeOkForDoctor#0;class#AppointmentController#0" />
+            <element signature="method#closeWindows#0;class#AppointmentController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="167" column="9" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ba/unsa/etf/rpr/projekat/HospitalDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1678">
+          <caret line="780" column="5" selection-start-line="780" selection-start-column="5" selection-end-line="780" selection-end-column="5" />
+          <folding>
+            <element signature="e#2754#11293#0" />
+            <element signature="e#0#21#1" />
+            <element signature="e#0#21#1" />
+            <element signature="e#0#25#1" />
+            <element signature="e#0#20#1" />
+            <element signature="e#0#23#1" />
+            <element signature="e#0#27#1" />
+            <element signature="e#0#21#1" />
+            <element signature="e#0#34#1" />
+            <element signature="e#0#33#1" />
+            <element signature="e#0#34#1" />
+            <element signature="e#0#36#1" />
+            <element signature="e#0#38#1" />
+            <element signature="e#0#57#1" />
+            <element signature="e#0#48#1" />
+            <element signature="e#0#48#1" />
+            <element signature="e#0#61#1" />
+            <element signature="e#0#45#1" />
+            <element signature="e#0#46#1" />
+            <element signature="e#0#61#1" />
+            <element signature="e#0#44#1" />
+            <element signature="e#0#43#1" />
+            <element signature="e#0#69#1" />
+            <element signature="e#0#69#1" />
+            <element signature="e#0#56#1" />
+            <element signature="e#0#52#1" />
+            <element signature="e#0#34#1" />
+            <element signature="e#0#58#1" />
+            <element signature="e#0#36#1" />
+            <element signature="e#0#44#1" />
+            <element signature="e#0#32#1" />
+            <element signature="e#0#43#1" />
+            <element signature="e#0#31#1" />
+            <element signature="e#0#45#1" />
+            <element signature="e#0#38#1" />
+            <element signature="e#0#44#1" />
+            <element signature="e#0#54#1" />
+            <element signature="e#0#50#1" />
+            <element signature="e#0#32#1" />
+            <element signature="e#0#58#1" />
+            <element signature="e#0#69#1" />
+            <element signature="e#0#73#1" />
+            <element signature="e#0#77#1" />
+            <element signature="e#0#56#1" />
+            <element signature="e#0#35#1" />
+            <element signature="e#0#31#1" />
+            <element signature="e#0#29#1" />
+            <element signature="e#0#33#1" />
+            <element signature="e#0#29#1" />
+            <element signature="e#0#28#1" />
+            <element signature="e#0#38#1" />
+            <element signature="e#0#34#1" />
+            <element signature="e#0#42#1" />
+            <element signature="e#0#34#1" />
+            <element signature="e#0#54#1" />
+            <element signature="e#0#52#1" />
+            <element signature="e#0#51#1" />
+            <element signature="e#0#47#1" />
+            <element signature="e#0#160#1" />
+            <element signature="e#0#180#1" />
+            <element signature="e#0#194#1" />
+            <element signature="e#0#48#1" />
+            <element signature="e#0#56#1" />
+            <element signature="e#0#64#1" />
+            <element signature="e#11299#12187#0" />
+            <element signature="e#12193#12318#0" />
+            <element signature="e#12324#12736#0" />
+            <element signature="e#12778#14071#0" />
+            <element signature="e#14002#14382#0" />
+            <element signature="e#14388#15420#0" />
+            <element signature="e#15426#15798#0" />
+            <element signature="e#15804#17570#0" />
+            <element signature="e#17576#17987#0" />
+            <element signature="e#18190#18412#0" />
+            <element signature="e#17993#18428#0" />
+            <element signature="e#18434#18814#0" />
+            <element signature="e#18820#19183#0" />
+            <element signature="e#19189#19503#0" />
+            <element signature="e#20074#20316#0" />
+            <element signature="e#20321#20905#0" />
+            <element signature="e#20910#21488#0" />
+            <element signature="e#19509#19673#0" />
+            <element signature="e#19678#19820#0" />
+            <element signature="e#19825#19961#0" />
+            <element signature="e#19966#20157#0" />
+            <element signature="e#20162#20693#0" />
+            <element signature="e#20698#20927#0" />
+            <element signature="e#22972#23593#0" />
+            <element signature="e#23598#23801#0" />
+            <element signature="e#23908#24615#0" />
+            <element signature="e#24715#25814#0" />
+            <element signature="e#25898#26977#0" />
+            <element signature="e#26983#27257#0" />
+            <element signature="e#27360#27691#0" />
+            <element signature="e#27696#28125#0" />
+            <element signature="e#21181#21476#0" />
+            <element signature="e#21585#21943#0" />
+            <element signature="e#23097#23357#0" />
+            <element signature="e#23456#23847#0" />
+            <element signature="e#23852#24283#0" />
+            <element signature="e#30111#30353#0" />
+            <element signature="e#30358#30787#0" />
+            <element signature="e#30792#31741#0" />
+            <element signature="e#31746#32659#0" />
+            <element signature="e#32664#32993#0" />
+            <element signature="e#32999#33290#0" />
+            <element signature="e#33295#33527#0" />
+            <element signature="e#33532#34673#0" />
+            <element signature="e#34679#34906#0" />
+            <element signature="e#34912#36033#0" />
+            <element signature="e#36038#36666#0" />
+            <element signature="e#30097#30319#0" />
+            <element signature="e#30324#31409#0" />
+            <element signature="e#31414#31755#0" />
+            <element signature="e#30651#31164#0" />
+            <element signature="e#32874#33544#0" />
+            <element signature="e#31694#32062#0" />
+            <element signature="e#32143#32803#0" />
+            <element signature="e#32733#33824#0" />
+            <element signature="e#33829#34232#0" />
           </folding>
         </state>
       </provider>
