@@ -14,4 +14,4 @@ The application consists of a sign in window followed by the main window which d
 
 ---
 
-For more information see [documentation](https://github.com/Yaly0/hospital-system/files/7621910/RPR.izvjestaj.Yahya.Aly.pdf) (written in Bosnian Language) 
+For more information see [documentation](https://docs.google.com/viewer?url=https://github.com/Yaly0/hospital-system/files/7621910/RPR.izvjestaj.Yahya.Aly.pdf) (written in Bosnian Language) 
